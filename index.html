@@ -11,6 +11,7 @@
     --azul: #1756D6; --azul-escuro: #0D3EA3; --azul-fundo: #EBF1FE;
     --navy: #091A3E; --cinza-bg: #F4F6FA; --cinza-texto: #5B6480; --borda: #DEE3F0;
     --amarelo: #E07A10; --amarelo-fundo: #FEF5E7;
+    --vermelho: #CC2222; --vermelho-fundo: #FDEAEA;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', sans-serif; background: var(--cinza-bg); color: var(--navy); }
@@ -28,33 +29,40 @@
   .metric-label { font-size: 12px; color: rgba(255,255,255,0.45); font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; }
   .metric-value { font-family: 'Sora', sans-serif; font-size: 34px; font-weight: 800; color: white; margin-top: 6px; line-height: 1; }
   .metric-value.green { color: var(--verde); }
+  .metric-value.red { color: #FF6B6B; }
   .metric-value.amarelo { color: #FBBF24; }
   .metric-sub { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 6px; }
   .main { padding: 40px 48px; }
   .section-header { display: flex; align-items: center; margin-bottom: 20px; gap: 12px; }
   .section-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: var(--navy); }
-  .section-pill { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+  .section-pill { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
   .pill-verde { background: var(--verde-fundo); color: var(--verde-escuro); }
   .pill-azul { background: var(--azul-fundo); color: var(--azul-escuro); }
   .pill-amarelo { background: var(--amarelo-fundo); color: var(--amarelo); }
+  .pill-vermelho { background: var(--vermelho-fundo); color: var(--vermelho); }
   .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 18px; margin-bottom: 40px; }
   .card { background: white; border-radius: 16px; border: 1.5px solid var(--borda); padding: 22px 24px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
   .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(9,26,62,0.12); }
   .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .card-urgente::before { background: var(--vermelho); }
+  .card-urgente { border-color: #FFAAAA; }
   .card-aberto::before { background: var(--verde); }
+  .card-novo::before { background: linear-gradient(90deg, var(--verde), var(--azul)); }
   .card-verificar::before { background: var(--amarelo); }
   .card-fechado::before { background: #C0C6D8; }
-  .card-novo::before { background: linear-gradient(90deg, var(--verde), var(--azul)); }
-  .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; gap: 10px; }
   .card-fonte { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); }
-  .card-programa { font-size: 13px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.4; }
+  .card-programa { font-size: 12.5px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.4; }
   .card-divider { height: 1px; background: var(--borda); margin: 14px 0; }
   .card-detail { display: flex; gap: 8px; font-size: 12.5px; color: var(--cinza-texto); margin-bottom: 8px; align-items: flex-start; line-height: 1.5; }
-  .card-detail-label { font-weight: 600; color: var(--navy); min-width: 75px; flex-shrink: 0; font-size: 12px; }
-  .prazo-verde { color: var(--verde-escuro); font-weight: 600; }
-  .prazo-amarelo { color: var(--amarelo); font-weight: 600; }
+  .card-detail-label { font-weight: 600; color: var(--navy); min-width: 78px; flex-shrink: 0; font-size: 12px; }
+  .prazo-verde { color: var(--verde-escuro); font-weight: 700; }
+  .prazo-amarelo { color: var(--amarelo); font-weight: 700; }
+  .prazo-vermelho { color: var(--vermelho); font-weight: 700; }
   .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
   .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  .badge-urgente { background: var(--vermelho-fundo); color: var(--vermelho); animation: pulse 2s infinite; }
+  .badge-urgente::before { background: var(--vermelho); }
   .badge-aberto { background: var(--verde-fundo); color: var(--verde-escuro); }
   .badge-aberto::before { background: var(--verde); }
   .badge-fechado { background: #F0F0F4; color: #7A8098; }
@@ -63,18 +71,29 @@
   .badge-verificar::before { background: var(--amarelo); }
   .badge-novo { background: var(--azul-fundo); color: var(--azul-escuro); }
   .badge-novo::before { background: var(--azul); }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
   .card-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--azul); text-decoration: none; margin-top: 10px; margin-right: 6px; padding: 6px 12px; background: var(--azul-fundo); border-radius: 8px; transition: background 0.15s; }
   .card-link:hover { background: #D0DCF8; }
+
+  /* ALERTAS URGENTES */
+  .urgentes-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  .urgente-card { background: white; border-radius: 14px; border: 2px solid #FFAAAA; background: #FFF8F8; padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px; }
+  .urgente-icon { font-size: 28px; flex-shrink: 0; }
+  .urgente-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); }
+  .urgente-prazo { font-size: 22px; font-weight: 800; font-family: 'Sora', sans-serif; color: var(--vermelho); margin: 4px 0; }
+  .urgente-desc { font-size: 12px; color: var(--cinza-texto); line-height: 1.5; }
+
   .alerta-row { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
-  .alerta-card { flex: 1; min-width: 220px; background: white; border-radius: 14px; border: 1.5px solid var(--borda); padding: 16px 18px; display: flex; align-items: flex-start; gap: 12px; }
+  .alerta-card { flex: 1; min-width: 200px; background: white; border-radius: 14px; border: 1.5px solid var(--borda); padding: 16px 18px; display: flex; align-items: flex-start; gap: 12px; }
   .alerta-card.prazo { border-color: #90D9AA; background: #F4FDF7; }
   .alerta-card.evento { border-color: #90C0F0; background: #F5F9FF; }
   .alerta-card.novo { border-color: #A0B8F0; background: #F0F5FF; }
-  .alerta-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
-  .alerta-title { font-weight: 700; font-size: 13px; color: var(--navy); }
-  .alerta-desc { font-size: 12px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.5; }
+  .alerta-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .alerta-title { font-weight: 700; font-size: 12.5px; color: var(--navy); }
+  .alerta-desc { font-size: 11.5px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.5; }
   .alerta-date { font-weight: 700; color: var(--verde-escuro); }
   .alerta-date.azul { color: var(--azul); }
+
   .highlight-box { background: linear-gradient(135deg, var(--navy) 0%, #1338A0 100%); border-radius: 18px; padding: 30px 36px; margin-bottom: 40px; display: flex; align-items: center; gap: 28px; }
   .highlight-icon { width: 64px; height: 64px; background: rgba(24,212,75,0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
   .highlight-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: white; margin-bottom: 8px; }
@@ -82,6 +101,7 @@
   .highlight-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .highlight-pill { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 12px; padding: 4px 12px; border-radius: 20px; }
   .highlight-pill.green { background: rgba(24,212,75,0.25); color: var(--verde); }
+
   .table-card { background: white; border-radius: 16px; border: 1.5px solid var(--borda); overflow: hidden; margin-bottom: 40px; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   thead th { background: var(--cinza-bg); color: var(--cinza-texto); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px; padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--borda); }
@@ -89,7 +109,8 @@
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:hover td { background: #F8FAFF; }
   .td-fonte { font-weight: 600; }
-  .td-obs { font-size: 12px; color: var(--cinza-texto); max-width: 220px; line-height: 1.4; }
+  .td-obs { font-size: 12px; color: var(--cinza-texto); max-width: 200px; line-height: 1.4; }
+
   .footer-stripe { height: 4px; background: linear-gradient(90deg, var(--azul), var(--verde)); }
   footer { background: var(--navy); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; }
   .footer-text { font-size: 12px; color: rgba(255,255,255,0.4); }
@@ -117,22 +138,22 @@
     <div class="metrics-grid">
       <div class="metric-card">
         <div class="metric-label">Fontes mapeadas</div>
-        <div class="metric-value">17</div>
+        <div class="metric-value">20</div>
         <div class="metric-sub">Editais, patrocínios e programas</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Editais abertos agora</div>
-        <div class="metric-value green">5</div>
+        <div class="metric-value green">7</div>
         <div class="metric-sub">Inscrições em andamento</div>
       </div>
       <div class="metric-card">
-        <div class="metric-label">Prazo mais próximo</div>
-        <div class="metric-value amarelo">26/06</div>
-        <div class="metric-sub">FINEP — Apoio Financeiro</div>
+        <div class="metric-label">Prazos urgentes</div>
+        <div class="metric-value red">2</div>
+        <div class="metric-sub">Nova Zelândia 10/04 · Pulitzer 19/04</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">A verificar / monitorar</div>
-        <div class="metric-value" style="color:rgba(255,255,255,0.7)">5</div>
+        <div class="metric-value amarelo">5</div>
         <div class="metric-sub">Aguardando abertura ou confirmação</div>
       </div>
     </div>
@@ -141,34 +162,61 @@
 
 <div class="main">
 
-  <!-- ALERTAS -->
-  <div class="alerta-row">
-    <div class="alerta-card novo">
-      <div class="alerta-icon">📋</div>
+  <!-- URGENTES -->
+  <div class="section-header">
+    <div class="section-title">🚨 Ação imediata — prazos iminentes</div>
+    <span class="section-pill pill-vermelho">2 oportunidades</span>
+  </div>
+
+  <div class="urgentes-row" style="margin-bottom:32px">
+    <div class="urgente-card">
+      <div class="urgente-icon">🇳🇿</div>
       <div>
-        <div class="alerta-title">FINEP — Apoio Financeiro (novo)</div>
-        <div class="alerta-desc">Nova linha aberta. Prazo: <span class="alerta-date">26/06/2026</span>. Verificar regulamento e requisitos no portal FINEP.</div>
+        <div class="urgente-title">Embaixada da Nova Zelândia — Apoio Financeiro</div>
+        <div class="urgente-prazo">10/04/2026</div>
+        <div class="urgente-desc">ONGs, grupos comunitários, escolas e associações. Até <strong>R$31.000</strong>. Implementação abril–setembro 2026. Sem CNPJ, aceita instituição madrinha.</div>
+        <a class="card-link" href="https://docs.google.com/document/d/1NjbLA5_26auRBYq3JFr60Z_heSFwySjblPMnnP-VTHE/edit" target="_blank" style="margin-top:10px">Ver edital ↗</a>
       </div>
     </div>
+    <div class="urgente-card">
+      <div class="urgente-icon">🏆</div>
+      <div>
+        <div class="urgente-title">Pulitzer Center — Bolsa Impact Seed Funding</div>
+        <div class="urgente-prazo">19/04/2026</div>
+        <div class="urgente-desc">Professores universitários e pesquisadores. <strong>USD 4.000</strong>. Histórias contadas por jornalistas apoiados pelo Pulitzer Center.</div>
+        <a class="card-link" href="https://pulitzercenter.org/pt-br/grants-fellowships/impact-seed-funding" target="_blank" style="margin-top:10px">Ver edital ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALERTAS INFORMATIVOS -->
+  <div class="alerta-row">
     <div class="alerta-card prazo">
       <div class="alerta-icon">🌿</div>
       <div>
         <div class="alerta-title">BNDES — Amazônia Viva</div>
-        <div class="alerta-desc">Edital PAA aberto. Inscrições até <span class="alerta-date">03/05/2026</span>. ONGs, associações e cooperativas.</div>
+        <div class="alerta-desc">Inscrições até <span class="alerta-date">03/05/2026</span>. ONGs, associações e cooperativas.</div>
+      </div>
+    </div>
+    <div class="alerta-card prazo">
+      <div class="alerta-icon">📋</div>
+      <div>
+        <div class="alerta-title">FINEP — Agricultura Familiar / ICTs</div>
+        <div class="alerta-desc">Prazo: <span class="alerta-date">26/06/2026</span>. 30% dos recursos para região Norte.</div>
       </div>
     </div>
     <div class="alerta-card evento">
       <div class="alerta-icon">✈️</div>
       <div>
         <div class="alerta-title">Embratur — Visit Brazil Summit 2026</div>
-        <div class="alerta-desc">Evento oficial confirmado. Edital aberto até <span class="alerta-date azul">03/10/2026</span>. <a href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank" style="color:var(--azul);font-weight:600;">Ver evento ↗</a></div>
+        <div class="alerta-desc">Edital aberto até <span class="alerta-date azul">03/10/2026</span>. <a href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank" style="color:var(--azul);font-weight:600;">Ver evento ↗</a></div>
       </div>
     </div>
     <div class="alerta-card novo">
-      <div class="alerta-icon">🌾</div>
+      <div class="alerta-icon">💎</div>
       <div>
-        <div class="alerta-title">Min. Desenvolvimento Agrário — novo no radar</div>
-        <div class="alerta-desc">Fonte adicionada ao mapeamento. <span class="alerta-date azul">Verificar programas</span> para agricultura familiar e comunidades rurais no AP.</div>
+        <div class="alerta-title">Vale — Instituto Cultural Vale</div>
+        <div class="alerta-desc">Chamada <span class="alerta-date azul">abril–maio</span>. Lei Rouanet e Audiovisual maio–nov. Recursos próprios o ano todo.</div>
       </div>
     </div>
   </div>
@@ -176,25 +224,48 @@
   <!-- EDITAIS ABERTOS -->
   <div class="section-header">
     <div class="section-title">✦ Editais com inscrições abertas</div>
-    <span class="section-pill pill-verde">5 oportunidades</span>
+    <span class="section-pill pill-verde">7 oportunidades</span>
   </div>
 
   <div class="cards-grid">
 
-    <div class="card card-novo">
+    <!-- Nova Zelândia -->
+    <div class="card card-urgente">
       <div class="card-header">
         <div>
-          <div class="card-fonte">FINEP</div>
-          <div class="card-programa">Apoio Financeiro — Nova linha</div>
+          <div class="card-fonte">Embaixada da Nova Zelândia</div>
+          <div class="card-programa">Apoio Financeiro — Projetos comunitários</div>
         </div>
-        <span class="badge badge-novo">Novo ✦</span>
+        <span class="badge badge-urgente">URGENTE</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-amarelo">Até 26/06/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Ação</span><span>Verificar regulamento completo, requisitos de elegibilidade e valores disponíveis no portal FINEP</span></div>
-      <a class="card-link" href="https://www.finep.gov.br/" target="_blank">Portal FINEP ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">10/04/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>R$ 31.000</strong> por projeto</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>ONGs, grupos comunitários, escolas, associações empresariais. Empresas individualmente não podem participar</span></div>
+      <div class="card-detail"><span class="card-detail-label">Execução</span><span>Abril a setembro de 2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Sem CNPJ</span><span>Pode ter uma instituição madrinha para viabilizar a participação</span></div>
+      <a class="card-link" href="https://docs.google.com/document/d/1NjbLA5_26auRBYq3JFr60Z_heSFwySjblPMnnP-VTHE/edit" target="_blank">Ver edital completo ↗</a>
     </div>
 
+    <!-- Pulitzer -->
+    <div class="card card-urgente">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Pulitzer Center</div>
+          <div class="card-programa">Bolsa — Impact Seed Funding</div>
+        </div>
+        <span class="badge badge-urgente">URGENTE</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">19/04/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>USD 4.000</strong> por bolsa</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Professores universitários e pesquisadores</span></div>
+      <div class="card-detail"><span class="card-detail-label">Formato</span><span>História contada em parceria com jornalistas apoiados pelo Pulitzer Center</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Narrativas sobre Amazônia, povos indígenas, bioeconomia e meio ambiente</span></div>
+      <a class="card-link" href="https://pulitzercenter.org/pt-br/grants-fellowships/impact-seed-funding" target="_blank">Ver edital ↗</a>
+    </div>
+
+    <!-- BNDES -->
     <div class="card card-aberto">
       <div class="card-header">
         <div>
@@ -210,6 +281,41 @@
       <a class="card-link" href="https://www.gov.br/conab/pt-br/atuacao/paa/amazonia-viva/edital-amazonia-viva/edital-amazonia-viva" target="_blank">Acessar edital ↗</a>
     </div>
 
+    <!-- FINEP Agricultura Familiar -->
+    <div class="card card-novo">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">FINEP</div>
+          <div class="card-programa">Agricultura Familiar e Sistemas Agroalimentares — ICTs 2026</div>
+        </div>
+        <span class="badge badge-novo">Atualizado</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-amarelo">Até 26/06/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>ICTs públicas ou privadas. ICTs privadas sem fins lucrativos devem ter funcionamento regular nos últimos 3 anos</span></div>
+      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span>Mínimo de 30% dos recursos por Linha Temática destinados a ICTs executoras sediadas na região Norte</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Cadeias socioprodutivas da agricultura familiar e sistemas agroalimentares sustentáveis</span></div>
+      <a class="card-link" href="http://www.finep.gov.br/images/chamadas-publicas/2026/25_03_2026_AgriFam-ICT_2026_Edital.pdf" target="_blank">Ver edital ↗</a>
+    </div>
+
+    <!-- FINEP Subvenção Economia Circular -->
+    <div class="card card-aberto">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">FINEP</div>
+          <div class="card-programa">Subvenção — Economia Circular Inovadora</div>
+        </div>
+        <span class="badge badge-aberto">Aberto</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 31/08/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span>Projetos executados no Norte têm maior pontuação no mérito</span></div>
+      <div class="card-detail"><span class="card-detail-label">Diferencial</span><span>Maior nota para cooperativas de catadores, extrativistas, agricultores familiares e povos tradicionais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ; participação obrigatória de ICTs; contrapartida obrigatória</span></div>
+      <a class="card-link" href="http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Regulamento.pdf" target="_blank">Regulamento ↗</a>
+    </div>
+
+    <!-- Embratur -->
     <div class="card card-aberto">
       <div class="card-header">
         <div>
@@ -228,22 +334,7 @@
       <a class="card-link" href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank">Visit Brazil Summit ↗</a>
     </div>
 
-    <div class="card card-aberto">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">FINEP</div>
-          <div class="card-programa">Subvenção — Economia Circular Inovadora</div>
-        </div>
-        <span class="badge badge-aberto">Aberto</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 31/08/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span>Projetos executados no Norte têm maior pontuação no mérito</span></div>
-      <div class="card-detail"><span class="card-detail-label">Diferencial</span><span>Maior nota para cooperativas de catadores, extrativistas, agricultores familiares e povos tradicionais</span></div>
-      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ; ICTs obrigatórias; contrapartida obrigatória</span></div>
-      <a class="card-link" href="http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Regulamento.pdf" target="_blank">Regulamento ↗</a>
-    </div>
-
+    <!-- Aldir Blanc -->
     <div class="card card-aberto">
       <div class="card-header">
         <div>
@@ -254,7 +345,7 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Uso</span><span>Festejos, bens culturais, espaços culturais, fomento à cultura local</span></div>
-      <div class="card-detail"><span class="card-detail-label">Exemplo</span><span>Nova Andradina destinou R$43.500 para aquisição de obras de arte locais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Exemplo</span><span>Nova Andradina destinou R$43.500 para obras de arte locais</span></div>
       <div class="card-detail"><span class="card-detail-label">Também</span><span>Lei Rouanet e Lei Paulo Gustavo — consultar MinC</span></div>
       <a class="card-link" href="https://www.gov.br/cultura/pt-br/assuntos/politica-nacional-aldir-blanc" target="_blank">Acessar portal ↗</a>
     </div>
@@ -272,10 +363,25 @@
     <div class="card card-verificar">
       <div class="card-header">
         <div>
+          <div class="card-fonte">Vale</div>
+          <div class="card-programa">Instituto Cultural Vale + Leis de Incentivo</div>
+        </div>
+        <span class="badge badge-verificar">Ciclos definidos</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Chamada ICV</span><span>Abril e maio — verificar abertura do Instituto Cultural Vale</span></div>
+      <div class="card-detail"><span class="card-detail-label">Lei Rouanet</span><span>Maio a novembro — audiovisual incluído</span></div>
+      <div class="card-detail"><span class="card-detail-label">Recursos próprios</span><span>Disponíveis o ano todo — contato direto com a Vale</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Mineração, cultura, comunidades — Vale tem presença histórica na Amazônia</span></div>
+    </div>
+
+    <div class="card card-verificar">
+      <div class="card-header">
+        <div>
           <div class="card-fonte">Ministério do Desenvolvimento Agrário</div>
           <div class="card-programa">Programas e editais — a mapear</div>
         </div>
-        <span class="badge badge-novo">Novo</span>
+        <span class="badge badge-verificar">Verificar</span>
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Foco</span><span>Agricultura familiar, assentamentos, reforma agrária, desenvolvimento rural</span></div>
@@ -313,20 +419,6 @@
     <div class="card card-verificar">
       <div class="card-header">
         <div>
-          <div class="card-fonte">FINEP / MCTI</div>
-          <div class="card-programa">Nova Indústria Brasil — R$3,3 bilhões</div>
-        </div>
-        <span class="badge badge-verificar">Monitorar</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Evento</span><span>MCTI + FINEP em Brasília — <strong>17/03/2026</strong></span></div>
-      <div class="card-detail"><span class="card-detail-label">Volume</span><span>R$3,3 bilhões em projetos de inovação e indústria</span></div>
-      <a class="card-link" href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2026/02/mcti-e-finep-anunciam-investimento-de-r-3-3-bilhoes-em-projetos-alinhados-a-nova-industria-brasil" target="_blank">Ver anúncio ↗</a>
-    </div>
-
-    <div class="card card-verificar">
-      <div class="card-header">
-        <div>
           <div class="card-fonte">Ministério do Microempreendedorismo</div>
           <div class="card-programa">OGU — Orçamento Geral da União</div>
         </div>
@@ -342,7 +434,7 @@
   <!-- MONITORAMENTO CONTÍNUO -->
   <div class="section-header">
     <div class="section-title">◌ Fontes sem edital aberto — monitoramento contínuo</div>
-    <span class="section-pill pill-azul">7 fontes</span>
+    <span class="section-pill pill-azul">8 fontes</span>
   </div>
 
   <div class="table-card">
@@ -375,7 +467,7 @@
           <td><div class="td-fonte">Caixa Econômica Federal</div></td>
           <td>Fundo Socioambiental Caixa</td>
           <td><span class="badge badge-fechado">Sem chamada ativa</span></td>
-          <td class="td-obs">Alta relevância para habitação, saneamento e projetos comunitários</td>
+          <td class="td-obs">Habitação, saneamento e projetos comunitários</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/chamadas-abertas/Paginas/default.aspx" target="_blank">Ver portal ↗</a></td>
         </tr>
         <tr>
@@ -403,8 +495,15 @@
           <td><div class="td-fonte">MinC</div></td>
           <td>Lei Rouanet / Lei Paulo Gustavo</td>
           <td><span class="badge badge-fechado">Monitorar</span></td>
-          <td class="td-obs">Incentivos fiscais para projetos culturais — captação via patrocinadores privados</td>
+          <td class="td-obs">Incentivos fiscais — captação via patrocinadores privados</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/cultura/pt-br" target="_blank">Ver MinC ↗</a></td>
+        </tr>
+        <tr>
+          <td><div class="td-fonte">Vale</div></td>
+          <td>Recursos próprios</td>
+          <td><span class="badge badge-verificar">Ano todo</span></td>
+          <td class="td-obs">Recursos próprios disponíveis o ano todo. Instituto Cultural Vale abre em abril/maio</td>
+          <td>—</td>
         </tr>
       </tbody>
     </table>
@@ -415,7 +514,7 @@
     <div class="highlight-icon">🌿</div>
     <div>
       <div class="highlight-title">Estratégia de posicionamento — Amapá tem vantagem competitiva</div>
-      <div class="highlight-desc">O Amapá reúne características únicas que aumentam a pontuação e elegibilidade em editais nacionais e internacionais: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas e comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. Projetos que combinam essas dimensões têm vantagem clara em fontes como FINEP, BNDES, Embratur, MDA, Expertise France e organismos multilaterais.</div>
+      <div class="highlight-desc">O Amapá reúne características únicas que aumentam a pontuação e elegibilidade em editais nacionais e internacionais: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas e comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. Fontes como FINEP, BNDES, Embaixada da Nova Zelândia, Pulitzer Center e Expertise France têm alinhamento direto com essa identidade.</div>
       <div class="highlight-pills">
         <span class="highlight-pill green">Bioeconomia</span>
         <span class="highlight-pill green">Povos Indígenas</span>
@@ -424,6 +523,7 @@
         <span class="highlight-pill">Cooperação Internacional</span>
         <span class="highlight-pill">Economia Circular</span>
         <span class="highlight-pill">Microempreendedorismo</span>
+        <span class="highlight-pill">Jornalismo e Pesquisa</span>
       </div>
     </div>
   </div>
