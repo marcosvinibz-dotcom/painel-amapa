@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oportunidades de Financiamento – Amapá</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #18D44B; --verde-escuro: #0FA034; --verde-fundo: #E8FBF0;
+    --azul: #1756D6; --azul-escuro: #0D3EA3; --azul-fundo: #EBF1FE;
+    --navy: #091A3E; --cinza-bg: #F4F6FA; --cinza-texto: #5B6480; --borda: #DEE3F0;
+    --amarelo: #E07A10; --amarelo-fundo: #FEF5E7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--cinza-bg); color: var(--navy); }
+  .header-stripe { height: 5px; background: linear-gradient(90deg, var(--verde), var(--azul)); }
+  header { background: var(--navy); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; }
+  .logo-area { display: flex; align-items: center; gap: 20px; }
+  .logo-badge { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, var(--verde), var(--azul)); display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 22px; color: white; }
+  .header-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 22px; color: white; }
+  .header-subtitle { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .header-tag { display: inline-block; background: rgba(24,212,75,0.18); color: var(--verde); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-top: 6px; }
+  .metrics-section { background: var(--navy); padding: 0 48px 36px; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+  .metric-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 20px 22px; }
+  .metric-label { font-size: 12px; color: rgba(255,255,255,0.45); font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; }
+  .metric-value { font-family: 'Sora', sans-serif; font-size: 34px; font-weight: 800; color: white; margin-top: 6px; line-height: 1; }
+  .metric-value.green { color: var(--verde); }
+  .metric-value.amarelo { color: #FBBF24; }
+  .metric-sub { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 6px; }
+  .main { padding: 40px 48px; }
+  .section-header { display: flex; align-items: center; margin-bottom: 20px; gap: 12px; }
+  .section-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: var(--navy); }
+  .section-pill { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+  .pill-verde { background: var(--verde-fundo); color: var(--verde-escuro); }
+  .pill-azul { background: var(--azul-fundo); color: var(--azul-escuro); }
+  .pill-amarelo { background: var(--amarelo-fundo); color: var(--amarelo); }
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 18px; margin-bottom: 40px; }
+  .card { background: white; border-radius: 16px; border: 1.5px solid var(--borda); padding: 22px 24px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(9,26,62,0.12); }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .card-aberto::before { background: var(--verde); }
+  .card-verificar::before { background: var(--amarelo); }
+  .card-fechado::before { background: #C0C6D8; }
+  .card-novo::before { background: linear-gradient(90deg, var(--verde), var(--azul)); }
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+  .card-fonte { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); }
+  .card-programa { font-size: 13px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.4; }
+  .card-divider { height: 1px; background: var(--borda); margin: 14px 0; }
+  .card-detail { display: flex; gap: 8px; font-size: 12.5px; color: var(--cinza-texto); margin-bottom: 8px; align-items: flex-start; line-height: 1.5; }
+  .card-detail-label { font-weight: 600; color: var(--navy); min-width: 75px; flex-shrink: 0; font-size: 12px; }
+  .prazo-verde { color: var(--verde-escuro); font-weight: 600; }
+  .prazo-amarelo { color: var(--amarelo); font-weight: 600; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+  .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  .badge-aberto { background: var(--verde-fundo); color: var(--verde-escuro); }
+  .badge-aberto::before { background: var(--verde); }
+  .badge-fechado { background: #F0F0F4; color: #7A8098; }
+  .badge-fechado::before { background: #B0B5C8; }
+  .badge-verificar { background: var(--amarelo-fundo); color: var(--amarelo); }
+  .badge-verificar::before { background: var(--amarelo); }
+  .badge-novo { background: var(--azul-fundo); color: var(--azul-escuro); }
+  .badge-novo::before { background: var(--azul); }
+  .card-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--azul); text-decoration: none; margin-top: 10px; margin-right: 6px; padding: 6px 12px; background: var(--azul-fundo); border-radius: 8px; transition: background 0.15s; }
+  .card-link:hover { background: #D0DCF8; }
+  .alerta-row { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
+  .alerta-card { flex: 1; min-width: 220px; background: white; border-radius: 14px; border: 1.5px solid var(--borda); padding: 16px 18px; display: flex; align-items: flex-start; gap: 12px; }
+  .alerta-card.prazo { border-color: #90D9AA; background: #F4FDF7; }
+  .alerta-card.evento { border-color: #90C0F0; background: #F5F9FF; }
+  .alerta-card.novo { border-color: #A0B8F0; background: #F0F5FF; }
+  .alerta-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .alerta-title { font-weight: 700; font-size: 13px; color: var(--navy); }
+  .alerta-desc { font-size: 12px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.5; }
+  .alerta-date { font-weight: 700; color: var(--verde-escuro); }
+  .alerta-date.azul { color: var(--azul); }
+  .highlight-box { background: linear-gradient(135deg, var(--navy) 0%, #1338A0 100%); border-radius: 18px; padding: 30px 36px; margin-bottom: 40px; display: flex; align-items: center; gap: 28px; }
+  .highlight-icon { width: 64px; height: 64px; background: rgba(24,212,75,0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+  .highlight-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: white; margin-bottom: 8px; }
+  .highlight-desc { font-size: 13.5px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+  .highlight-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .highlight-pill { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 12px; padding: 4px 12px; border-radius: 20px; }
+  .highlight-pill.green { background: rgba(24,212,75,0.25); color: var(--verde); }
+  .table-card { background: white; border-radius: 16px; border: 1.5px solid var(--borda); overflow: hidden; margin-bottom: 40px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { background: var(--cinza-bg); color: var(--cinza-texto); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px; padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--borda); }
+  tbody td { padding: 12px 16px; border-bottom: 1px solid #F0F2F8; color: var(--navy); vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: #F8FAFF; }
+  .td-fonte { font-weight: 600; }
+  .td-obs { font-size: 12px; color: var(--cinza-texto); max-width: 220px; line-height: 1.4; }
+  .footer-stripe { height: 4px; background: linear-gradient(90deg, var(--azul), var(--verde)); }
+  footer { background: var(--navy); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .footer-text { font-size: 12px; color: rgba(255,255,255,0.4); }
+  .footer-brand { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; color: rgba(255,255,255,0.7); }
+</style>
+</head>
+<body>
+
+<div class="header-stripe"></div>
+<header>
+  <div class="header-inner">
+    <div class="logo-area">
+      <div class="logo-badge">AP</div>
+      <div>
+        <div class="header-title">Painel de Financiamentos — Amapá</div>
+        <div class="header-subtitle">Assessoria de Desenvolvimento de Projetos · Gabinete Senador Randolfe Rodrigues</div>
+      </div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:12px;color:rgba(255,255,255,0.4)">Atualizado em março de 2026</div>
+      <div class="header-tag">✦ Mapeamento Ativo</div>
+    </div>
+  </div>
+  <div class="metrics-section">
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">Fontes mapeadas</div>
+        <div class="metric-value">17</div>
+        <div class="metric-sub">Editais, patrocínios e programas</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Editais abertos agora</div>
+        <div class="metric-value green">5</div>
+        <div class="metric-sub">Inscrições em andamento</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Prazo mais próximo</div>
+        <div class="metric-value amarelo">26/06</div>
+        <div class="metric-sub">FINEP — Apoio Financeiro</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">A verificar / monitorar</div>
+        <div class="metric-value" style="color:rgba(255,255,255,0.7)">5</div>
+        <div class="metric-sub">Aguardando abertura ou confirmação</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="main">
+
+  <!-- ALERTAS -->
+  <div class="alerta-row">
+    <div class="alerta-card novo">
+      <div class="alerta-icon">📋</div>
+      <div>
+        <div class="alerta-title">FINEP — Apoio Financeiro (novo)</div>
+        <div class="alerta-desc">Nova linha aberta. Prazo: <span class="alerta-date">26/06/2026</span>. Verificar regulamento e requisitos no portal FINEP.</div>
+      </div>
+    </div>
+    <div class="alerta-card prazo">
+      <div class="alerta-icon">🌿</div>
+      <div>
+        <div class="alerta-title">BNDES — Amazônia Viva</div>
+        <div class="alerta-desc">Edital PAA aberto. Inscrições até <span class="alerta-date">03/05/2026</span>. ONGs, associações e cooperativas.</div>
+      </div>
+    </div>
+    <div class="alerta-card evento">
+      <div class="alerta-icon">✈️</div>
+      <div>
+        <div class="alerta-title">Embratur — Visit Brazil Summit 2026</div>
+        <div class="alerta-desc">Evento oficial confirmado. Edital aberto até <span class="alerta-date azul">03/10/2026</span>. <a href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank" style="color:var(--azul);font-weight:600;">Ver evento ↗</a></div>
+      </div>
+    </div>
+    <div class="alerta-card novo">
+      <div class="alerta-icon">🌾</div>
+      <div>
+        <div class="alerta-title">Min. Desenvolvimento Agrário — novo no radar</div>
+        <div class="alerta-desc">Fonte adicionada ao mapeamento. <span class="alerta-date azul">Verificar programas</span> para agricultura familiar e comunidades rurais no AP.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDITAIS ABERTOS -->
+  <div class="section-header">
+    <div class="section-title">✦ Editais com inscrições abertas</div>
+    <span class="section-pill pill-verde">5 oportunidades</span>
+  </div>
+
+  <div class="cards-grid">
+
+    <div class="card card-novo">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">FINEP</div>
+          <div class="card-programa">Apoio Financeiro — Nova linha</div>
+        </div>
+        <span class="badge badge-novo">Novo ✦</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-amarelo">Até 26/06/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Ação</span><span>Verificar regulamento completo, requisitos de elegibilidade e valores disponíveis no portal FINEP</span></div>
+      <a class="card-link" href="https://www.finep.gov.br/" target="_blank">Portal FINEP ↗</a>
+    </div>
+
+    <div class="card card-aberto">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">BNDES</div>
+          <div class="card-programa">Amazônia Viva — Edital PAA</div>
+        </div>
+        <span class="badge badge-aberto">Aberto</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">03/05/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Fundo Socioambiental, Periferias, Bioinsumos, Periferias Verdes</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>ONGs, associações, cooperativas, movimentos sociais</span></div>
+      <a class="card-link" href="https://www.gov.br/conab/pt-br/atuacao/paa/amazonia-viva/edital-amazonia-viva/edital-amazonia-viva" target="_blank">Acessar edital ↗</a>
+    </div>
+
+    <div class="card card-aberto">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Embratur</div>
+          <div class="card-programa">Seleção Pública de Patrocínios 2026</div>
+        </div>
+        <span class="badge badge-aberto">Aberto</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Período</span><span class="prazo-verde">02/01 a 03/10/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Cobertura</span><span>60% do projeto; abaixo de R$200 mil pode ser maior</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco Amapá</span><span>Turismo, cultura indígena, gastronomia regional</span></div>
+      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ apenas; 60 dias de antecedência</span></div>
+      <div class="card-detail"><span class="card-detail-label">Evento</span><span><strong>Visit Brazil Summit 2026</strong> — confirmado</span></div>
+      <a class="card-link" href="https://patrocinio.embratur.com.br/wp-content/uploads/2026/01/Edital-de-Selecao-Publica-de-Patrocinios-2026-1.pdf" target="_blank">Edital ↗</a>
+      <a class="card-link" href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank">Visit Brazil Summit ↗</a>
+    </div>
+
+    <div class="card card-aberto">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">FINEP</div>
+          <div class="card-programa">Subvenção — Economia Circular Inovadora</div>
+        </div>
+        <span class="badge badge-aberto">Aberto</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 31/08/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span>Projetos executados no Norte têm maior pontuação no mérito</span></div>
+      <div class="card-detail"><span class="card-detail-label">Diferencial</span><span>Maior nota para cooperativas de catadores, extrativistas, agricultores familiares e povos tradicionais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ; ICTs obrigatórias; contrapartida obrigatória</span></div>
+      <a class="card-link" href="http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Regulamento.pdf" target="_blank">Regulamento ↗</a>
+    </div>
+
+    <div class="card card-aberto">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">MinC — Política Nacional Aldir Blanc</div>
+          <div class="card-programa">Recursos remanescentes — municípios</div>
+        </div>
+        <span class="badge badge-aberto">Recursos disponíveis</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Uso</span><span>Festejos, bens culturais, espaços culturais, fomento à cultura local</span></div>
+      <div class="card-detail"><span class="card-detail-label">Exemplo</span><span>Nova Andradina destinou R$43.500 para aquisição de obras de arte locais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Também</span><span>Lei Rouanet e Lei Paulo Gustavo — consultar MinC</span></div>
+      <a class="card-link" href="https://www.gov.br/cultura/pt-br/assuntos/politica-nacional-aldir-blanc" target="_blank">Acessar portal ↗</a>
+    </div>
+
+  </div>
+
+  <!-- A VERIFICAR -->
+  <div class="section-header">
+    <div class="section-title">◎ Fontes para monitorar e verificar</div>
+    <span class="section-pill pill-amarelo">5 fontes</span>
+  </div>
+
+  <div class="cards-grid" style="margin-bottom:40px">
+
+    <div class="card card-verificar">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Ministério do Desenvolvimento Agrário</div>
+          <div class="card-programa">Programas e editais — a mapear</div>
+        </div>
+        <span class="badge badge-novo">Novo</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Agricultura familiar, assentamentos, reforma agrária, desenvolvimento rural</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Comunidades rurais, povos tradicionais e cooperativas agrícolas do Amapá</span></div>
+      <div class="card-detail"><span class="card-detail-label">Ação</span><span>Mapear programas disponíveis e verificar editais abertos</span></div>
+    </div>
+
+    <div class="card card-verificar">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Expertise France</div>
+          <div class="card-programa">Projeto AMABIO — Bioeconomia na Amazônia</div>
+        </div>
+        <span class="badge badge-verificar">Verificar</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Bioeconomia, conservação e uso sustentável da biodiversidade</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial</span><span>Cooperação internacional França–Amazônia, alto alinhamento com o Amapá</span></div>
+      <a class="card-link" href="https://www.expertisefrance.fr/en/projects/amabio" target="_blank">Ver projeto ↗</a>
+    </div>
+
+    <div class="card card-verificar">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">SEBRAE Amapá</div>
+          <div class="card-programa">Editais e chamadas regionais</div>
+        </div>
+        <span class="badge badge-verificar">Verificar</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Empreendedorismo, MEIs, associações produtivas locais do AP</span></div>
+      <a class="card-link" href="https://sebrae.com.br/sites/PortalSebrae/ufs/ap/chamada_projeto?codUf=3" target="_blank">Ver portal ↗</a>
+    </div>
+
+    <div class="card card-verificar">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">FINEP / MCTI</div>
+          <div class="card-programa">Nova Indústria Brasil — R$3,3 bilhões</div>
+        </div>
+        <span class="badge badge-verificar">Monitorar</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Evento</span><span>MCTI + FINEP em Brasília — <strong>17/03/2026</strong></span></div>
+      <div class="card-detail"><span class="card-detail-label">Volume</span><span>R$3,3 bilhões em projetos de inovação e indústria</span></div>
+      <a class="card-link" href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2026/02/mcti-e-finep-anunciam-investimento-de-r-3-3-bilhoes-em-projetos-alinhados-a-nova-industria-brasil" target="_blank">Ver anúncio ↗</a>
+    </div>
+
+    <div class="card card-verificar">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Ministério do Microempreendedorismo</div>
+          <div class="card-programa">OGU — Orçamento Geral da União</div>
+        </div>
+        <span class="badge badge-verificar">Monitorar</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Apoio a microempreendedores individuais e pequenos negócios</span></div>
+      <div class="card-detail"><span class="card-detail-label">Conexão</span><span>Alex Nazaré (assessor no ministério) pode facilitar acesso a programas</span></div>
+    </div>
+
+  </div>
+
+  <!-- MONITORAMENTO CONTÍNUO -->
+  <div class="section-header">
+    <div class="section-title">◌ Fontes sem edital aberto — monitoramento contínuo</div>
+    <span class="section-pill pill-azul">7 fontes</span>
+  </div>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Fonte / Órgão</th>
+          <th>Programa</th>
+          <th>Status</th>
+          <th>Observações estratégicas</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="td-fonte">Petrobras</div></td>
+          <td>Petrobras Socioambiental</td>
+          <td><span class="badge badge-fechado">Sem edital</span></td>
+          <td class="td-obs">Monitorar próximo ciclo. Alta relevância socioambiental</td>
+          <td><a class="card-link" style="margin-top:0" href="https://bussola.blob.core.windows.net/bussola/conta/50/edital/394/2e29b4d8fe19dc647dc383d3a1105fe9.pdf" target="_blank">Ver regulamento ↗</a></td>
+        </tr>
+        <tr>
+          <td><div class="td-fonte">Transpetro</div></td>
+          <td>Patrocínios corporativos</td>
+          <td><span class="badge badge-fechado">Sem edital</span></td>
+          <td class="td-obs">Projetos culturais, esportivos e sociais</td>
+          <td><a class="card-link" style="margin-top:0" href="https://transpetro.com.br/data/files/5A/55/5C/D9/5EB3791033118249D8098204/CartilhaInformativa_PatrociniosTranspetro%20_2_.pdf" target="_blank">Ver cartilha ↗</a></td>
+        </tr>
+        <tr>
+          <td><div class="td-fonte">Caixa Econômica Federal</div></td>
+          <td>Fundo Socioambiental Caixa</td>
+          <td><span class="badge badge-fechado">Sem chamada ativa</span></td>
+          <td class="td-obs">Alta relevância para habitação, saneamento e projetos comunitários</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/chamadas-abertas/Paginas/default.aspx" target="_blank">Ver portal ↗</a></td>
+        </tr>
+        <tr>
+          <td><div class="td-fonte">Banco do Brasil</div></td>
+          <td>Fundação Banco do Brasil</td>
+          <td><span class="badge badge-fechado">Sem edital</span></td>
+          <td class="td-obs">Tecnologia social, economia solidária, desenvolvimento territorial</td>
+          <td><a class="card-link" style="margin-top:0" href="https://fbb.org.br/" target="_blank">Ver site ↗</a></td>
+        </tr>
+        <tr>
+          <td><div class="td-fonte">Banco da Amazônia (BASA)</div></td>
+          <td>FNO + Patrocínios</td>
+          <td><span class="badge badge-fechado">Verificar ciclo FNO</span></td>
+          <td class="td-obs">Fundo Constitucional do Norte — estratégico para municípios e cooperativas do AP</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.bancoamazonia.com.br/" target="_blank">Ver BASA ↗</a></td>
+        </tr>
+        <tr>
+          <td><div class="td-fonte">Ministério do Esporte</div></td>
+          <td>Lei de Incentivo ao Esporte</td>
+          <td><span class="badge badge-fechado">Monitorar</span></td>
+          <td class="td-obs">Projetos esportivos em comunidades, escolas e periferias do AP</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/esporte/pt-br/acoes-e-programas/lei-de-incentivo-ao-esporte" target="_blank">Ver lei ↗</a></td>
+        </tr>
+        <tr>
+          <td><div class="td-fonte">MinC</div></td>
+          <td>Lei Rouanet / Lei Paulo Gustavo</td>
+          <td><span class="badge badge-fechado">Monitorar</span></td>
+          <td class="td-obs">Incentivos fiscais para projetos culturais — captação via patrocinadores privados</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/cultura/pt-br" target="_blank">Ver MinC ↗</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- HIGHLIGHT -->
+  <div class="highlight-box">
+    <div class="highlight-icon">🌿</div>
+    <div>
+      <div class="highlight-title">Estratégia de posicionamento — Amapá tem vantagem competitiva</div>
+      <div class="highlight-desc">O Amapá reúne características únicas que aumentam a pontuação e elegibilidade em editais nacionais e internacionais: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas e comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. Projetos que combinam essas dimensões têm vantagem clara em fontes como FINEP, BNDES, Embratur, MDA, Expertise France e organismos multilaterais.</div>
+      <div class="highlight-pills">
+        <span class="highlight-pill green">Bioeconomia</span>
+        <span class="highlight-pill green">Povos Indígenas</span>
+        <span class="highlight-pill green">Agricultura Familiar</span>
+        <span class="highlight-pill green">Turismo Sustentável</span>
+        <span class="highlight-pill">Cooperação Internacional</span>
+        <span class="highlight-pill">Economia Circular</span>
+        <span class="highlight-pill">Microempreendedorismo</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-stripe"></div>
+<footer>
+  <div class="footer-text">Assessoria de Projetos — Gabinete Senador Randolfe Rodrigues · Amapá · 2026</div>
+  <div class="footer-brand">Plano de Trabalho — Captação de Recursos</div>
+</footer>
+
+</body>
+</html>
