@@ -13,6 +13,7 @@
     --amarelo: #E07A10; --amarelo-fundo: #FEF5E7;
     --vermelho: #CC2222; --vermelho-fundo: #FDEAEA;
     --roxo: #7C3AED; --roxo-fundo: #F3EFFE;
+    --teal: #0D9488; --teal-fundo: #F0FDFA;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', sans-serif; background: var(--cinza-bg); color: var(--navy); }
@@ -41,6 +42,7 @@
   .pill-azul { background: var(--azul-fundo); color: var(--azul-escuro); }
   .pill-amarelo { background: var(--amarelo-fundo); color: var(--amarelo); }
   .pill-vermelho { background: var(--vermelho-fundo); color: var(--vermelho); }
+  .pill-teal { background: var(--teal-fundo); color: var(--teal); }
   .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 18px; margin-bottom: 40px; }
   .card { background: white; border-radius: 16px; border: 1.5px solid var(--borda); padding: 22px 24px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
   .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(9,26,62,0.12); }
@@ -52,6 +54,7 @@
   .card-breve::before { background: var(--roxo); }
   .card-verificar::before { background: var(--amarelo); }
   .card-fechado::before { background: #C0C6D8; }
+  .card-continuo::before { background: var(--teal); }
   .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; gap: 10px; }
   .card-fonte { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); }
   .card-programa { font-size: 12.5px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.4; }
@@ -62,16 +65,15 @@
   .prazo-amarelo { color: var(--amarelo); font-weight: 700; }
   .prazo-vermelho { color: var(--vermelho); font-weight: 700; }
   .prazo-roxo { color: var(--roxo); font-weight: 700; }
+  .prazo-teal { color: var(--teal); font-weight: 700; }
   .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
   .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
   .badge-urgente { background: var(--vermelho-fundo); color: var(--vermelho); animation: pulse 2s infinite; }
   .badge-urgente::before { background: var(--vermelho); }
-  .badge-breve { background: var(--roxo-fundo); color: var(--roxo); }
-  .badge-breve::before { background: var(--roxo); }
   .badge-aberto { background: var(--verde-fundo); color: var(--verde-escuro); }
   .badge-aberto::before { background: var(--verde); }
-  .badge-continuo { background: #E0F0FF; color: #1565C0; }
-  .badge-continuo::before { background: #1565C0; }
+  .badge-continuo { background: var(--teal-fundo); color: var(--teal); }
+  .badge-continuo::before { background: var(--teal); }
   .badge-fechado { background: #F0F0F4; color: #7A8098; }
   .badge-fechado::before { background: #B0B5C8; }
   .badge-verificar { background: var(--amarelo-fundo); color: var(--amarelo); }
@@ -79,7 +81,9 @@
   .badge-novo { background: var(--azul-fundo); color: var(--azul-escuro); }
   .badge-novo::before { background: var(--azul); }
   .badge-abrindo { background: #FFF0E8; color: #B84A00; }
-  .badge-abrindo::before { background: #E07A10; }
+  .badge-abrindo::before { background: var(--amarelo); }
+  .badge-breve { background: var(--roxo-fundo); color: var(--roxo); }
+  .badge-breve::before { background: var(--roxo); }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
   .card-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--azul); text-decoration: none; margin-top: 10px; margin-right: 6px; padding: 6px 12px; background: var(--azul-fundo); border-radius: 8px; transition: background 0.15s; }
   .card-link:hover { background: #D0DCF8; }
@@ -95,12 +99,14 @@
   .alerta-card.evento { border-color: #90C0F0; background: #F5F9FF; }
   .alerta-card.novo { border-color: #A0B8F0; background: #F0F5FF; }
   .alerta-card.roxo { border-color: #C4A8F8; background: #FAF5FF; }
+  .alerta-card.teal { border-color: #99D6D0; background: #F0FDFA; }
   .alerta-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
   .alerta-title { font-weight: 700; font-size: 12px; color: var(--navy); }
   .alerta-desc { font-size: 11px; color: var(--cinza-texto); margin-top: 2px; line-height: 1.5; }
   .alerta-date { font-weight: 700; color: var(--verde-escuro); }
   .alerta-date.azul { color: var(--azul); }
   .alerta-date.roxo { color: var(--roxo); }
+  .alerta-date.teal { color: var(--teal); }
   .highlight-box { background: linear-gradient(135deg, var(--navy) 0%, #1338A0 100%); border-radius: 18px; padding: 30px 36px; margin-bottom: 40px; display: flex; align-items: center; gap: 28px; }
   .highlight-icon { width: 64px; height: 64px; background: rgba(24,212,75,0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
   .highlight-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: white; margin-bottom: 8px; }
@@ -143,7 +149,7 @@
     <div class="metrics-grid">
       <div class="metric-card">
         <div class="metric-label">Fontes mapeadas</div>
-        <div class="metric-value">25</div>
+        <div class="metric-value">26</div>
         <div class="metric-sub">Editais, patrocínios e programas</div>
       </div>
       <div class="metric-card">
@@ -153,13 +159,13 @@
       </div>
       <div class="metric-card">
         <div class="metric-label">Prazos urgentes</div>
-        <div class="metric-value red">4</div>
-        <div class="metric-sub">NZ 10/04 · MDA 19/04 · Pulitzer 19/04 · Infâncias 24/04</div>
+        <div class="metric-value red">3</div>
+        <div class="metric-sub">MDA 19/04 · Pulitzer 19/04 · Infâncias 24/04</div>
       </div>
       <div class="metric-card">
-        <div class="metric-label">Abrindo em breve</div>
-        <div class="metric-value amarelo">1</div>
-        <div class="metric-sub">ABDI — 02/04 às 9h30</div>
+        <div class="metric-label">Contínuos / sem prazo</div>
+        <div class="metric-value amarelo">3</div>
+        <div class="metric-sub">Impactarte · Cozinha Solidária · Vale</div>
       </div>
     </div>
   </div>
@@ -170,27 +176,17 @@
   <!-- URGENTES -->
   <div class="section-header">
     <div class="section-title">🚨 Ação imediata — prazos iminentes</div>
-    <span class="section-pill pill-vermelho">4 oportunidades</span>
+    <span class="section-pill pill-vermelho">3 oportunidades</span>
   </div>
 
   <div class="urgentes-grid">
-
-    <div class="urgente-card">
-      <div class="urgente-icon">🇳🇿</div>
-      <div>
-        <div class="urgente-title">Embaixada da Nova Zelândia</div>
-        <div class="urgente-prazo">10/04/2026</div>
-        <div class="urgente-desc">ONGs, grupos comunitários, escolas. Até <strong>R$31.000</strong>. Sem CNPJ, aceita instituição madrinha.</div>
-        <a class="card-link" href="https://docs.google.com/document/d/1NjbLA5_26auRBYq3JFr60Z_heSFwySjblPMnnP-VTHE/edit" target="_blank" style="margin-top:10px">Ver edital ↗</a>
-      </div>
-    </div>
 
     <div class="urgente-card">
       <div class="urgente-icon">🌱</div>
       <div>
         <div class="urgente-title">MDA — Quintais Produtivos / Mulheres Rurais</div>
         <div class="urgente-prazo">19/04/2026</div>
-        <div class="urgente-desc">OSCs. <strong>R$10 mil por quintal</strong>. Mulheres rurais, urbanas e periurbanas. 40-60% aplicados diretamente nas atividades.</div>
+        <div class="urgente-desc">OSCs. <strong>R$10 mil por quintal</strong>. Mulheres rurais, urbanas e periurbanas. 40–60% aplicados diretamente nas atividades.</div>
         <a class="card-link" href="https://www.gov.br/mda/pt-br/acesso-a-informacao/participacao-social/Editais-de-chamamento-publico/2026/edital-de-chamamento-publico-no-01-2026-apoio-a-estruturacao-de-quintais-produtivos-e-organizacao-produtiva-de-mulheres-rurais-urbanas-e-periurbanas" target="_blank" style="margin-top:10px">Ver edital ↗</a>
       </div>
     </div>
@@ -198,7 +194,7 @@
     <div class="urgente-card">
       <div class="urgente-icon">🏆</div>
       <div>
-        <div class="urgente-title">Pulitzer Center — Bolsa Impact Seed Funding</div>
+        <div class="urgente-title">Pulitzer Center — Impact Seed Funding</div>
         <div class="urgente-prazo">19/04/2026</div>
         <div class="urgente-desc">Professores e pesquisadores. <strong>USD 4.000</strong>. Narrativas contadas com jornalistas do Pulitzer Center.</div>
         <a class="card-link" href="https://pulitzercenter.org/pt-br/grants-fellowships/impact-seed-funding" target="_blank" style="margin-top:10px">Ver edital ↗</a>
@@ -210,34 +206,11 @@
       <div>
         <div class="urgente-title">Instituto Tecendo Infâncias</div>
         <div class="urgente-prazo">24/04/2026</div>
-        <div class="urgente-desc">ONGs (Lei 13.019), formalizadas há 3+ anos. <strong>R$125 mil ou R$250 mil</strong>. Projetos de apoio à primeira infância (0–6 anos). Até 2 instituições contempladas.</div>
+        <div class="urgente-desc">ONGs (Lei 13.019), 3+ anos. <strong>R$125 mil ou R$250 mil</strong>. Primeira infância 0–6 anos. Até 2 instituições contempladas.</div>
         <a class="card-link" href="https://prosas-prod-files.s3.sa-east-1.amazonaws.com/arquivos/arquivos/004/684/292/original/Regulamento_Edital_Tecendo_Infancias.pdf" target="_blank" style="margin-top:10px">Ver regulamento ↗</a>
       </div>
     </div>
 
-  </div>
-
-  <!-- ABRINDO EM BREVE -->
-  <div class="section-header">
-    <div class="section-title">⚡ Abrindo em breve</div>
-    <span class="section-pill" style="background:var(--roxo-fundo);color:var(--roxo)">1 oportunidade</span>
-  </div>
-
-  <div class="cards-grid" style="margin-bottom:32px">
-    <div class="card card-breve">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">ABDI</div>
-          <div class="card-programa">Edital — Apoio a Micro e Pequenas Empresas</div>
-        </div>
-        <span class="badge badge-abrindo">Abre 02/04 às 9h30</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Abertura</span><span class="prazo-roxo">02/04/2026 às 9h30 — inscreva-se imediatamente ao abrir!</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>R$ 4 milhões</strong> para projetos que apoiem vendas de micro e pequenas empresas</span></div>
-      <div class="card-detail"><span class="card-detail-label">Requisito</span><span>3 instituições parceiras em rede</span></div>
-      <a class="card-link" href="https://www.instagram.com/p/DWi3KNJjyNG/" target="_blank">Ver no Instagram ↗</a>
-    </div>
   </div>
 
   <!-- ALERTAS -->
@@ -252,15 +225,29 @@
     <div class="alerta-card roxo">
       <div class="alerta-icon">🎙️</div>
       <div>
-        <div class="alerta-title">Secom — Prêmio Dom Phillips e Bruno Pereira</div>
-        <div class="alerta-desc">Até <span class="alerta-date roxo">21/05/2026</span>. Pessoas físicas. Jornalismo, meio ambiente e povos indígenas.</div>
+        <div class="alerta-title">Secom — Prêmio Dom Phillips</div>
+        <div class="alerta-desc">Até <span class="alerta-date roxo">21/05/2026</span>. Pessoas físicas. Jornalismo ambiental e povos indígenas.</div>
+      </div>
+    </div>
+    <div class="alerta-card novo">
+      <div class="alerta-icon">💎</div>
+      <div>
+        <div class="alerta-title">Vale — Instituto Cultural</div>
+        <div class="alerta-desc">Chamada a partir de <span class="alerta-date azul">1º de maio</span>. Lei Rouanet maio–nov. Recursos próprios o ano todo.</div>
       </div>
     </div>
     <div class="alerta-card prazo">
       <div class="alerta-icon">📋</div>
       <div>
-        <div class="alerta-title">FINEP — Agricultura Familiar / ICTs</div>
-        <div class="alerta-desc">Até <span class="alerta-date">26/06/2026</span>. 30% dos recursos para região Norte.</div>
+        <div class="alerta-title">FINEP — Agricultura Familiar</div>
+        <div class="alerta-desc">Até <span class="alerta-date">26/06/2026</span>. 30% dos recursos para o Norte.</div>
+      </div>
+    </div>
+    <div class="alerta-card teal">
+      <div class="alerta-icon">🍽️</div>
+      <div>
+        <div class="alerta-title">Cozinha Solidária — MDS</div>
+        <div class="alerta-desc"><span class="alerta-date teal">Cadastro aberto o ano todo</span>. PJ e organizações não formais podem participar.</div>
       </div>
     </div>
     <div class="alerta-card evento">
@@ -268,13 +255,6 @@
       <div>
         <div class="alerta-title">Embratur — Visit Brazil Summit</div>
         <div class="alerta-desc">Até <span class="alerta-date azul">03/10/2026</span>. <a href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank" style="color:var(--azul);font-weight:600;">Ver evento ↗</a></div>
-      </div>
-    </div>
-    <div class="alerta-card novo">
-      <div class="alerta-icon">🔄</div>
-      <div>
-        <div class="alerta-title">Instituto Impactarte</div>
-        <div class="alerta-desc"><span class="alerta-date azul">Edital contínuo</span>. OSCs — monitorar portal para adesão a qualquer momento.</div>
       </div>
     </div>
   </div>
@@ -286,24 +266,6 @@
   </div>
 
   <div class="cards-grid">
-
-    <!-- Nova Zelândia -->
-    <div class="card card-urgente">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Embaixada da Nova Zelândia</div>
-          <div class="card-programa">Apoio Financeiro — Projetos comunitários</div>
-        </div>
-        <span class="badge badge-urgente">10/04</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">10/04/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>R$ 31.000</strong> por projeto</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>ONGs, grupos comunitários, escolas, associações. Empresa individual não pode participar</span></div>
-      <div class="card-detail"><span class="card-detail-label">Execução</span><span>Abril a setembro de 2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Sem CNPJ</span><span>Aceita instituição madrinha para viabilizar participação</span></div>
-      <a class="card-link" href="https://docs.google.com/document/d/1NjbLA5_26auRBYq3JFr60Z_heSFwySjblPMnnP-VTHE/edit" target="_blank">Ver edital completo ↗</a>
-    </div>
 
     <!-- MDA Quintais -->
     <div class="card card-urgente">
@@ -318,7 +280,7 @@
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">19/04/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs</span></div>
       <div class="card-detail"><span class="card-detail-label">Foco</span><span>Estruturação de quintais produtivos e organização de mulheres rurais, urbanas e periurbanas</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span>R$10 mil por quintal. 40%–60% aplicados diretamente nas estruturações e atividades das mulheres</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valor</span><span>R$10 mil por quintal. 40%–60% aplicados diretamente nas atividades das mulheres</span></div>
       <a class="card-link" href="https://www.gov.br/mda/pt-br/acesso-a-informacao/participacao-social/Editais-de-chamamento-publico/2026/edital-de-chamamento-publico-no-01-2026-apoio-a-estruturacao-de-quintais-produtivos-e-organizacao-produtiva-de-mulheres-rurais-urbanas-e-periurbanas" target="_blank">Ver edital ↗</a>
     </div>
 
@@ -353,7 +315,7 @@
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">24/04/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>R$125.000</strong> ou <strong>R$250.000</strong> por projeto</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>ONGs regidas pela Lei 13.019, formalizadas há no mínimo 3 anos</span></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Projetos de apoio à primeira infância — crianças de 0 a 6 anos</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Apoio à primeira infância — crianças de 0 a 6 anos</span></div>
       <div class="card-detail"><span class="card-detail-label">Vagas</span><span>Até 2 instituições contempladas</span></div>
       <a class="card-link" href="https://prosas-prod-files.s3.sa-east-1.amazonaws.com/arquivos/arquivos/004/684/292/original/Regulamento_Edital_Tecendo_Infancias.pdf" target="_blank">Ver regulamento ↗</a>
     </div>
@@ -374,7 +336,7 @@
       <a class="card-link" href="https://www.gov.br/conab/pt-br/atuacao/paa/amazonia-viva/edital-amazonia-viva/edital-amazonia-viva" target="_blank">Acessar edital ↗</a>
     </div>
 
-    <!-- Secom Prêmio Dom Phillips -->
+    <!-- Secom Dom Phillips -->
     <div class="card card-aberto">
       <div class="card-header">
         <div>
@@ -386,7 +348,7 @@
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">21/05/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas físicas</span></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Jornalismo investigativo, comunicação popular e educação midiática voltados à proteção ambiental, direitos indígenas e comunidades tradicionais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Jornalismo investigativo, comunicação popular e educação midiática voltados à proteção ambiental e direitos indígenas</span></div>
       <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Alto alinhamento com a realidade amazônica e povos indígenas do Amapá</span></div>
       <a class="card-link" href="https://www.gov.br/secom/pt-br/assuntos/concurso-dom-phillips-e-bruno-pereira/edital" target="_blank">Ver edital ↗</a>
     </div>
@@ -458,8 +420,26 @@
       <a class="card-link" href="https://www.gov.br/cultura/pt-br/assuntos/politica-nacional-aldir-blanc" target="_blank">Acessar portal ↗</a>
     </div>
 
+    <!-- Cozinha Solidária -->
+    <div class="card card-continuo">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Programa Cozinha Solidária — MDS</div>
+          <div class="card-programa">Credenciamento de Entidades Gestoras</div>
+        </div>
+        <span class="badge badge-continuo">Contínuo</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-teal">Cadastro aberto o ano todo</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas jurídicas. Existe possibilidade para organizações não formais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Modelo</span><span>Entidade privada sem fins lucrativos, credenciada junto ao MDS, para produção e oferta de refeições — própria ou apoiando outras cozinhas solidárias</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Comunidades vulneráveis, periferias urbanas e populações em insegurança alimentar</span></div>
+      <a class="card-link" href="https://cozinhasolidaria.digital/" target="_blank">Fazer cadastro ↗</a>
+      <a class="card-link" href="https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-cozinha-solidaria/programa-cozinha-solidaria" target="_blank">Saber mais ↗</a>
+    </div>
+
     <!-- Instituto Impactarte -->
-    <div class="card card-aberto">
+    <div class="card card-continuo">
       <div class="card-header">
         <div>
           <div class="card-fonte">Instituto Impactarte</div>
@@ -469,8 +449,8 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>Organizações da Sociedade Civil (OSCs)</span></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span>Edital contínuo — pode ser acessado a qualquer momento</span></div>
-      <div class="card-detail"><span class="card-detail-label">Ação</span><span>Verificar portal do Instituto Impactarte para detalhes e categorias apoiadas</span></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-teal">Edital contínuo — pode ser acessado a qualquer momento</span></div>
+      <div class="card-detail"><span class="card-detail-label">Ação</span><span>Verificar portal do Instituto Impactarte para categorias apoiadas e documentação</span></div>
     </div>
 
   </div>
@@ -478,7 +458,7 @@
   <!-- A VERIFICAR -->
   <div class="section-header">
     <div class="section-title">◎ Fontes para monitorar e verificar</div>
-    <span class="section-pill pill-amarelo">4 fontes</span>
+    <span class="section-pill pill-amarelo">5 fontes</span>
   </div>
 
   <div class="cards-grid" style="margin-bottom:40px">
@@ -489,12 +469,27 @@
           <div class="card-fonte">Vale</div>
           <div class="card-programa">Instituto Cultural Vale + Leis de Incentivo</div>
         </div>
-        <span class="badge badge-verificar">Ciclos definidos</span>
+        <span class="badge badge-verificar">A partir de 01/05</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Chamada ICV</span><span>Abril e maio — verificar abertura</span></div>
+      <div class="card-detail"><span class="card-detail-label">Chamada ICV</span><span>A partir de <strong>1º de maio</strong> — monitorar abertura</span></div>
       <div class="card-detail"><span class="card-detail-label">Lei Rouanet</span><span>Maio a novembro — audiovisual incluído</span></div>
       <div class="card-detail"><span class="card-detail-label">Recursos próprios</span><span>Disponíveis o ano todo — contato direto com a Vale</span></div>
+    </div>
+
+    <div class="card card-verificar">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">ABDI</div>
+          <div class="card-programa">Edital — Micro e Pequenas Empresas</div>
+        </div>
+        <span class="badge badge-abrindo">Abre 02/04 às 9h30</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Abertura</span><span class="prazo-roxo">02/04/2026 às 9h30 — verificar status</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>R$ 4 milhões</strong> para projetos de apoio às vendas de micro e pequenas empresas</span></div>
+      <div class="card-detail"><span class="card-detail-label">Requisito</span><span>3 instituições parceiras em rede</span></div>
+      <a class="card-link" href="https://www.instagram.com/p/DWi3KNJjyNG/" target="_blank">Ver no Instagram ↗</a>
     </div>
 
     <div class="card card-verificar">
@@ -608,9 +603,9 @@
         </tr>
         <tr>
           <td><div class="td-fonte">Vale</div></td>
-          <td>Recursos próprios</td>
-          <td><span class="badge badge-verificar">Ano todo</span></td>
-          <td class="td-obs">Instituto Cultural Vale abre em abril/maio. Recursos próprios disponíveis o ano todo</td>
+          <td>Instituto Cultural Vale + Recursos próprios</td>
+          <td><span class="badge badge-verificar">A partir 01/05</span></td>
+          <td class="td-obs">Chamada ICV a partir de 1º de maio. Recursos próprios disponíveis o ano todo</td>
           <td>—</td>
         </tr>
       </tbody>
@@ -622,13 +617,14 @@
     <div class="highlight-icon">🌿</div>
     <div>
       <div class="highlight-title">Estratégia de posicionamento — Amapá tem vantagem competitiva</div>
-      <div class="highlight-desc">O Amapá reúne características únicas que aumentam pontuação e elegibilidade: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas, comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. Novas fontes como Pulitzer Center, Prêmio Dom Phillips e Embaixada da Nova Zelândia reforçam o potencial de visibilidade internacional da região.</div>
+      <div class="highlight-desc">O Amapá reúne características únicas que aumentam pontuação e elegibilidade: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas, comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. Novas fontes como Pulitzer Center, Prêmio Dom Phillips, Cozinha Solidária e MDA reforçam o potencial de captação em múltiplas frentes sociais.</div>
       <div class="highlight-pills">
         <span class="highlight-pill green">Bioeconomia</span>
         <span class="highlight-pill green">Povos Indígenas</span>
         <span class="highlight-pill green">Agricultura Familiar</span>
         <span class="highlight-pill green">Primeira Infância</span>
         <span class="highlight-pill green">Mulheres Rurais</span>
+        <span class="highlight-pill green">Segurança Alimentar</span>
         <span class="highlight-pill">Cooperação Internacional</span>
         <span class="highlight-pill">Jornalismo e Pesquisa</span>
         <span class="highlight-pill">Economia Circular</span>
