@@ -14,6 +14,7 @@
     --vermelho: #CC2222; --vermelho-fundo: #FDEAEA;
     --roxo: #7C3AED; --roxo-fundo: #F3EFFE;
     --teal: #0D9488; --teal-fundo: #F0FDFA;
+    --indigo: #4338CA; --indigo-fundo: #EEF2FF;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', sans-serif; background: var(--cinza-bg); color: var(--navy); }
@@ -50,11 +51,10 @@
   .card-urgente::before { background: var(--vermelho); }
   .card-urgente { border-color: #FFAAAA; }
   .card-aberto::before { background: var(--verde); }
-  .card-novo::before { background: linear-gradient(90deg, var(--verde), var(--azul)); }
-  .card-breve::before { background: var(--roxo); }
+  .card-continuo::before { background: var(--teal); }
   .card-verificar::before { background: var(--amarelo); }
   .card-fechado::before { background: #C0C6D8; }
-  .card-continuo::before { background: var(--teal); }
+  .card-internacional::before { background: linear-gradient(90deg, var(--indigo), var(--roxo)); }
   .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; gap: 10px; }
   .card-fonte { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); }
   .card-programa { font-size: 12.5px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.4; }
@@ -64,8 +64,8 @@
   .prazo-verde { color: var(--verde-escuro); font-weight: 700; }
   .prazo-amarelo { color: var(--amarelo); font-weight: 700; }
   .prazo-vermelho { color: var(--vermelho); font-weight: 700; }
-  .prazo-roxo { color: var(--roxo); font-weight: 700; }
   .prazo-teal { color: var(--teal); font-weight: 700; }
+  .prazo-indigo { color: var(--indigo); font-weight: 700; }
   .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
   .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
   .badge-urgente { background: var(--vermelho-fundo); color: var(--vermelho); animation: pulse 2s infinite; }
@@ -80,21 +80,23 @@
   .badge-verificar::before { background: var(--amarelo); }
   .badge-novo { background: var(--azul-fundo); color: var(--azul-escuro); }
   .badge-novo::before { background: var(--azul); }
-  .badge-abrindo { background: #FFF0E8; color: #B84A00; }
-  .badge-abrindo::before { background: var(--amarelo); }
-  .badge-breve { background: var(--roxo-fundo); color: var(--roxo); }
-  .badge-breve::before { background: var(--roxo); }
+  .badge-internacional { background: var(--indigo-fundo); color: var(--indigo); }
+  .badge-internacional::before { background: var(--indigo); }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
   .card-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--azul); text-decoration: none; margin-top: 10px; margin-right: 6px; padding: 6px 12px; background: var(--azul-fundo); border-radius: 8px; transition: background 0.15s; }
   .card-link:hover { background: #D0DCF8; }
   .urgentes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin-bottom: 32px; }
   .urgente-card { background: white; border-radius: 14px; border: 2px solid #FFAAAA; background: #FFF8F8; padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px; }
+  .urgente-card.internacional { border-color: #C7D2FE; background: #F5F3FF; }
   .urgente-icon { font-size: 28px; flex-shrink: 0; }
   .urgente-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); }
   .urgente-prazo { font-size: 22px; font-weight: 800; font-family: 'Sora', sans-serif; color: var(--vermelho); margin: 4px 0; }
+  .urgente-prazo.indigo { color: var(--indigo); }
   .urgente-desc { font-size: 12px; color: var(--cinza-texto); line-height: 1.5; }
+  /* DESTAQUE NORTE */
+  .norte-tag { display: inline-block; background: rgba(24,212,75,0.15); color: var(--verde-escuro); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px; margin-top: 6px; }
   .alerta-row { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
-  .alerta-card { flex: 1; min-width: 190px; background: white; border-radius: 14px; border: 1.5px solid var(--borda); padding: 14px 16px; display: flex; align-items: flex-start; gap: 10px; }
+  .alerta-card { flex: 1; min-width: 180px; background: white; border-radius: 14px; border: 1.5px solid var(--borda); padding: 14px 16px; display: flex; align-items: flex-start; gap: 10px; }
   .alerta-card.prazo { border-color: #90D9AA; background: #F4FDF7; }
   .alerta-card.evento { border-color: #90C0F0; background: #F5F9FF; }
   .alerta-card.novo { border-color: #A0B8F0; background: #F0F5FF; }
@@ -149,23 +151,23 @@
     <div class="metrics-grid">
       <div class="metric-card">
         <div class="metric-label">Fontes mapeadas</div>
-        <div class="metric-value">26</div>
+        <div class="metric-value">28</div>
         <div class="metric-sub">Editais, patrocínios e programas</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Editais abertos agora</div>
-        <div class="metric-value green">11</div>
+        <div class="metric-value green">13</div>
         <div class="metric-sub">Inscrições em andamento</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Prazos urgentes</div>
-        <div class="metric-value red">3</div>
-        <div class="metric-sub">MDA 19/04 · Pulitzer 19/04 · Infâncias 24/04</div>
+        <div class="metric-value red">5</div>
+        <div class="metric-sub">Periferia Viva 26/04 · Infâncias 24/04 · UNESCO 06/05…</div>
       </div>
       <div class="metric-card">
-        <div class="metric-label">Contínuos / sem prazo</div>
+        <div class="metric-label">Fontes internacionais</div>
         <div class="metric-value amarelo">3</div>
-        <div class="metric-sub">Impactarte · Cozinha Solidária · Vale</div>
+        <div class="metric-sub">UNESCO · Pulitzer · Expertise France</div>
       </div>
     </div>
   </div>
@@ -176,10 +178,41 @@
   <!-- URGENTES -->
   <div class="section-header">
     <div class="section-title">🚨 Ação imediata — prazos iminentes</div>
-    <span class="section-pill pill-vermelho">3 oportunidades</span>
+    <span class="section-pill pill-vermelho">5 oportunidades</span>
   </div>
 
   <div class="urgentes-grid">
+
+    <div class="urgente-card">
+      <div class="urgente-icon">🏘️</div>
+      <div>
+        <div class="urgente-title">Min. Cidades — Periferia Viva</div>
+        <div class="urgente-prazo">26/04/2026</div>
+        <div class="urgente-desc">OSCs com atuação prévia no território. <strong>R$200 mil</strong> por parceria. <strong>10 vagas para o Norte!</strong> Total: R$10 milhões / 50 propostas nacionais.</div>
+        <div class="norte-tag">✦ 10 vagas reservadas para o Norte</div>
+        <a class="card-link" href="https://www.gov.br/cidades/pt-br/acesso-a-informacao/participacao-social/editais-de-chamamento-publico/edital-de-chamamento-publico-snp-no-001-2026-termo-de-colaboracao/Edital1ChamamentoPblicoSNPn0012026.pdf" target="_blank" style="margin-top:10px">Ver edital ↗</a>
+      </div>
+    </div>
+
+    <div class="urgente-card">
+      <div class="urgente-icon">👶</div>
+      <div>
+        <div class="urgente-title">Instituto Tecendo Infâncias</div>
+        <div class="urgente-prazo">24/04/2026</div>
+        <div class="urgente-desc">ONGs (Lei 13.019), 3+ anos. <strong>R$125 mil ou R$250 mil</strong>. Primeira infância 0–6 anos. Até 2 instituições contempladas.</div>
+        <a class="card-link" href="https://prosas-prod-files.s3.sa-east-1.amazonaws.com/arquivos/arquivos/004/684/292/original/Regulamento_Edital_Tecendo_Infancias.pdf" target="_blank" style="margin-top:10px">Ver regulamento ↗</a>
+      </div>
+    </div>
+
+    <div class="urgente-card">
+      <div class="urgente-icon">🏆</div>
+      <div>
+        <div class="urgente-title">Pulitzer Center — Impact Seed Funding</div>
+        <div class="urgente-prazo">19/04/2026</div>
+        <div class="urgente-desc">Professores e pesquisadores. <strong>USD 4.000</strong>. Narrativas com jornalistas do Pulitzer Center. Alto potencial para projetos amazônicos.</div>
+        <a class="card-link" href="https://pulitzercenter.org/pt-br/grants-fellowships/impact-seed-funding" target="_blank" style="margin-top:10px">Ver edital ↗</a>
+      </div>
+    </div>
 
     <div class="urgente-card">
       <div class="urgente-icon">🌱</div>
@@ -191,23 +224,13 @@
       </div>
     </div>
 
-    <div class="urgente-card">
-      <div class="urgente-icon">🏆</div>
+    <div class="urgente-card internacional">
+      <div class="urgente-icon">🌍</div>
       <div>
-        <div class="urgente-title">Pulitzer Center — Impact Seed Funding</div>
-        <div class="urgente-prazo">19/04/2026</div>
-        <div class="urgente-desc">Professores e pesquisadores. <strong>USD 4.000</strong>. Narrativas contadas com jornalistas do Pulitzer Center.</div>
-        <a class="card-link" href="https://pulitzercenter.org/pt-br/grants-fellowships/impact-seed-funding" target="_blank" style="margin-top:10px">Ver edital ↗</a>
-      </div>
-    </div>
-
-    <div class="urgente-card">
-      <div class="urgente-icon">👶</div>
-      <div>
-        <div class="urgente-title">Instituto Tecendo Infâncias</div>
-        <div class="urgente-prazo">24/04/2026</div>
-        <div class="urgente-desc">ONGs (Lei 13.019), 3+ anos. <strong>R$125 mil ou R$250 mil</strong>. Primeira infância 0–6 anos. Até 2 instituições contempladas.</div>
-        <a class="card-link" href="https://prosas-prod-files.s3.sa-east-1.amazonaws.com/arquivos/arquivos/004/684/292/original/Regulamento_Edital_Tecendo_Infancias.pdf" target="_blank" style="margin-top:10px">Ver regulamento ↗</a>
+        <div class="urgente-title">UNESCO — IFCD (17ª edição)</div>
+        <div class="urgente-prazo indigo">06/05/2026</div>
+        <div class="urgente-desc">ONGs e autoridades públicas de países em desenvolvimento. Até <strong>USD 100.000</strong>. Políticas culturais, fortalecimento de indústrias culturais locais. Implementação 12–24 meses.</div>
+        <a class="card-link" href="https://www.unesco.org/creativity/en/ifcd/apply" target="_blank" style="margin-top:10px">Ver chamamento ↗</a>
       </div>
     </div>
 
@@ -233,7 +256,7 @@
       <div class="alerta-icon">💎</div>
       <div>
         <div class="alerta-title">Vale — Instituto Cultural</div>
-        <div class="alerta-desc">Chamada a partir de <span class="alerta-date azul">1º de maio</span>. Lei Rouanet maio–nov. Recursos próprios o ano todo.</div>
+        <div class="alerta-desc">Chamada a partir de <span class="alerta-date azul">1º de maio</span>. Lei Rouanet maio–nov.</div>
       </div>
     </div>
     <div class="alerta-card prazo">
@@ -247,7 +270,7 @@
       <div class="alerta-icon">🍽️</div>
       <div>
         <div class="alerta-title">Cozinha Solidária — MDS</div>
-        <div class="alerta-desc"><span class="alerta-date teal">Cadastro aberto o ano todo</span>. PJ e organizações não formais podem participar.</div>
+        <div class="alerta-desc"><span class="alerta-date teal">Cadastro aberto o ano todo</span>. PJ e organizações não formais.</div>
       </div>
     </div>
     <div class="alerta-card evento">
@@ -262,44 +285,28 @@
   <!-- TODOS OS EDITAIS ABERTOS -->
   <div class="section-header">
     <div class="section-title">✦ Todos os editais com inscrições abertas</div>
-    <span class="section-pill pill-verde">11 oportunidades</span>
+    <span class="section-pill pill-verde">13 oportunidades</span>
   </div>
 
   <div class="cards-grid">
 
-    <!-- MDA Quintais -->
+    <!-- Periferia Viva -->
     <div class="card card-urgente">
       <div class="card-header">
         <div>
-          <div class="card-fonte">MDA — Min. Desenvolvimento Agrário</div>
-          <div class="card-programa">Chamamento Público nº 01/2026 — Quintais Produtivos</div>
+          <div class="card-fonte">Min. Cidades — Periferia Viva</div>
+          <div class="card-programa">Chamamento SNP nº 001/2026 — Planos de Ação Popular</div>
         </div>
-        <span class="badge badge-urgente">19/04</span>
+        <span class="badge badge-urgente">26/04</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">19/04/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs</span></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Estruturação de quintais produtivos e organização de mulheres rurais, urbanas e periurbanas</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span>R$10 mil por quintal. 40%–60% aplicados diretamente nas atividades das mulheres</span></div>
-      <a class="card-link" href="https://www.gov.br/mda/pt-br/acesso-a-informacao/participacao-social/Editais-de-chamamento-publico/2026/edital-de-chamamento-publico-no-01-2026-apoio-a-estruturacao-de-quintais-produtivos-e-organizacao-produtiva-de-mulheres-rurais-urbanas-e-periurbanas" target="_blank">Ver edital ↗</a>
-    </div>
-
-    <!-- Pulitzer -->
-    <div class="card card-urgente">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Pulitzer Center</div>
-          <div class="card-programa">Bolsa — Impact Seed Funding</div>
-        </div>
-        <span class="badge badge-urgente">19/04</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">19/04/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>USD 4.000</strong></span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Professores universitários e pesquisadores</span></div>
-      <div class="card-detail"><span class="card-detail-label">Formato</span><span>História contada em parceria com jornalistas apoiados pelo Pulitzer Center</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Amazônia, povos indígenas, bioeconomia, meio ambiente</span></div>
-      <a class="card-link" href="https://pulitzercenter.org/pt-br/grants-fellowships/impact-seed-funding" target="_blank">Ver edital ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">26/04/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>R$200.000</strong> por parceria · Total: R$10 milhões · 50 propostas nacionais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Vagas Norte</span><span style="color:var(--verde-escuro);font-weight:700">10 vagas reservadas para a região Norte ✦</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs sem fins lucrativos, cooperativas sociais ou organizações religiosas com cunho social. Mínimo 1 ano de atuação prévia no território</span></div>
+      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>Cadastro na plataforma Nós Periféricos + habilitação no Transferegov.br + território em favela/ZEIS mapeada pelo IBGE</span></div>
+      <div class="card-detail"><span class="card-detail-label">Avaliação</span><span>Metas e cronograma (30pts) · Metodologia participativa (30pts) · Diagnóstico do território (25pts) · Orçamento (5pts) · Experiência (10pts). Mínimo 60 pts para aprovação</span></div>
+      <a class="card-link" href="https://www.gov.br/cidades/pt-br/acesso-a-informacao/participacao-social/editais-de-chamamento-publico/edital-de-chamamento-publico-snp-no-001-2026-termo-de-colaboracao/Edital1ChamamentoPblicoSNPn0012026.pdf" target="_blank">Ver edital completo ↗</a>
     </div>
 
     <!-- Tecendo Infâncias -->
@@ -318,6 +325,59 @@
       <div class="card-detail"><span class="card-detail-label">Foco</span><span>Apoio à primeira infância — crianças de 0 a 6 anos</span></div>
       <div class="card-detail"><span class="card-detail-label">Vagas</span><span>Até 2 instituições contempladas</span></div>
       <a class="card-link" href="https://prosas-prod-files.s3.sa-east-1.amazonaws.com/arquivos/arquivos/004/684/292/original/Regulamento_Edital_Tecendo_Infancias.pdf" target="_blank">Ver regulamento ↗</a>
+    </div>
+
+    <!-- Pulitzer -->
+    <div class="card card-urgente">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Pulitzer Center</div>
+          <div class="card-programa">Bolsa — Impact Seed Funding</div>
+        </div>
+        <span class="badge badge-urgente">19/04</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">19/04/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>USD 4.000</strong></span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Professores universitários e pesquisadores</span></div>
+      <div class="card-detail"><span class="card-detail-label">Formato</span><span>História contada com jornalistas apoiados pelo Pulitzer Center</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Amazônia, povos indígenas, bioeconomia, meio ambiente</span></div>
+      <a class="card-link" href="https://pulitzercenter.org/pt-br/grants-fellowships/impact-seed-funding" target="_blank">Ver edital ↗</a>
+    </div>
+
+    <!-- MDA Quintais -->
+    <div class="card card-urgente">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">MDA — Min. Desenvolvimento Agrário</div>
+          <div class="card-programa">Chamamento nº 01/2026 — Quintais Produtivos</div>
+        </div>
+        <span class="badge badge-urgente">19/04</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">19/04/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Estruturação de quintais produtivos e organização de mulheres rurais, urbanas e periurbanas</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valor</span><span>R$10 mil por quintal. 40%–60% aplicados diretamente nas atividades das mulheres</span></div>
+      <a class="card-link" href="https://www.gov.br/mda/pt-br/acesso-a-informacao/participacao-social/Editais-de-chamamento-publico/2026/edital-de-chamamento-publico-no-01-2026-apoio-a-estruturacao-de-quintais-produtivos-e-organizacao-produtiva-de-mulheres-rurais-urbanas-e-periurbanas" target="_blank">Ver edital ↗</a>
+    </div>
+
+    <!-- UNESCO IFCD -->
+    <div class="card card-internacional">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">UNESCO — IFCD</div>
+          <div class="card-programa">Fundo Internacional para a Diversidade Cultural — 17ª edição</div>
+        </div>
+        <span class="badge badge-internacional">Internacional</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-indigo">06/05/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>USD 100.000</strong> por projeto. Implementação de 12 a 24 meses</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Autoridades e instituições públicas + ONGs de países em desenvolvimento signatários da Convenção de 2005</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Políticas culturais que impactem produção, distribuição e acesso à diversidade cultural; fortalecimento de indústrias culturais locais e regionais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Cultura indígena, expressões culturais amazônicas, diversidade cultural do Amapá — forte alinhamento com a Convenção de 2005</span></div>
+      <a class="card-link" href="https://www.unesco.org/creativity/en/ifcd/apply" target="_blank">Ver chamamento ↗</a>
     </div>
 
     <!-- BNDES -->
@@ -349,7 +409,6 @@
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">21/05/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas físicas</span></div>
       <div class="card-detail"><span class="card-detail-label">Foco</span><span>Jornalismo investigativo, comunicação popular e educação midiática voltados à proteção ambiental e direitos indígenas</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Alto alinhamento com a realidade amazônica e povos indígenas do Amapá</span></div>
       <a class="card-link" href="https://www.gov.br/secom/pt-br/assuntos/concurso-dom-phillips-e-bruno-pereira/edital" target="_blank">Ver edital ↗</a>
     </div>
 
@@ -364,8 +423,8 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 26/06/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>ICTs públicas ou privadas sem fins lucrativos (mínimo 3 anos de funcionamento)</span></div>
-      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span>Mínimo 30% dos recursos por Linha Temática para ICTs executoras sediadas no Norte</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>ICTs públicas ou privadas sem fins lucrativos (mínimo 3 anos)</span></div>
+      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span>Mínimo 30% dos recursos para ICTs executoras sediadas no Norte</span></div>
       <a class="card-link" href="http://www.finep.gov.br/images/chamadas-publicas/2026/25_03_2026_AgriFam-ICT_2026_Edital.pdf" target="_blank">Ver edital ↗</a>
     </div>
 
@@ -380,7 +439,7 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 31/08/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span>Projetos executados no Norte têm maior pontuação no mérito</span></div>
+      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span>Projetos no Norte têm maior pontuação no mérito</span></div>
       <div class="card-detail"><span class="card-detail-label">Diferencial</span><span>Maior nota para cooperativas de catadores, extrativistas, agricultores familiares e povos tradicionais</span></div>
       <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ; ICTs obrigatórias; contrapartida obrigatória</span></div>
       <a class="card-link" href="http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Regulamento.pdf" target="_blank">Regulamento ↗</a>
@@ -399,7 +458,6 @@
       <div class="card-detail"><span class="card-detail-label">Período</span><span class="prazo-verde">02/01 a 03/10/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Cobertura</span><span>60% do projeto; abaixo de R$200 mil pode ser maior</span></div>
       <div class="card-detail"><span class="card-detail-label">Foco Amapá</span><span>Turismo, cultura indígena, gastronomia regional</span></div>
-      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ apenas; 60 dias de antecedência</span></div>
       <div class="card-detail"><span class="card-detail-label">Evento</span><span><strong>Visit Brazil Summit 2026</strong> — confirmado</span></div>
       <a class="card-link" href="https://patrocinio.embratur.com.br/wp-content/uploads/2026/01/Edital-de-Selecao-Publica-de-Patrocinios-2026-1.pdf" target="_blank">Edital ↗</a>
       <a class="card-link" href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank">Visit Brazil Summit ↗</a>
@@ -431,9 +489,8 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-teal">Cadastro aberto o ano todo</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas jurídicas. Existe possibilidade para organizações não formais</span></div>
-      <div class="card-detail"><span class="card-detail-label">Modelo</span><span>Entidade privada sem fins lucrativos, credenciada junto ao MDS, para produção e oferta de refeições — própria ou apoiando outras cozinhas solidárias</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Comunidades vulneráveis, periferias urbanas e populações em insegurança alimentar</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas jurídicas. Possibilidade para organizações não formais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Modelo</span><span>Produção e oferta de refeições — própria ou apoiando outras cozinhas solidárias</span></div>
       <a class="card-link" href="https://cozinhasolidaria.digital/" target="_blank">Fazer cadastro ↗</a>
       <a class="card-link" href="https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-cozinha-solidaria/programa-cozinha-solidaria" target="_blank">Saber mais ↗</a>
     </div>
@@ -449,8 +506,7 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>Organizações da Sociedade Civil (OSCs)</span></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-teal">Edital contínuo — pode ser acessado a qualquer momento</span></div>
-      <div class="card-detail"><span class="card-detail-label">Ação</span><span>Verificar portal do Instituto Impactarte para categorias apoiadas e documentação</span></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-teal">Edital contínuo — acessível a qualquer momento</span></div>
     </div>
 
   </div>
@@ -458,7 +514,7 @@
   <!-- A VERIFICAR -->
   <div class="section-header">
     <div class="section-title">◎ Fontes para monitorar e verificar</div>
-    <span class="section-pill pill-amarelo">5 fontes</span>
+    <span class="section-pill pill-amarelo">4 fontes</span>
   </div>
 
   <div class="cards-grid" style="margin-bottom:40px">
@@ -475,21 +531,6 @@
       <div class="card-detail"><span class="card-detail-label">Chamada ICV</span><span>A partir de <strong>1º de maio</strong> — monitorar abertura</span></div>
       <div class="card-detail"><span class="card-detail-label">Lei Rouanet</span><span>Maio a novembro — audiovisual incluído</span></div>
       <div class="card-detail"><span class="card-detail-label">Recursos próprios</span><span>Disponíveis o ano todo — contato direto com a Vale</span></div>
-    </div>
-
-    <div class="card card-verificar">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">ABDI</div>
-          <div class="card-programa">Edital — Micro e Pequenas Empresas</div>
-        </div>
-        <span class="badge badge-abrindo">Abre 02/04 às 9h30</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Abertura</span><span class="prazo-roxo">02/04/2026 às 9h30 — verificar status</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>R$ 4 milhões</strong> para projetos de apoio às vendas de micro e pequenas empresas</span></div>
-      <div class="card-detail"><span class="card-detail-label">Requisito</span><span>3 instituições parceiras em rede</span></div>
-      <a class="card-link" href="https://www.instagram.com/p/DWi3KNJjyNG/" target="_blank">Ver no Instagram ↗</a>
     </div>
 
     <div class="card card-verificar">
@@ -569,8 +610,8 @@
         <tr>
           <td><div class="td-fonte">Caixa Econômica Federal</div></td>
           <td>Fundo Socioambiental Caixa</td>
-          <td><span class="badge badge-fechado">Sem chamada ativa</span></td>
-          <td class="td-obs">Habitação, saneamento e projetos comunitários</td>
+          <td><span class="badge badge-verificar">Outubro/2026</span></td>
+          <td class="td-obs">⚠️ Prazos em meados de outubro — acompanhar chamada com antecedência</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/chamadas-abertas/Paginas/default.aspx" target="_blank">Ver portal ↗</a></td>
         </tr>
         <tr>
@@ -617,7 +658,7 @@
     <div class="highlight-icon">🌿</div>
     <div>
       <div class="highlight-title">Estratégia de posicionamento — Amapá tem vantagem competitiva</div>
-      <div class="highlight-desc">O Amapá reúne características únicas que aumentam pontuação e elegibilidade: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas, comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. Novas fontes como Pulitzer Center, Prêmio Dom Phillips, Cozinha Solidária e MDA reforçam o potencial de captação em múltiplas frentes sociais.</div>
+      <div class="highlight-desc">O Amapá reúne características únicas que aumentam pontuação e elegibilidade em editais nacionais e internacionais: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas, comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. A chegada de fontes internacionais como UNESCO e Pulitzer Center abre uma nova frente de captação global para projetos culturais e de pesquisa sobre a Amazônia.</div>
       <div class="highlight-pills">
         <span class="highlight-pill green">Bioeconomia</span>
         <span class="highlight-pill green">Povos Indígenas</span>
@@ -625,8 +666,10 @@
         <span class="highlight-pill green">Primeira Infância</span>
         <span class="highlight-pill green">Mulheres Rurais</span>
         <span class="highlight-pill green">Segurança Alimentar</span>
-        <span class="highlight-pill">Cooperação Internacional</span>
+        <span class="highlight-pill green">Periferias Urbanas</span>
+        <span class="highlight-pill">UNESCO / Diversidade Cultural</span>
         <span class="highlight-pill">Jornalismo e Pesquisa</span>
+        <span class="highlight-pill">Cooperação Internacional</span>
         <span class="highlight-pill">Economia Circular</span>
         <span class="highlight-pill">Turismo Sustentável</span>
       </div>
