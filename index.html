@@ -16,6 +16,7 @@
     --teal: #0D9488; --teal-fundo: #F0FDFA;
     --indigo: #4338CA; --indigo-fundo: #EEF2FF;
     --rosa: #DB2777; --rosa-fundo: #FDF2F8;
+    --laranja: #EA580C; --laranja-fundo: #FFF7ED;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', sans-serif; background: var(--cinza-bg); color: var(--navy); }
@@ -44,7 +45,6 @@
   .pill-azul { background: var(--azul-fundo); color: var(--azul-escuro); }
   .pill-amarelo { background: var(--amarelo-fundo); color: var(--amarelo); }
   .pill-vermelho { background: var(--vermelho-fundo); color: var(--vermelho); }
-  .pill-teal { background: var(--teal-fundo); color: var(--teal); }
   .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 18px; margin-bottom: 40px; }
   .card { background: white; border-radius: 16px; border: 1.5px solid var(--borda); padding: 22px 24px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
   .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(9,26,62,0.12); }
@@ -58,6 +58,7 @@
   .card-internacional::before { background: linear-gradient(90deg, var(--indigo), var(--roxo)); }
   .card-clima::before { background: linear-gradient(90deg, #16A34A, #0D9488); }
   .card-rosa::before { background: var(--rosa); }
+  .card-energia::before { background: linear-gradient(90deg, var(--laranja), #F59E0B); }
   .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; gap: 10px; }
   .card-fonte { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); }
   .card-programa { font-size: 12.5px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.4; }
@@ -90,10 +91,12 @@
   .badge-clima::before { background: #16A34A; }
   .badge-rosa { background: var(--rosa-fundo); color: var(--rosa); }
   .badge-rosa::before { background: var(--rosa); }
+  .badge-energia { background: var(--laranja-fundo); color: var(--laranja); }
+  .badge-energia::before { background: var(--laranja); }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
   .card-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--azul); text-decoration: none; margin-top: 10px; margin-right: 6px; padding: 6px 12px; background: var(--azul-fundo); border-radius: 8px; transition: background 0.15s; }
   .card-link:hover { background: #D0DCF8; }
-  .urgentes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px,1fr)); gap: 16px; margin-bottom: 32px; }
+  .urgentes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin-bottom: 32px; }
   .urgente-card { background: white; border-radius: 14px; border: 2px solid #FFAAAA; background: #FFF8F8; padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px; }
   .urgente-card.internacional { border-color: #C7D2FE; background: #F5F3FF; }
   .urgente-card.clima { border-color: #86EFAC; background: #F0FDF4; }
@@ -154,7 +157,7 @@
       </div>
     </div>
     <div style="text-align:right">
-      <div style="font-size:12px;color:rgba(255,255,255,0.4)">Atualizado em 22 de abril de 2026</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4)">Atualizado em 27 de abril de 2026</div>
       <div class="header-tag">✦ Mapeamento Ativo</div>
     </div>
   </div>
@@ -162,23 +165,23 @@
     <div class="metrics-grid">
       <div class="metric-card">
         <div class="metric-label">Fontes mapeadas</div>
-        <div class="metric-value">31</div>
+        <div class="metric-value">30</div>
         <div class="metric-sub">Editais, patrocínios e programas</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Editais abertos agora</div>
-        <div class="metric-value green">16</div>
+        <div class="metric-value green">13</div>
         <div class="metric-sub">Inscrições em andamento</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Prazos urgentes</div>
-        <div class="metric-value red">6</div>
-        <div class="metric-sub">Infâncias 24/04 · Periferia 26/04 · Cactus 30/04…</div>
+        <div class="metric-value red">4</div>
+        <div class="metric-sub">Cactus 30/04 · ABDI 05/05 · UNESCO 06/05 · Fundo Brasil 08/05</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Fontes internacionais</div>
         <div class="metric-value amarelo">3</div>
-        <div class="metric-sub">UNESCO · Pulitzer · Expertise France</div>
+        <div class="metric-sub">UNESCO · Expertise France · Embratur</div>
       </div>
     </div>
   </div>
@@ -189,31 +192,10 @@
   <!-- URGENTES -->
   <div class="section-header">
     <div class="section-title">🚨 Ação imediata — prazos iminentes</div>
-    <span class="section-pill pill-vermelho">6 oportunidades</span>
+    <span class="section-pill pill-vermelho">4 oportunidades</span>
   </div>
 
   <div class="urgentes-grid">
-
-    <div class="urgente-card">
-      <div class="urgente-icon">👶</div>
-      <div>
-        <div class="urgente-title">Instituto Tecendo Infâncias</div>
-        <div class="urgente-prazo">24/04/2026</div>
-        <div class="urgente-desc">ONGs (Lei 13.019), 3+ anos. <strong>R$125 mil ou R$250 mil</strong>. Primeira infância 0–6 anos. Até 2 instituições.</div>
-        <a class="card-link" href="https://prosas-prod-files.s3.sa-east-1.amazonaws.com/arquivos/arquivos/004/684/292/original/Regulamento_Edital_Tecendo_Infancias.pdf" target="_blank" style="margin-top:10px">Ver regulamento ↗</a>
-      </div>
-    </div>
-
-    <div class="urgente-card">
-      <div class="urgente-icon">🏘️</div>
-      <div>
-        <div class="urgente-title">Min. Cidades — Periferia Viva</div>
-        <div class="urgente-prazo">26/04/2026</div>
-        <div class="urgente-desc">OSCs com atuação prévia. <strong>R$200 mil</strong> por parceria. <strong>10 vagas para o Norte!</strong></div>
-        <div class="norte-tag">✦ 10 vagas para a região Norte</div>
-        <a class="card-link" href="https://www.gov.br/cidades/pt-br/acesso-a-informacao/participacao-social/editais-de-chamamento-publico/edital-de-chamamento-publico-snp-no-001-2026-termo-de-colaboracao/Edital1ChamamentoPblicoSNPn0012026.pdf" target="_blank" style="margin-top:10px">Ver edital ↗</a>
-      </div>
-    </div>
 
     <div class="urgente-card rosa">
       <div class="urgente-icon">🧠</div>
@@ -230,19 +212,9 @@
       <div>
         <div class="urgente-title">ABDI + MDIC — E-Commerce.BR 2026</div>
         <div class="urgente-prazo">05/05/2026</div>
-        <div class="urgente-desc">Redes de Inovação (mín. 3 instituições). Norte, Nordeste e Centro-Oeste. Fase piloto: R$345–380 mil. Escala: <strong>R$500 mil</strong>.</div>
+        <div class="urgente-desc">Redes de Inovação (mín. 3 instituições). Norte elegível. Piloto: R$345–380 mil. Escala: <strong>R$500 mil</strong>.</div>
         <div class="norte-tag">✦ Norte é elegível</div>
         <a class="card-link" href="https://www.abdi.com.br/ecommercebr2026/" target="_blank" style="margin-top:10px">Ver edital ↗</a>
-      </div>
-    </div>
-
-    <div class="urgente-card clima">
-      <div class="urgente-icon">🌿</div>
-      <div>
-        <div class="urgente-title">Fundo Brasil — Soluções Climáticas</div>
-        <div class="urgente-prazo verde">08/05/2026</div>
-        <div class="urgente-desc">Grupos, coletivos, OSCs, inclusive sem CNPJ. R$2,25M total. Raízes: 20 projetos até R$50k para povos indígenas, quilombolas e comunidades tradicionais na Amazônia.</div>
-        <a class="card-link" href="https://www.fundobrasil.org.br/edital/solucoes-climaticas-a-partir-da-base/" target="_blank" style="margin-top:10px">Ver edital ↗</a>
       </div>
     </div>
 
@@ -251,8 +223,18 @@
       <div>
         <div class="urgente-title">UNESCO — IFCD (17ª edição)</div>
         <div class="urgente-prazo indigo">06/05/2026</div>
-        <div class="urgente-desc">ONGs e instituições públicas de países em desenvolvimento. Até <strong>USD 100.000</strong>. Diversidade cultural, indústrias culturais locais.</div>
+        <div class="urgente-desc">ONGs e instituições públicas de países em desenvolvimento. Até <strong>USD 100.000</strong>. Diversidade cultural e indústrias culturais locais.</div>
         <a class="card-link" href="https://www.unesco.org/creativity/en/ifcd/apply" target="_blank" style="margin-top:10px">Ver chamamento ↗</a>
+      </div>
+    </div>
+
+    <div class="urgente-card clima">
+      <div class="urgente-icon">🌿</div>
+      <div>
+        <div class="urgente-title">Fundo Brasil — Soluções Climáticas</div>
+        <div class="urgente-prazo verde">08/05/2026</div>
+        <div class="urgente-desc">Grupos, coletivos e OSCs — inclusive sem CNPJ. RAÍZES: 20 projetos até R$50k para povos indígenas, quilombolas e comunidades tradicionais na Amazônia. R$2,25M total.</div>
+        <a class="card-link" href="https://www.fundobrasil.org.br/edital/solucoes-climaticas-a-partir-da-base/" target="_blank" style="margin-top:10px">Ver edital ↗</a>
       </div>
     </div>
 
@@ -271,14 +253,14 @@
       <div class="alerta-icon">💎</div>
       <div>
         <div class="alerta-title">Vale — Instituto Cultural Vale</div>
-        <div class="alerta-desc">Aberto! Até <span class="alerta-date">15/05/2026</span>. Lei Rouanet e Audiovisual maio–nov.</div>
+        <div class="alerta-desc">Até <span class="alerta-date">15/05/2026</span>. Lei Rouanet maio–nov.</div>
       </div>
     </div>
     <div class="alerta-card roxo">
       <div class="alerta-icon">🎙️</div>
       <div>
         <div class="alerta-title">Secom — Prêmio Dom Phillips</div>
-        <div class="alerta-desc">Até <span class="alerta-date roxo">21/05/2026</span>. Pessoas físicas. Jornalismo ambiental.</div>
+        <div class="alerta-desc">Até <span class="alerta-date roxo">21/05/2026</span>. Pessoas físicas.</div>
       </div>
     </div>
     <div class="alerta-card novo">
@@ -292,7 +274,7 @@
       <div class="alerta-icon">🍽️</div>
       <div>
         <div class="alerta-title">Cozinha Solidária — MDS</div>
-        <div class="alerta-desc"><span class="alerta-date teal">Cadastro aberto o ano todo</span>. PJ e organizações não formais.</div>
+        <div class="alerta-desc"><span class="alerta-date teal">Cadastro aberto o ano todo</span>.</div>
       </div>
     </div>
     <div class="alerta-card evento">
@@ -307,46 +289,10 @@
   <!-- TODOS OS EDITAIS ABERTOS -->
   <div class="section-header">
     <div class="section-title">✦ Todos os editais com inscrições abertas</div>
-    <span class="section-pill pill-verde">16 oportunidades</span>
+    <span class="section-pill pill-verde">13 oportunidades</span>
   </div>
 
   <div class="cards-grid">
-
-    <!-- Tecendo Infâncias -->
-    <div class="card card-urgente">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Instituto Tecendo Infâncias</div>
-          <div class="card-programa">Apoio Financeiro — Primeira Infância</div>
-        </div>
-        <span class="badge badge-urgente">24/04</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">24/04/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>R$125.000</strong> ou <strong>R$250.000</strong> por projeto</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>ONGs regidas pela Lei 13.019, formalizadas há no mínimo 3 anos</span></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Primeira infância — crianças de 0 a 6 anos</span></div>
-      <div class="card-detail"><span class="card-detail-label">Vagas</span><span>Até 2 instituições contempladas</span></div>
-      <a class="card-link" href="https://prosas-prod-files.s3.sa-east-1.amazonaws.com/arquivos/arquivos/004/684/292/original/Regulamento_Edital_Tecendo_Infancias.pdf" target="_blank">Ver regulamento ↗</a>
-    </div>
-
-    <!-- Periferia Viva -->
-    <div class="card card-urgente">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Min. Cidades — Periferia Viva</div>
-          <div class="card-programa">Chamamento SNP nº 001/2026 — Planos de Ação Popular</div>
-        </div>
-        <span class="badge badge-urgente">26/04</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">26/04/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>R$200.000</strong> por parceria · R$10 milhões total · 50 propostas</span></div>
-      <div class="card-detail"><span class="card-detail-label">Vagas Norte</span><span style="color:var(--verde-escuro);font-weight:700">10 vagas reservadas para a região Norte ✦</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs sem fins lucrativos com mínimo 1 ano de atuação prévia no território. Cadastro obrigatório na plataforma Nós Periféricos + Transferegov.br</span></div>
-      <div class="card-detail"><span class="card-detail-label">Avaliação</span><span>Metas/cronograma 30pts · Metodologia participativa 30pts · Diagnóstico territorial 25pts. Mínimo 60 pts para aprovação</span></div>
-      <a class="card-link" href="https://www.gov.br/cidades/pt-br/acesso-a-informacao/participacao-social/editais-de-chamamento-publico/edital-de-chamamento-publico-snp-no-001-2026-termo-de-colaboracao/Edital1ChamamentoPblicoSNPn0012026.pdf" target="_blank">Ver edital completo ↗</a>
-    </div>
 
     <!-- Instituto Cactus -->
     <div class="card card-rosa">
@@ -359,10 +305,10 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-rosa">30/04/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>R$70.000</strong> — R$50k execução + R$20k desenvolvimento técnico assistido pelo Instituto Cactus</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>R$70.000</strong> — R$50k execução + R$20k desenvolvimento técnico com assessoria do Instituto Cactus</span></div>
       <div class="card-detail"><span class="card-detail-label">Duração</span><span>Máximo 5 meses · Apenas 1 projeto selecionado</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs formalmente constituídas (CNPJ ativo), mínimo 2 anos de atuação territorial ou em saúde mental</span></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Saúde mental de mulheres — redes intersetoriais, educação, trabalho e renda, cultura/esporte, suporte de pares, cuidado e maternidade</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Saúde mental de mulheres — redes intersetoriais, educação, trabalho e renda, cultura/esporte, suporte de pares, maternidade</span></div>
       <a class="card-link" href="https://institutocactus.org.br/" target="_blank">Ver edital ↗</a>
     </div>
 
@@ -377,9 +323,9 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">05/05/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Redes de Inovação com no mínimo 3 instituições públicas ou privadas, sem fins lucrativos ou startups — sediadas no Norte, Nordeste ou Centro-Oeste</span></div>
-      <div class="card-detail"><span class="card-detail-label">Processo</span><span>16 projetos selecionados → 8 para fase piloto (R$345–380 mil, 60 empresas) → 2 para escala (R$500 mil, 120 empresas)</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Norte é elegível — Amapá pode liderar uma rede regional</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Redes de Inovação com mínimo 3 instituições — Norte, Nordeste ou Centro-Oeste</span></div>
+      <div class="card-detail"><span class="card-detail-label">Processo</span><span>16 selecionados → 8 fase piloto (R$345–380 mil) → 2 escala (R$500 mil, 120 empresas)</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Amapá pode liderar uma rede regional no Norte</span></div>
       <a class="card-link" href="https://www.abdi.com.br/ecommercebr2026/" target="_blank">Ver edital ↗</a>
     </div>
 
@@ -397,7 +343,7 @@
       <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>USD 100.000</strong> · Implementação 12 a 24 meses</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>Autoridades/instituições públicas + ONGs de países em desenvolvimento signatários da Convenção de 2005</span></div>
       <div class="card-detail"><span class="card-detail-label">Foco</span><span>Políticas culturais, fortalecimento de indústrias culturais locais e regionais</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Cultura indígena, expressões culturais amazônicas, diversidade cultural — alto alinhamento</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Cultura indígena, expressões amazônicas — alto alinhamento com a Convenção de 2005</span></div>
       <a class="card-link" href="https://www.unesco.org/creativity/en/ifcd/apply" target="_blank">Ver chamamento ↗</a>
     </div>
 
@@ -412,25 +358,24 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">08/05/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Total</span><span><strong>R$2.250.000</strong> · Mínimo 40 projetos apoiados</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Grupos, coletivos, sindicatos, movimentos sociais e OSCs — inclusive sem CNPJ (com parceira fiscal)</span></div>
-      <div class="card-detail"><span class="card-detail-label">RAÍZES</span><span>20 projetos até R$50 mil · Amazônia Legal e Nordeste · Povos indígenas, quilombolas e comunidades tradicionais · Defesa territorial, sociobioeconomia, resiliência climática</span></div>
-      <div class="card-detail"><span class="card-detail-label">LABORA</span><span>Trabalhadores(as) e transição justa · Eixo 1: até R$50k · Eixo 2: até R$100k · Agroecologia, economia solidária, trabalho digno</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Perfeito para organizações indígenas, extrativistas e quilombolas do Amapá</span></div>
+      <div class="card-detail"><span class="card-detail-label">Total</span><span><strong>R$2.250.000</strong> · Mínimo 40 projetos apoiados · Duração 12 meses</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Grupos, coletivos, movimentos sociais e OSCs — inclusive sem CNPJ (com parceira fiscal)</span></div>
+      <div class="card-detail"><span class="card-detail-label">RAÍZES</span><span>20 projetos até R$50 mil · Amazônia Legal e Nordeste · Povos indígenas, quilombolas, comunidades tradicionais</span></div>
+      <div class="card-detail"><span class="card-detail-label">LABORA</span><span>Trabalhadores(as) — Eixo 1: até R$50k · Eixo 2: até R$100k · Agroecologia, economia solidária</span></div>
       <a class="card-link" href="https://www.fundobrasil.org.br/edital/solucoes-climaticas-a-partir-da-base/" target="_blank">Ver edital ↗</a>
     </div>
 
     <!-- BNDES -->
-    <div class="card card-aberto">
+    <div class="card card-urgente">
       <div class="card-header">
         <div>
           <div class="card-fonte">BNDES</div>
           <div class="card-programa">Amazônia Viva — Edital PAA</div>
         </div>
-        <span class="badge badge-aberto">Aberto</span>
+        <span class="badge badge-urgente">03/05</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">03/05/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">03/05/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Foco</span><span>Fundo Socioambiental, Periferias, Bioinsumos, Periferias Verdes</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>ONGs, associações, cooperativas, movimentos sociais</span></div>
       <a class="card-link" href="https://www.gov.br/conab/pt-br/atuacao/paa/amazonia-viva/edital-amazonia-viva/edital-amazonia-viva" target="_blank">Acessar edital ↗</a>
@@ -447,9 +392,8 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 15/05/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Chamada ICV</span><span>Inscrições abertas agora</span></div>
       <div class="card-detail"><span class="card-detail-label">Lei Rouanet</span><span>Maio a novembro — audiovisual incluído</span></div>
-      <div class="card-detail"><span class="card-detail-label">Recursos próprios</span><span>Disponíveis o ano todo — contato direto com a Vale</span></div>
+      <div class="card-detail"><span class="card-detail-label">Recursos próprios</span><span>Disponíveis o ano todo</span></div>
       <a class="card-link" href="https://institutoculturalvale.org/wp-content/uploads/2026/04/Regulamento-Chamada-Instituto-Cultural-Vale-2026-16-Abr-2026-14h50.pdf" target="_blank">Ver regulamento ↗</a>
     </div>
 
@@ -546,7 +490,6 @@
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-teal">Cadastro aberto o ano todo</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas jurídicas. Possibilidade para organizações não formais</span></div>
-      <div class="card-detail"><span class="card-detail-label">Modelo</span><span>Produção e oferta de refeições — própria ou apoiando outras cozinhas solidárias</span></div>
       <a class="card-link" href="https://cozinhasolidaria.digital/" target="_blank">Fazer cadastro ↗</a>
       <a class="card-link" href="https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-cozinha-solidaria/programa-cozinha-solidaria" target="_blank">Saber mais ↗</a>
     </div>
@@ -620,7 +563,7 @@
   <!-- MONITORAMENTO CONTÍNUO -->
   <div class="section-header">
     <div class="section-title">◌ Fontes sem edital aberto — monitoramento contínuo</div>
-    <span class="section-pill pill-azul">8 fontes</span>
+    <span class="section-pill pill-azul">10 fontes</span>
   </div>
 
   <div class="table-card">
@@ -650,6 +593,13 @@
           <td><a class="card-link" style="margin-top:0" href="https://transpetro.com.br/data/files/5A/55/5C/D9/5EB3791033118249D8098204/CartilhaInformativa_PatrociniosTranspetro%20_2_.pdf" target="_blank">Ver cartilha ↗</a></td>
         </tr>
         <tr>
+          <td><div class="td-fonte">Axia Energia</div></td>
+          <td>Patrocínios corporativos</td>
+          <td><span class="badge badge-fechado">Sem edital</span></td>
+          <td class="td-obs">Nova fonte mapeada — potencial para projetos de energia, sustentabilidade e comunidades no AP</td>
+          <td><a class="card-link" style="margin-top:0" href="https://axia.com.br/sobre/patrocinios" target="_blank">Ver portal ↗</a></td>
+        </tr>
+        <tr>
           <td><div class="td-fonte">Caixa Econômica Federal</div></td>
           <td>Fundo Socioambiental Caixa</td>
           <td><span class="badge badge-verificar">Outubro/2026</span></td>
@@ -666,8 +616,8 @@
         <tr>
           <td><div class="td-fonte">Banco da Amazônia (BASA)</div></td>
           <td>FNO + Patrocínios</td>
-          <td><span class="badge badge-fechado">Verificar ciclo FNO</span></td>
-          <td class="td-obs">Fundo Constitucional do Norte — estratégico para municípios e cooperativas do AP</td>
+          <td><span class="badge badge-verificar">Outubro/2026</span></td>
+          <td class="td-obs">⚠️ Edital geralmente abre em outubro — monitorar com antecedência. Estratégico para municípios e cooperativas do AP</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.bancoamazonia.com.br/" target="_blank">Ver BASA ↗</a></td>
         </tr>
         <tr>
@@ -685,10 +635,17 @@
           <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/cultura/pt-br" target="_blank">Ver MinC ↗</a></td>
         </tr>
         <tr>
+          <td><div class="td-fonte">Vale</div></td>
+          <td>Lei Rouanet / Audiovisual</td>
+          <td><span class="badge badge-aberto">Maio–Nov</span></td>
+          <td class="td-obs">Lei Rouanet e Audiovisual abertos de maio a novembro. Recursos próprios o ano todo</td>
+          <td><a class="card-link" style="margin-top:0" href="https://institutoculturalvale.org" target="_blank">Ver ICV ↗</a></td>
+        </tr>
+        <tr>
           <td><div class="td-fonte">ABDI (Edital anterior)</div></td>
           <td>Micro e Pequenas Empresas</td>
           <td><span class="badge badge-verificar">Verificar status</span></td>
-          <td class="td-obs">Edital que abriria em 02/04 às 9h30 — verificar se foi publicado e encerrado</td>
+          <td class="td-obs">Edital previsto para 02/04 às 9h30 — verificar se foi publicado</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.instagram.com/p/DWi3KNJjyNG/" target="_blank">Ver Instagram ↗</a></td>
         </tr>
       </tbody>
@@ -700,21 +657,20 @@
     <div class="highlight-icon">🌿</div>
     <div>
       <div class="highlight-title">Estratégia de posicionamento — Amapá tem vantagem competitiva</div>
-      <div class="highlight-desc">O Amapá reúne características únicas que aumentam pontuação e elegibilidade: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas, comunidades tradicionais e quilombolas, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. O Fundo Brasil — Soluções Climáticas e o BNDES Amazônia Viva são as fontes com maior potencial imediato para organizações de base do estado.</div>
+      <div class="highlight-desc">O Amapá reúne características únicas que aumentam pontuação e elegibilidade em editais nacionais e internacionais: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas, quilombolas, comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. O Fundo Brasil e o BNDES Amazônia Viva são as fontes com maior potencial imediato para organizações de base. UNESCO e Axia Energia abrem novas frentes de captação.</div>
       <div class="highlight-pills">
         <span class="highlight-pill green">Bioeconomia</span>
         <span class="highlight-pill green">Povos Indígenas</span>
         <span class="highlight-pill green">Quilombolas</span>
         <span class="highlight-pill green">Agricultura Familiar</span>
-        <span class="highlight-pill green">Primeira Infância</span>
-        <span class="highlight-pill green">Mulheres Rurais</span>
         <span class="highlight-pill green">Saúde Mental</span>
         <span class="highlight-pill green">Segurança Alimentar</span>
-        <span class="highlight-pill">Periferias Urbanas</span>
         <span class="highlight-pill">UNESCO · Diversidade Cultural</span>
         <span class="highlight-pill">E-Commerce · Inovação</span>
         <span class="highlight-pill">Justiça Climática</span>
+        <span class="highlight-pill">Energia</span>
         <span class="highlight-pill">Cooperação Internacional</span>
+        <span class="highlight-pill">Turismo Sustentável</span>
       </div>
     </div>
   </div>
