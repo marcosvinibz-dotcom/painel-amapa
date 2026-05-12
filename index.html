@@ -15,7 +15,6 @@
     --roxo: #7C3AED; --roxo-fundo: #F3EFFE;
     --teal: #0D9488; --teal-fundo: #F0FDFA;
     --indigo: #4338CA; --indigo-fundo: #EEF2FF;
-    --rosa: #DB2777; --rosa-fundo: #FDF2F8;
     --laranja: #EA580C; --laranja-fundo: #FFF7ED;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -45,7 +44,6 @@
   .pill-azul { background: var(--azul-fundo); color: var(--azul-escuro); }
   .pill-amarelo { background: var(--amarelo-fundo); color: var(--amarelo); }
   .pill-vermelho { background: var(--vermelho-fundo); color: var(--vermelho); }
-  .pill-local { background: linear-gradient(90deg, var(--verde-fundo), var(--azul-fundo)); color: var(--azul-escuro); }
   .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 18px; margin-bottom: 40px; }
   .card { background: white; border-radius: 16px; border: 1.5px solid var(--borda); padding: 22px 24px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
   .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(9,26,62,0.12); }
@@ -55,9 +53,6 @@
   .card-aberto::before { background: var(--verde); }
   .card-continuo::before { background: var(--teal); }
   .card-verificar::before { background: var(--amarelo); }
-  .card-internacional::before { background: linear-gradient(90deg, var(--indigo), var(--roxo)); }
-  .card-clima::before { background: linear-gradient(90deg, #16A34A, #0D9488); }
-  .card-rosa::before { background: var(--rosa); }
   .card-local::before { background: linear-gradient(90deg, var(--verde), var(--azul)); }
   .card-local { border-color: #90C8F0; }
   .card-agua::before { background: linear-gradient(90deg, #0284C7, #0D9488); }
@@ -69,10 +64,8 @@
   .card-detail { display: flex; gap: 8px; font-size: 12.5px; color: var(--cinza-texto); margin-bottom: 8px; align-items: flex-start; line-height: 1.5; }
   .card-detail-label { font-weight: 600; color: var(--navy); min-width: 78px; flex-shrink: 0; font-size: 12px; }
   .prazo-verde { color: var(--verde-escuro); font-weight: 700; }
-  .prazo-amarelo { color: var(--amarelo); font-weight: 700; }
   .prazo-vermelho { color: var(--vermelho); font-weight: 700; }
   .prazo-teal { color: var(--teal); font-weight: 700; }
-  .prazo-indigo { color: var(--indigo); font-weight: 700; }
   .prazo-azul { color: var(--azul); font-weight: 700; }
   .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
   .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
@@ -86,12 +79,6 @@
   .badge-fechado::before { background: #B0B5C8; }
   .badge-verificar { background: var(--amarelo-fundo); color: var(--amarelo); }
   .badge-verificar::before { background: var(--amarelo); }
-  .badge-novo { background: var(--azul-fundo); color: var(--azul-escuro); }
-  .badge-novo::before { background: var(--azul); }
-  .badge-internacional { background: var(--indigo-fundo); color: var(--indigo); }
-  .badge-internacional::before { background: var(--indigo); }
-  .badge-clima { background: #DCFCE7; color: #16A34A; }
-  .badge-clima::before { background: #16A34A; }
   .badge-local { background: linear-gradient(90deg, var(--verde-fundo), var(--azul-fundo)); color: var(--azul-escuro); }
   .badge-local::before { background: var(--azul); }
   .badge-saude { background: #FEE2E2; color: #B91C1C; }
@@ -101,25 +88,30 @@
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
   .card-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--azul); text-decoration: none; margin-top: 10px; margin-right: 6px; padding: 6px 12px; background: var(--azul-fundo); border-radius: 8px; transition: background 0.15s; }
   .card-link:hover { background: #D0DCF8; }
-  .urgentes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px,1fr)); gap: 16px; margin-bottom: 32px; }
+
+  /* URGENTES */
+  .urgentes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin-bottom: 32px; }
   .urgente-card { background: white; border-radius: 14px; border: 2px solid #FFAAAA; background: #FFF8F8; padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px; }
-  .urgente-card.internacional { border-color: #C7D2FE; background: #F5F3FF; }
-  .urgente-card.clima { border-color: #86EFAC; background: #F0FDF4; }
   .urgente-card.agua { border-color: #BAE6FD; background: #F0F9FF; }
   .urgente-card.saude { border-color: #FECACA; background: #FFF5F5; }
-  .urgente-card.financas { border-color: #FDE68A; background: #FFFBEB; }
   .urgente-icon { font-size: 28px; flex-shrink: 0; }
   .urgente-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); }
   .urgente-prazo { font-size: 22px; font-weight: 800; font-family: 'Sora', sans-serif; color: var(--vermelho); margin: 4px 0; }
-  .urgente-prazo.indigo { color: var(--indigo); }
-  .urgente-prazo.verde { color: var(--verde-escuro); }
   .urgente-prazo.azul { color: var(--azul); }
-  .urgente-prazo.amarelo { color: #B45309; }
+  .urgente-prazo.roxo { color: #7C3AED; }
   .urgente-desc { font-size: 12px; color: var(--cinza-texto); line-height: 1.5; }
-  .norte-tag { display: inline-block; background: rgba(24,212,75,0.15); color: var(--verde-escuro); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px; margin-top: 6px; }
-  .local-tag { display: inline-block; background: rgba(23,86,214,0.12); color: var(--azul-escuro); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px; margin-top: 6px; }
+
+  /* DESTAQUE LOCAL */
+  .local-box { background: linear-gradient(135deg, #0D3EA3 0%, #0FA034 100%); border-radius: 18px; padding: 26px 36px; margin-bottom: 32px; display: flex; align-items: center; gap: 24px; }
+  .local-box-icon { font-size: 36px; flex-shrink: 0; }
+  .local-box-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 18px; color: white; margin-bottom: 6px; }
+  .local-box-desc { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; }
+  .local-box-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .local-box-pill { background: rgba(255,255,255,0.2); color: white; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+
+  /* ALERTAS */
   .alerta-row { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
-  .alerta-card { flex: 1; min-width: 170px; background: white; border-radius: 14px; border: 1.5px solid var(--borda); padding: 14px 16px; display: flex; align-items: flex-start; gap: 10px; }
+  .alerta-card { flex: 1; min-width: 180px; background: white; border-radius: 14px; border: 1.5px solid var(--borda); padding: 14px 16px; display: flex; align-items: flex-start; gap: 10px; }
   .alerta-card.prazo { border-color: #90D9AA; background: #F4FDF7; }
   .alerta-card.evento { border-color: #90C0F0; background: #F5F9FF; }
   .alerta-card.roxo { border-color: #C4A8F8; background: #FAF5FF; }
@@ -132,13 +124,8 @@
   .alerta-date.azul { color: var(--azul); }
   .alerta-date.roxo { color: var(--roxo); }
   .alerta-date.teal { color: var(--teal); }
-  /* DESTAQUE LOCAL */
-  .local-box { background: linear-gradient(135deg, #0D3EA3 0%, #0FA034 100%); border-radius: 18px; padding: 26px 36px; margin-bottom: 32px; display: flex; align-items: center; gap: 24px; }
-  .local-box-icon { font-size: 36px; flex-shrink: 0; }
-  .local-box-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 18px; color: white; margin-bottom: 6px; }
-  .local-box-desc { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; }
-  .local-box-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-  .local-box-pill { background: rgba(255,255,255,0.2); color: white; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+
+  /* HIGHLIGHT */
   .highlight-box { background: linear-gradient(135deg, var(--navy) 0%, #1338A0 100%); border-radius: 18px; padding: 30px 36px; margin-bottom: 40px; display: flex; align-items: center; gap: 28px; }
   .highlight-icon { width: 64px; height: 64px; background: rgba(24,212,75,0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
   .highlight-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: white; margin-bottom: 8px; }
@@ -146,6 +133,8 @@
   .highlight-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .highlight-pill { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 12px; padding: 4px 12px; border-radius: 20px; }
   .highlight-pill.green { background: rgba(24,212,75,0.25); color: var(--verde); }
+
+  /* TABLE */
   .table-card { background: white; border-radius: 16px; border: 1.5px solid var(--borda); overflow: hidden; margin-bottom: 40px; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   thead th { background: var(--cinza-bg); color: var(--cinza-texto); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px; padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--borda); }
@@ -154,6 +143,7 @@
   tbody tr:hover td { background: #F8FAFF; }
   .td-fonte { font-weight: 600; }
   .td-obs { font-size: 12px; color: var(--cinza-texto); max-width: 200px; line-height: 1.4; }
+
   .footer-stripe { height: 4px; background: linear-gradient(90deg, var(--azul), var(--verde)); }
   footer { background: var(--navy); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; }
   .footer-text { font-size: 12px; color: rgba(255,255,255,0.4); }
@@ -173,7 +163,7 @@
       </div>
     </div>
     <div style="text-align:right">
-      <div style="font-size:12px;color:rgba(255,255,255,0.4)">Atualizado em 4 de maio de 2026</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4)">Atualizado em 12 de maio de 2026</div>
       <div class="header-tag">✦ Mapeamento Ativo</div>
     </div>
   </div>
@@ -181,18 +171,18 @@
     <div class="metrics-grid">
       <div class="metric-card">
         <div class="metric-label">Fontes mapeadas</div>
-        <div class="metric-value">34</div>
+        <div class="metric-value">30</div>
         <div class="metric-sub">Editais, patrocínios e programas</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Editais abertos agora</div>
-        <div class="metric-value green">15</div>
+        <div class="metric-value green">11</div>
         <div class="metric-sub">Inscrições em andamento</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Prazos urgentes</div>
-        <div class="metric-value red">5</div>
-        <div class="metric-sub">ABDI 05/05 · UNESCO 06/05 · CEF/Fundo Brasil 08/05 · CEF Água 22/05</div>
+        <div class="metric-value red">3</div>
+        <div class="metric-sub">Vale 15/05 · Secom/UNAIDS/CEF Água 21–22/05</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Edital local — Amapá</div>
@@ -210,14 +200,13 @@
     <div class="local-box-icon">⭐</div>
     <div>
       <div class="local-box-title">Edital Local — Secretaria de Cultura do Amapá (SECULT) · Inscrições 01–30/06/2026</div>
-      <div class="local-box-desc">R$10 milhões · 466 projetos · 18 segmentos culturais. Inclui cotas: 20% negros/quilombolas/ribeirinhos · 10% indígenas · 12% novos talentos · 5% PcD. Valores de R$10 mil a R$120 mil por projeto. Residência mínima 2 anos no AP (PF) ou 3 anos (PJ).</div>
+      <div class="local-box-desc">R$10 milhões · 466 projetos · 18 segmentos culturais. Cotas: 20% negros/quilombolas/ribeirinhos · 10% indígenas · 12% novos talentos · 5% PcD. Valores de R$10 mil a R$120 mil. Residência mínima 2 anos no AP (PF) ou 3 anos (PJ).</div>
       <div class="local-box-pills">
         <span class="local-box-pill">Teatro · Música · Dança</span>
-        <span class="local-box-pill">Cultura Indígena</span>
-        <span class="local-box-pill">Marabaixo · Cultura Afro</span>
-        <span class="local-box-pill">Audiovisual</span>
+        <span class="local-box-pill">Cultura Indígena · Marabaixo</span>
+        <span class="local-box-pill">Audiovisual · Artesanato</span>
         <span class="local-box-pill">Mostras e Festivais</span>
-        <span class="local-box-pill">Hip-Hop · Circo</span>
+        <span class="local-box-pill">Cultura Afro · Hip-Hop · Circo</span>
       </div>
     </div>
   </div>
@@ -225,49 +214,38 @@
   <!-- URGENTES -->
   <div class="section-header">
     <div class="section-title">🚨 Ação imediata — prazos iminentes</div>
-    <span class="section-pill pill-vermelho">5 oportunidades</span>
+    <span class="section-pill pill-vermelho">3 oportunidades</span>
   </div>
 
   <div class="urgentes-grid">
 
     <div class="urgente-card">
-      <div class="urgente-icon">🛒</div>
+      <div class="urgente-icon">💎</div>
       <div>
-        <div class="urgente-title">ABDI + MDIC — E-Commerce.BR 2026</div>
-        <div class="urgente-prazo">05/05/2026</div>
-        <div class="urgente-desc">Redes 3+ instituições. Norte elegível. Até <strong>R$500 mil</strong> na escala.</div>
-        <div class="norte-tag">✦ Norte é elegível</div>
-        <a class="card-link" href="https://www.abdi.com.br/ecommercebr2026/" target="_blank" style="margin-top:10px">Ver edital ↗</a>
+        <div class="urgente-title">Vale — Instituto Cultural Vale</div>
+        <div class="urgente-prazo">15/05/2026</div>
+        <div class="urgente-desc">Chamada aberta. <strong>Lei Rouanet e Audiovisual</strong> de maio a novembro. Recursos próprios o ano todo.</div>
+        <a class="card-link" href="https://institutoculturalvale.org/wp-content/uploads/2026/04/Regulamento-Chamada-Instituto-Cultural-Vale-2026-16-Abr-2026-14h50.pdf" target="_blank" style="margin-top:10px">Ver regulamento ↗</a>
       </div>
     </div>
 
-    <div class="urgente-card internacional">
-      <div class="urgente-icon">🌍</div>
+    <div class="urgente-card">
+      <div class="urgente-icon">🎙️</div>
       <div>
-        <div class="urgente-title">UNESCO — IFCD (17ª edição)</div>
-        <div class="urgente-prazo indigo">06/05/2026</div>
-        <div class="urgente-desc">ONGs países em desenvolvimento. Até <strong>USD 100.000</strong>. Diversidade cultural, indústrias culturais locais.</div>
-        <a class="card-link" href="https://www.unesco.org/creativity/en/ifcd/apply" target="_blank" style="margin-top:10px">Ver chamamento ↗</a>
+        <div class="urgente-title">Secom — Prêmio Dom Phillips e Bruno Pereira</div>
+        <div class="urgente-prazo roxo">21/05/2026</div>
+        <div class="urgente-desc">Pessoas físicas. Jornalismo investigativo, comunicação popular e educação midiática voltados à proteção ambiental e direitos indígenas.</div>
+        <a class="card-link" href="https://www.gov.br/secom/pt-br/assuntos/concurso-dom-phillips-e-bruno-pereira/edital" target="_blank" style="margin-top:10px">Ver edital ↗</a>
       </div>
     </div>
 
-    <div class="urgente-card clima">
-      <div class="urgente-icon">🌿</div>
+    <div class="urgente-card saude">
+      <div class="urgente-icon">🩺</div>
       <div>
-        <div class="urgente-title">Fundo Brasil — Soluções Climáticas</div>
-        <div class="urgente-prazo verde">08/05/2026</div>
-        <div class="urgente-desc">OSCs inclusive sem CNPJ. RAÍZES: 20 projetos até R$50k · Amazônia Legal · Indígenas e quilombolas. R$2,25M total.</div>
-        <a class="card-link" href="https://www.fundobrasil.org.br/edital/solucoes-climaticas-a-partir-da-base/" target="_blank" style="margin-top:10px">Ver edital ↗</a>
-      </div>
-    </div>
-
-    <div class="urgente-card agua">
-      <div class="urgente-icon">💧</div>
-      <div>
-        <div class="urgente-title">CEF 002/2026 — Água nas Cidades</div>
+        <div class="urgente-title">UNAIDS + Min. Saúde — OSCs HIV/AIDS/TB</div>
         <div class="urgente-prazo azul">22/05/2026</div>
-        <div class="urgente-desc">ONGs 2+ anos. Gestão hídrica urbana. Cisternas, recuperação de nascentes, drenagem sustentável. Duração 24–36 meses.</div>
-        <a class="card-link" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/chamadas-abertas/Documents/Regulamento_Agua_Cidades_Chamada_002_2026.pdf" target="_blank" style="margin-top:10px">Ver regulamento ↗</a>
+        <div class="urgente-desc">OSCs com CNPJ ativo 1+ ano. Até <strong>R$100.000</strong> por proposta · 10 propostas selecionadas. HIV/AIDS, TB, Hepatites, IST e Micoses Endêmicas.</div>
+        <a class="card-link" href="https://unaids.org.br/2026/04/unaids-publica-edital-para-selecao-de-projetos-focados-no-desenvolvimento-de-acoes-de-base-comunitaria/" target="_blank" style="margin-top:10px">Ver edital ↗</a>
       </div>
     </div>
 
@@ -275,25 +253,11 @@
 
   <!-- ALERTAS -->
   <div class="alerta-row">
-    <div class="alerta-card saude" style="border-color:#FECACA;background:#FFF5F5">
-      <div class="alerta-icon">🩺</div>
+    <div class="alerta-card agua" style="border-color:#BAE6FD;background:#F0F9FF">
+      <div class="alerta-icon">💧</div>
       <div>
-        <div class="alerta-title">UNAIDS — OSCs HIV/AIDS/TB</div>
-        <div class="alerta-desc">Até <span class="alerta-date" style="color:#DC2626">22/05/2026</span>. Até R$100 mil · 10 propostas.</div>
-      </div>
-    </div>
-    <div class="alerta-card prazo">
-      <div class="alerta-icon">💎</div>
-      <div>
-        <div class="alerta-title">Vale — Instituto Cultural Vale</div>
-        <div class="alerta-desc">Até <span class="alerta-date">15/05/2026</span>. Lei Rouanet maio–nov.</div>
-      </div>
-    </div>
-    <div class="alerta-card roxo">
-      <div class="alerta-icon">🎙️</div>
-      <div>
-        <div class="alerta-title">Secom — Prêmio Dom Phillips</div>
-        <div class="alerta-desc">Até <span class="alerta-date roxo">21/05/2026</span>. Pessoas físicas.</div>
+        <div class="alerta-title">CEF 002/2026 — Água nas Cidades</div>
+        <div class="alerta-desc">Até <span class="alerta-date azul">22/05/2026</span>. ONGs 2+ anos. Gestão hídrica urbana. 24–36 meses.</div>
       </div>
     </div>
     <div class="alerta-card amarelo">
@@ -303,6 +267,20 @@
         <div class="alerta-desc">Inscrições <span class="alerta-date azul">01–30/06/2026</span>. R$10M · 466 projetos.</div>
       </div>
     </div>
+    <div class="alerta-card prazo">
+      <div class="alerta-icon">📋</div>
+      <div>
+        <div class="alerta-title">FINEP — Agricultura Familiar</div>
+        <div class="alerta-desc">Até <span class="alerta-date">26/06/2026</span>. 30% dos recursos para o Norte.</div>
+      </div>
+    </div>
+    <div class="alerta-card prazo">
+      <div class="alerta-icon">🔬</div>
+      <div>
+        <div class="alerta-title">FINEP — Economia Circular</div>
+        <div class="alerta-desc">Até <span class="alerta-date">31/08/2026</span>. Bônus para projetos no Norte.</div>
+      </div>
+    </div>
     <div class="alerta-card evento">
       <div class="alerta-icon">✈️</div>
       <div>
@@ -310,117 +288,54 @@
         <div class="alerta-desc">Até <span class="alerta-date azul">03/10/2026</span>. <a href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank" style="color:var(--azul);font-weight:600;">Ver evento ↗</a></div>
       </div>
     </div>
+    <div class="alerta-card teal">
+      <div class="alerta-icon">🍽️</div>
+      <div>
+        <div class="alerta-title">Cozinha Solidária — MDS</div>
+        <div class="alerta-desc"><span class="alerta-date teal">Cadastro aberto o ano todo</span>.</div>
+      </div>
+    </div>
   </div>
 
   <!-- EDITAIS ABERTOS -->
   <div class="section-header">
     <div class="section-title">✦ Todos os editais com inscrições abertas</div>
-    <span class="section-pill pill-verde">15 oportunidades</span>
+    <span class="section-pill pill-verde">11 oportunidades</span>
   </div>
 
   <div class="cards-grid">
 
-    <!-- Instituto Cactus -->
-    <div class="card card-rosa">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Instituto Cactus</div>
-          <div class="card-programa">Intervenções em Saúde Mental de Mulheres</div>
-        </div>
-        <span class="badge badge-urgente">30/04</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">30/04/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>R$70.000</strong> (R$50k execução + R$20k assessoria técnica)</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs com CNPJ ativo, mínimo 2 anos de atuação</span></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Saúde mental de mulheres — redes, educação, trabalho e renda, cultura, maternidade</span></div>
-      <a class="card-link" href="https://institutocactus.org.br/" target="_blank">Ver edital ↗</a>
-    </div>
-
-    <!-- CEF 001 Cidadania Financeira -->
-    <div class="card card-aberto">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Caixa Econômica Federal</div>
-          <div class="card-programa">Chamada 001/2026 — Cidadania Financeira</div>
-        </div>
-        <span class="badge badge-urgente">08/05</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">08/05/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span><strong>R$2 a R$4 milhões</strong> por projeto · Total disponível: R$10 milhões</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs, associações, fundações e cooperativas sociais com CNPJ ativo há 2+ anos</span></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Educação financeira prática para famílias em vulnerabilidade</span></div>
-      <div class="card-detail"><span class="card-detail-label">Contrapartida</span><span>Não obrigatória — recurso é doação (não reembolsável)</span></div>
-      <a class="card-link" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/PublishingImages/chamadas/Chamada_001_2026_Cidadania_Financeira_versao-02.pdf" target="_blank">Ver chamada ↗</a>
-    </div>
-
-    <!-- ABDI E-Commerce -->
-    <div class="card card-aberto">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">ABDI + MDIC</div>
-          <div class="card-programa">E-Commerce.BR 2026 — Micro e Pequenas Empresas</div>
-        </div>
-        <span class="badge badge-urgente">05/05</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">05/05/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Redes de 3+ instituições — Norte, Nordeste ou Centro-Oeste</span></div>
-      <div class="card-detail"><span class="card-detail-label">Processo</span><span>16 selecionados → 8 piloto (R$345–380k) → 2 escala (<strong>R$500 mil</strong>)</span></div>
-      <a class="card-link" href="https://www.abdi.com.br/ecommercebr2026/" target="_blank">Ver edital ↗</a>
-    </div>
-
-    <!-- UNESCO IFCD -->
-    <div class="card card-internacional">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">UNESCO — IFCD</div>
-          <div class="card-programa">Fundo Internacional para a Diversidade Cultural — 17ª edição</div>
-        </div>
-        <span class="badge badge-internacional">Internacional</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-indigo">06/05/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>USD 100.000</strong> · Implementação 12–24 meses</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Autoridades/instituições públicas + ONGs de países signatários da Convenção de 2005</span></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Políticas culturais, fortalecimento de indústrias culturais locais</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Cultura indígena, diversidade cultural amazônica — alto alinhamento</span></div>
-      <a class="card-link" href="https://www.unesco.org/creativity/en/ifcd/apply" target="_blank">Ver chamamento ↗</a>
-    </div>
-
-    <!-- Fundo Brasil -->
-    <div class="card card-clima">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Fundo Brasil</div>
-          <div class="card-programa">Soluções Climáticas a Partir da Base</div>
-        </div>
-        <span class="badge badge-clima">Clima · Amazônia</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">08/05/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Total</span><span><strong>R$2.250.000</strong> · 40 projetos · Duração 12 meses</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Grupos, coletivos, OSCs — inclusive sem CNPJ (com parceira fiscal)</span></div>
-      <div class="card-detail"><span class="card-detail-label">RAÍZES</span><span>20 projetos até R$50k · Amazônia Legal · Indígenas, quilombolas, comunidades tradicionais</span></div>
-      <div class="card-detail"><span class="card-detail-label">LABORA</span><span>Trabalhadores(as) · até R$50–100k · Agroecologia, economia solidária</span></div>
-      <a class="card-link" href="https://www.fundobrasil.org.br/edital/solucoes-climaticas-a-partir-da-base/" target="_blank">Ver edital ↗</a>
-    </div>
-
     <!-- Vale -->
-    <div class="card card-aberto">
+    <div class="card card-urgente">
       <div class="card-header">
         <div>
           <div class="card-fonte">Vale — Instituto Cultural Vale</div>
           <div class="card-programa">Chamada 2026 — Leis de Incentivo e Patrocínio</div>
         </div>
-        <span class="badge badge-aberto">Aberto</span>
+        <span class="badge badge-urgente">15/05</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 15/05/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">Até 15/05/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Lei Rouanet</span><span>Maio a novembro — audiovisual incluído</span></div>
-      <div class="card-detail"><span class="card-detail-label">Recursos próprios</span><span>Disponíveis o ano todo</span></div>
+      <div class="card-detail"><span class="card-detail-label">Recursos próprios</span><span>Disponíveis o ano todo — contato direto com a Vale</span></div>
       <a class="card-link" href="https://institutoculturalvale.org/wp-content/uploads/2026/04/Regulamento-Chamada-Instituto-Cultural-Vale-2026-16-Abr-2026-14h50.pdf" target="_blank">Ver regulamento ↗</a>
+    </div>
+
+    <!-- Secom Dom Phillips -->
+    <div class="card card-urgente">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Secretaria de Comunicação Social</div>
+          <div class="card-programa">Prêmio Dom Phillips e Bruno Pereira</div>
+        </div>
+        <span class="badge badge-urgente">21/05</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">21/05/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas físicas</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Jornalismo investigativo, comunicação popular e educação midiática — proteção ambiental e direitos indígenas e comunidades tradicionais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Alto alinhamento com a realidade amazônica e povos indígenas do Amapá</span></div>
+      <a class="card-link" href="https://www.gov.br/secom/pt-br/assuntos/concurso-dom-phillips-e-bruno-pereira/edital" target="_blank">Ver edital ↗</a>
     </div>
 
     <!-- UNAIDS -->
@@ -430,51 +345,35 @@
           <div class="card-fonte">UNAIDS + Ministério da Saúde</div>
           <div class="card-programa">Seleção de OSCs — Ações Comunitárias em Saúde</div>
         </div>
-        <span class="badge badge-saude">Saúde</span>
+        <span class="badge badge-saude">22/05</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 22/05/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>R$100.000</strong> por proposta · Total: 10 propostas selecionadas</span></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">Até 22/05/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>R$100.000</strong> por proposta · 10 propostas selecionadas</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs com sede no Brasil e CNPJ ativo há 1+ ano</span></div>
       <div class="card-detail"><span class="card-detail-label">Foco</span><span>HIV/AIDS, Tuberculose, Hepatites Virais, HTLV, IST e Micoses Endêmicas — ações lideradas pelas comunidades</span></div>
       <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Comunidades ribeirinhas, indígenas e periferias com vulnerabilidade sanitária</span></div>
       <a class="card-link" href="https://unaids.org.br/2026/04/unaids-publica-edital-para-selecao-de-projetos-focados-no-desenvolvimento-de-acoes-de-base-comunitaria/" target="_blank">Ver edital ↗</a>
     </div>
 
-    <!-- CEF 002 Água nas Cidades -->
+    <!-- CEF Água nas Cidades -->
     <div class="card card-agua">
       <div class="card-header">
         <div>
           <div class="card-fonte">Caixa Econômica Federal</div>
           <div class="card-programa">Chamada 002/2026 — Água nas Cidades</div>
         </div>
-        <span class="badge badge-agua">Água · Saneamento</span>
+        <span class="badge badge-agua">22/05</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 22/05/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">Até 22/05/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Duração</span><span>24 a 36 meses</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>ONGs, associações e cooperativas sociais com 2+ anos, com experiência comprovada</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>ONGs, associações e cooperativas sociais com 2+ anos e experiência comprovada</span></div>
       <div class="card-detail"><span class="card-detail-label">Eixo 1</span><span>Acesso à água em territórios vulneráveis — cisternas, sistemas alternativos, gestão comunitária</span></div>
       <div class="card-detail"><span class="card-detail-label">Eixo 2</span><span>Infraestrutura verde e azul — recuperação de nascentes, parques lineares, drenagem sustentável</span></div>
       <div class="card-detail"><span class="card-detail-label">Transversal</span><span>Educação, governança e inovação social em água (obrigatório)</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Comunidades sem acesso a água tratada, assentamentos informais, áreas de risco — alta aderência ao AP</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Comunidades sem acesso a água tratada, assentamentos informais — alta aderência ao Amapá</span></div>
       <a class="card-link" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/chamadas-abertas/Documents/Regulamento_Agua_Cidades_Chamada_002_2026.pdf" target="_blank">Ver regulamento ↗</a>
-    </div>
-
-    <!-- Secom Dom Phillips -->
-    <div class="card card-aberto">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Secretaria de Comunicação Social</div>
-          <div class="card-programa">Prêmio Dom Phillips e Bruno Pereira</div>
-        </div>
-        <span class="badge badge-aberto">Aberto</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">21/05/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas físicas</span></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Jornalismo investigativo, comunicação popular e educação midiática — proteção ambiental e direitos indígenas</span></div>
-      <a class="card-link" href="https://www.gov.br/secom/pt-br/assuntos/concurso-dom-phillips-e-bruno-pereira/edital" target="_blank">Ver edital ↗</a>
     </div>
 
     <!-- SECULT Amapá -->
@@ -489,10 +388,10 @@
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Inscrições</span><span class="prazo-azul">01/06 a 30/06/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Total</span><span><strong>R$10 milhões</strong> · 466 projetos selecionados</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valores</span><span>Categoria A: R$10k · B: R$20k · C: R$30k · Mostras A: R$80k · Mostras B: R$120k</span></div>
-      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>Residência mínima 2 anos AP (PF) ou 3 anos (PJ). Conta corrente no Banco do Brasil. Pontuação mínima 25/50 pts.</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valores</span><span>Cat. A: R$10k · B: R$20k · C: R$30k · Mostras A: R$80k · Mostras B: R$120k</span></div>
+      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>Residência mínima 2 anos AP (PF) ou 3 anos (PJ). Conta corrente no Banco do Brasil</span></div>
       <div class="card-detail"><span class="card-detail-label">Cotas</span><span>20% negros/quilombolas/ribeirinhos · 12% novos talentos · 10% indígenas · 5% PcD</span></div>
-      <div class="card-detail"><span class="card-detail-label">Segmentos</span><span>18 segmentos: Teatro, Música, Dança, Audiovisual, Cultura Indígena, Marabaixo, Afro-brasileira, Hip-Hop, Circo e mais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Segmentos</span><span>18: Teatro, Música, Dança, Audiovisual, Cultura Indígena, Marabaixo, Afro, Hip-Hop, Circo e mais</span></div>
       <a class="card-link" href="https://matrix.amapa.gov.br/storage/publications/40/063124-EDITAL%20001_2026_FEC_SECULT_DEMANDA_ESPONTANEA_.pdf" target="_blank">Ver edital completo ↗</a>
     </div>
 
@@ -525,6 +424,7 @@
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 31/08/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span>Projetos no Norte têm maior pontuação no mérito</span></div>
       <div class="card-detail"><span class="card-detail-label">Diferencial</span><span>Maior nota para cooperativas de catadores, extrativistas, agricultores familiares e povos tradicionais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ; ICTs obrigatórias; contrapartida obrigatória</span></div>
       <a class="card-link" href="http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Regulamento.pdf" target="_blank">Regulamento ↗</a>
     </div>
 
@@ -541,6 +441,8 @@
       <div class="card-detail"><span class="card-detail-label">Período</span><span class="prazo-verde">02/01 a 03/10/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Cobertura</span><span>60% do projeto; abaixo de R$200 mil pode ser maior</span></div>
       <div class="card-detail"><span class="card-detail-label">Foco Amapá</span><span>Turismo, cultura indígena, gastronomia regional</span></div>
+      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ apenas; 60 dias de antecedência</span></div>
+      <div class="card-detail"><span class="card-detail-label">Evento</span><span><strong>Visit Brazil Summit 2026</strong> — confirmado</span></div>
       <a class="card-link" href="https://patrocinio.embratur.com.br/wp-content/uploads/2026/01/Edital-de-Selecao-Publica-de-Patrocinios-2026-1.pdf" target="_blank">Edital ↗</a>
       <a class="card-link" href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank">Visit Brazil Summit ↗</a>
     </div>
@@ -572,6 +474,7 @@
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-teal">Cadastro aberto o ano todo</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas jurídicas. Possibilidade para organizações não formais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Modelo</span><span>Produção e oferta de refeições — própria ou apoiando outras cozinhas solidárias</span></div>
       <a class="card-link" href="https://cozinhasolidaria.digital/" target="_blank">Fazer cadastro ↗</a>
       <a class="card-link" href="https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-cozinha-solidaria/programa-cozinha-solidaria" target="_blank">Saber mais ↗</a>
     </div>
@@ -605,7 +508,7 @@
         <span class="badge badge-verificar">Verificar</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Bioeconomia, conservação e uso sustentável da biodiversidade</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Bioeconomia, conservação e uso sustentável da biodiversidade amazônica</span></div>
       <a class="card-link" href="https://www.expertisefrance.fr/en/projects/amabio" target="_blank">Ver projeto ↗</a>
     </div>
     <div class="card card-verificar">
@@ -643,7 +546,7 @@
           <td><div class="td-fonte">Petrobras</div></td>
           <td>Petrobras Socioambiental</td>
           <td><span class="badge badge-fechado">Sem edital</span></td>
-          <td class="td-obs">Monitorar próximo ciclo</td>
+          <td class="td-obs">Monitorar próximo ciclo. Alta relevância socioambiental</td>
           <td><a class="card-link" style="margin-top:0" href="https://bussola.blob.core.windows.net/bussola/conta/50/edital/394/2e29b4d8fe19dc647dc383d3a1105fe9.pdf" target="_blank">Ver ↗</a></td>
         </tr>
         <tr>
@@ -664,28 +567,35 @@
           <td><div class="td-fonte">Banco do Brasil</div></td>
           <td>Fundação Banco do Brasil</td>
           <td><span class="badge badge-fechado">Sem edital</span></td>
-          <td class="td-obs">Tecnologia social, economia solidária</td>
+          <td class="td-obs">Tecnologia social, economia solidária, desenvolvimento territorial</td>
           <td><a class="card-link" style="margin-top:0" href="https://fbb.org.br/" target="_blank">Ver ↗</a></td>
+        </tr>
+        <tr>
+          <td><div class="td-fonte">BNDES</div></td>
+          <td>Fundo Socioambiental / Periferias / Bioinsumos</td>
+          <td><span class="badge badge-fechado">Amazônia Viva encerrado</span></td>
+          <td class="td-obs">Monitorar próximo ciclo — alta relevância para ONGs e cooperativas do AP</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.bndes.gov.br" target="_blank">Ver BNDES ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Banco da Amazônia (BASA)</div></td>
           <td>FNO + Patrocínios</td>
           <td><span class="badge badge-verificar">Outubro/2026</span></td>
-          <td class="td-obs">⚠️ Edital geralmente abre em outubro — monitorar com antecedência</td>
+          <td class="td-obs">⚠️ Edital geralmente abre em outubro — monitorar com antecedência. Estratégico para municípios e cooperativas</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.bancoamazonia.com.br/" target="_blank">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Caixa Econômica Federal</div></td>
           <td>Fundo Socioambiental (próxima chamada)</td>
           <td><span class="badge badge-verificar">Outubro/2026</span></td>
-          <td class="td-obs">⚠️ Próximos prazos em meados de outubro — acompanhar</td>
+          <td class="td-obs">⚠️ Próximos prazos em meados de outubro — acompanhar com antecedência</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/chamadas-abertas/Paginas/default.aspx" target="_blank">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Ministério do Esporte</div></td>
           <td>Lei de Incentivo ao Esporte</td>
           <td><span class="badge badge-fechado">Monitorar</span></td>
-          <td class="td-obs">Projetos esportivos em comunidades e periferias do AP</td>
+          <td class="td-obs">Projetos esportivos em comunidades, escolas e periferias do AP</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/esporte/pt-br/acoes-e-programas/lei-de-incentivo-ao-esporte" target="_blank">Ver ↗</a></td>
         </tr>
         <tr>
@@ -699,15 +609,8 @@
           <td><div class="td-fonte">Vale</div></td>
           <td>Lei Rouanet / Audiovisual</td>
           <td><span class="badge badge-aberto">Maio–Nov</span></td>
-          <td class="td-obs">Lei Rouanet e Audiovisual maio–novembro. Recursos próprios o ano todo</td>
-          <td><a class="card-link" style="margin-top:0" href="https://institutoculturalvale.org" target="_blank">Ver ↗</a></td>
-        </tr>
-        <tr>
-          <td><div class="td-fonte">ABDI (edital anterior)</div></td>
-          <td>Micro e Pequenas Empresas</td>
-          <td><span class="badge badge-verificar">Verificar status</span></td>
-          <td class="td-obs">Edital previsto para 02/04 às 9h30 — verificar publicação</td>
-          <td><a class="card-link" style="margin-top:0" href="https://www.instagram.com/p/DWi3KNJjyNG/" target="_blank">Ver ↗</a></td>
+          <td class="td-obs">Lei Rouanet e Audiovisual abertos de maio a novembro. Recursos próprios o ano todo</td>
+          <td><a class="card-link" style="margin-top:0" href="https://institutoculturalvale.org" target="_blank">Ver ICV ↗</a></td>
         </tr>
       </tbody>
     </table>
@@ -718,19 +621,19 @@
     <div class="highlight-icon">🌿</div>
     <div>
       <div class="highlight-title">Estratégia de posicionamento — Amapá tem vantagem competitiva</div>
-      <div class="highlight-desc">O Amapá reúne características únicas que aumentam pontuação e elegibilidade em editais nacionais e internacionais: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas, quilombolas, comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. As novas chamadas da CEF (Água nas Cidades e Cidadania Financeira), o UNAIDS e a SECULT Amapá abrem frentes locais e temáticas com grande aderência ao estado.</div>
+      <div class="highlight-desc">O Amapá reúne características únicas que aumentam elegibilidade em editais nacionais e internacionais: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas e quilombolas, comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. A SECULT AP é uma oportunidade local estratégica — com R$10M e cotas específicas para indígenas e quilombolas do estado.</div>
       <div class="highlight-pills">
-        <span class="highlight-pill green">Bioeconomia</span>
+        <span class="highlight-pill green">Cultura Local AP</span>
         <span class="highlight-pill green">Povos Indígenas</span>
         <span class="highlight-pill green">Quilombolas</span>
         <span class="highlight-pill green">Agricultura Familiar</span>
         <span class="highlight-pill green">Saúde Comunitária</span>
         <span class="highlight-pill green">Água e Saneamento</span>
-        <span class="highlight-pill green">Cultura Local AP</span>
-        <span class="highlight-pill">UNESCO · Diversidade Cultural</span>
-        <span class="highlight-pill">Educação Financeira</span>
-        <span class="highlight-pill">Justiça Climática</span>
-        <span class="highlight-pill">E-Commerce · Inovação</span>
+        <span class="highlight-pill">Bioeconomia</span>
+        <span class="highlight-pill">Jornalismo e Pesquisa</span>
+        <span class="highlight-pill">Economia Circular</span>
+        <span class="highlight-pill">Turismo Sustentável</span>
+        <span class="highlight-pill">Segurança Alimentar</span>
         <span class="highlight-pill">Cooperação Internacional</span>
       </div>
     </div>
