@@ -14,8 +14,8 @@
     --vermelho: #CC2222; --vermelho-fundo: #FDEAEA;
     --roxo: #7C3AED; --roxo-fundo: #F3EFFE;
     --teal: #0D9488; --teal-fundo: #F0FDFA;
-    --indigo: #4338CA; --indigo-fundo: #EEF2FF;
     --laranja: #EA580C; --laranja-fundo: #FFF7ED;
+    --dourado: #B45309; --dourado-fundo: #FFFBEB;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', sans-serif; background: var(--cinza-bg); color: var(--navy); }
@@ -57,6 +57,7 @@
   .card-local { border-color: #90C8F0; }
   .card-agua::before { background: linear-gradient(90deg, #0284C7, #0D9488); }
   .card-saude::before { background: linear-gradient(90deg, #DC2626, #9333EA); }
+  .card-idoso::before { background: linear-gradient(90deg, var(--dourado), #D97706); }
   .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; gap: 10px; }
   .card-fonte { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); }
   .card-programa { font-size: 12.5px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.4; }
@@ -67,6 +68,7 @@
   .prazo-vermelho { color: var(--vermelho); font-weight: 700; }
   .prazo-teal { color: var(--teal); font-weight: 700; }
   .prazo-azul { color: var(--azul); font-weight: 700; }
+  .prazo-dourado { color: var(--dourado); font-weight: 700; }
   .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
   .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
   .badge-urgente { background: var(--vermelho-fundo); color: var(--vermelho); animation: pulse 2s infinite; }
@@ -85,36 +87,35 @@
   .badge-saude::before { background: #DC2626; }
   .badge-agua { background: #E0F2FE; color: #0369A1; }
   .badge-agua::before { background: #0284C7; }
+  .badge-idoso { background: var(--dourado-fundo); color: var(--dourado); }
+  .badge-idoso::before { background: var(--dourado); }
+  .badge-novo { background: var(--azul-fundo); color: var(--azul-escuro); }
+  .badge-novo::before { background: var(--azul); }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
   .card-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--azul); text-decoration: none; margin-top: 10px; margin-right: 6px; padding: 6px 12px; background: var(--azul-fundo); border-radius: 8px; transition: background 0.15s; }
   .card-link:hover { background: #D0DCF8; }
-
-  /* URGENTES */
   .urgentes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin-bottom: 32px; }
   .urgente-card { background: white; border-radius: 14px; border: 2px solid #FFAAAA; background: #FFF8F8; padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px; }
   .urgente-card.agua { border-color: #BAE6FD; background: #F0F9FF; }
   .urgente-card.saude { border-color: #FECACA; background: #FFF5F5; }
+  .urgente-card.idoso { border-color: #FDE68A; background: #FFFBEB; }
   .urgente-icon { font-size: 28px; flex-shrink: 0; }
   .urgente-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); }
   .urgente-prazo { font-size: 22px; font-weight: 800; font-family: 'Sora', sans-serif; color: var(--vermelho); margin: 4px 0; }
   .urgente-prazo.azul { color: var(--azul); }
   .urgente-prazo.roxo { color: #7C3AED; }
+  .urgente-prazo.dourado { color: var(--dourado); }
   .urgente-desc { font-size: 12px; color: var(--cinza-texto); line-height: 1.5; }
-
-  /* DESTAQUE LOCAL */
   .local-box { background: linear-gradient(135deg, #0D3EA3 0%, #0FA034 100%); border-radius: 18px; padding: 26px 36px; margin-bottom: 32px; display: flex; align-items: center; gap: 24px; }
   .local-box-icon { font-size: 36px; flex-shrink: 0; }
   .local-box-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 18px; color: white; margin-bottom: 6px; }
   .local-box-desc { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; }
   .local-box-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
   .local-box-pill { background: rgba(255,255,255,0.2); color: white; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
-
-  /* ALERTAS */
   .alerta-row { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
   .alerta-card { flex: 1; min-width: 180px; background: white; border-radius: 14px; border: 1.5px solid var(--borda); padding: 14px 16px; display: flex; align-items: flex-start; gap: 10px; }
   .alerta-card.prazo { border-color: #90D9AA; background: #F4FDF7; }
   .alerta-card.evento { border-color: #90C0F0; background: #F5F9FF; }
-  .alerta-card.roxo { border-color: #C4A8F8; background: #FAF5FF; }
   .alerta-card.teal { border-color: #99D6D0; background: #F0FDFA; }
   .alerta-card.amarelo { border-color: #FCD34D; background: #FFFBEB; }
   .alerta-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
@@ -122,10 +123,7 @@
   .alerta-desc { font-size: 11px; color: var(--cinza-texto); margin-top: 2px; line-height: 1.5; }
   .alerta-date { font-weight: 700; color: var(--verde-escuro); }
   .alerta-date.azul { color: var(--azul); }
-  .alerta-date.roxo { color: var(--roxo); }
   .alerta-date.teal { color: var(--teal); }
-
-  /* HIGHLIGHT */
   .highlight-box { background: linear-gradient(135deg, var(--navy) 0%, #1338A0 100%); border-radius: 18px; padding: 30px 36px; margin-bottom: 40px; display: flex; align-items: center; gap: 28px; }
   .highlight-icon { width: 64px; height: 64px; background: rgba(24,212,75,0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
   .highlight-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: white; margin-bottom: 8px; }
@@ -133,8 +131,6 @@
   .highlight-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .highlight-pill { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 12px; padding: 4px 12px; border-radius: 20px; }
   .highlight-pill.green { background: rgba(24,212,75,0.25); color: var(--verde); }
-
-  /* TABLE */
   .table-card { background: white; border-radius: 16px; border: 1.5px solid var(--borda); overflow: hidden; margin-bottom: 40px; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   thead th { background: var(--cinza-bg); color: var(--cinza-texto); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px; padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--borda); }
@@ -143,7 +139,6 @@
   tbody tr:hover td { background: #F8FAFF; }
   .td-fonte { font-weight: 600; }
   .td-obs { font-size: 12px; color: var(--cinza-texto); max-width: 200px; line-height: 1.4; }
-
   .footer-stripe { height: 4px; background: linear-gradient(90deg, var(--azul), var(--verde)); }
   footer { background: var(--navy); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; }
   .footer-text { font-size: 12px; color: rgba(255,255,255,0.4); }
@@ -163,7 +158,7 @@
       </div>
     </div>
     <div style="text-align:right">
-      <div style="font-size:12px;color:rgba(255,255,255,0.4)">Atualizado em 12 de maio de 2026</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4)">Atualizado em 20 de maio de 2026</div>
       <div class="header-tag">✦ Mapeamento Ativo</div>
     </div>
   </div>
@@ -171,7 +166,7 @@
     <div class="metrics-grid">
       <div class="metric-card">
         <div class="metric-label">Fontes mapeadas</div>
-        <div class="metric-value">30</div>
+        <div class="metric-value">31</div>
         <div class="metric-sub">Editais, patrocínios e programas</div>
       </div>
       <div class="metric-card">
@@ -181,8 +176,8 @@
       </div>
       <div class="metric-card">
         <div class="metric-label">Prazos urgentes</div>
-        <div class="metric-value red">3</div>
-        <div class="metric-sub">Vale 15/05 · Secom/UNAIDS/CEF Água 21–22/05</div>
+        <div class="metric-value red">4</div>
+        <div class="metric-sub">Secom 21/05 · UNAIDS/CEF 22/05 · Itaú 12/06</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Edital local — Amapá</div>
@@ -214,27 +209,17 @@
   <!-- URGENTES -->
   <div class="section-header">
     <div class="section-title">🚨 Ação imediata — prazos iminentes</div>
-    <span class="section-pill pill-vermelho">3 oportunidades</span>
+    <span class="section-pill pill-vermelho">4 oportunidades</span>
   </div>
 
   <div class="urgentes-grid">
 
     <div class="urgente-card">
-      <div class="urgente-icon">💎</div>
-      <div>
-        <div class="urgente-title">Vale — Instituto Cultural Vale</div>
-        <div class="urgente-prazo">15/05/2026</div>
-        <div class="urgente-desc">Chamada aberta. <strong>Lei Rouanet e Audiovisual</strong> de maio a novembro. Recursos próprios o ano todo.</div>
-        <a class="card-link" href="https://institutoculturalvale.org/wp-content/uploads/2026/04/Regulamento-Chamada-Instituto-Cultural-Vale-2026-16-Abr-2026-14h50.pdf" target="_blank" style="margin-top:10px">Ver regulamento ↗</a>
-      </div>
-    </div>
-
-    <div class="urgente-card">
       <div class="urgente-icon">🎙️</div>
       <div>
         <div class="urgente-title">Secom — Prêmio Dom Phillips e Bruno Pereira</div>
-        <div class="urgente-prazo roxo">21/05/2026</div>
-        <div class="urgente-desc">Pessoas físicas. Jornalismo investigativo, comunicação popular e educação midiática voltados à proteção ambiental e direitos indígenas.</div>
+        <div class="urgente-prazo roxo" style="color:#7C3AED">21/05/2026</div>
+        <div class="urgente-desc">Pessoas físicas. Jornalismo investigativo, comunicação popular — proteção ambiental e direitos indígenas. <strong>Prazo amanhã!</strong></div>
         <a class="card-link" href="https://www.gov.br/secom/pt-br/assuntos/concurso-dom-phillips-e-bruno-pereira/edital" target="_blank" style="margin-top:10px">Ver edital ↗</a>
       </div>
     </div>
@@ -244,8 +229,28 @@
       <div>
         <div class="urgente-title">UNAIDS + Min. Saúde — OSCs HIV/AIDS/TB</div>
         <div class="urgente-prazo azul">22/05/2026</div>
-        <div class="urgente-desc">OSCs com CNPJ ativo 1+ ano. Até <strong>R$100.000</strong> por proposta · 10 propostas selecionadas. HIV/AIDS, TB, Hepatites, IST e Micoses Endêmicas.</div>
+        <div class="urgente-desc">OSCs com CNPJ 1+ ano. Até <strong>R$100.000</strong> por proposta · 10 selecionadas. HIV/AIDS, TB, Hepatites, IST e Micoses Endêmicas.</div>
         <a class="card-link" href="https://unaids.org.br/2026/04/unaids-publica-edital-para-selecao-de-projetos-focados-no-desenvolvimento-de-acoes-de-base-comunitaria/" target="_blank" style="margin-top:10px">Ver edital ↗</a>
+      </div>
+    </div>
+
+    <div class="urgente-card agua">
+      <div class="urgente-icon">💧</div>
+      <div>
+        <div class="urgente-title">CEF 002/2026 — Água nas Cidades</div>
+        <div class="urgente-prazo azul">22/05/2026</div>
+        <div class="urgente-desc">ONGs 2+ anos. Gestão hídrica urbana — cisternas, infraestrutura verde, drenagem sustentável. 24–36 meses.</div>
+        <a class="card-link" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/chamadas-abertas/Documents/Regulamento_Agua_Cidades_Chamada_002_2026.pdf" target="_blank" style="margin-top:10px">Ver regulamento ↗</a>
+      </div>
+    </div>
+
+    <div class="urgente-card idoso">
+      <div class="urgente-icon">👴</div>
+      <div>
+        <div class="urgente-title">Itaú Viver Mais — Pessoa Idosa (50+)</div>
+        <div class="urgente-prazo dourado">12/06/2026</div>
+        <div class="urgente-desc">OSCs 2+ anos. Projetos aprovados em Fundo Municipal, Estadual ou Nacional de Direitos da Pessoa Idosa. Categorias A (até R$200k), B (até R$800k) e C (acima de R$800k).</div>
+        <a class="card-link" href="#" style="margin-top:10px">Ver edital ↗</a>
       </div>
     </div>
 
@@ -253,13 +258,6 @@
 
   <!-- ALERTAS -->
   <div class="alerta-row">
-    <div class="alerta-card agua" style="border-color:#BAE6FD;background:#F0F9FF">
-      <div class="alerta-icon">💧</div>
-      <div>
-        <div class="alerta-title">CEF 002/2026 — Água nas Cidades</div>
-        <div class="alerta-desc">Até <span class="alerta-date azul">22/05/2026</span>. ONGs 2+ anos. Gestão hídrica urbana. 24–36 meses.</div>
-      </div>
-    </div>
     <div class="alerta-card amarelo">
       <div class="alerta-icon">🎭</div>
       <div>
@@ -305,22 +303,6 @@
 
   <div class="cards-grid">
 
-    <!-- Vale -->
-    <div class="card card-urgente">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Vale — Instituto Cultural Vale</div>
-          <div class="card-programa">Chamada 2026 — Leis de Incentivo e Patrocínio</div>
-        </div>
-        <span class="badge badge-urgente">15/05</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">Até 15/05/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Lei Rouanet</span><span>Maio a novembro — audiovisual incluído</span></div>
-      <div class="card-detail"><span class="card-detail-label">Recursos próprios</span><span>Disponíveis o ano todo — contato direto com a Vale</span></div>
-      <a class="card-link" href="https://institutoculturalvale.org/wp-content/uploads/2026/04/Regulamento-Chamada-Instituto-Cultural-Vale-2026-16-Abr-2026-14h50.pdf" target="_blank">Ver regulamento ↗</a>
-    </div>
-
     <!-- Secom Dom Phillips -->
     <div class="card card-urgente">
       <div class="card-header">
@@ -328,13 +310,13 @@
           <div class="card-fonte">Secretaria de Comunicação Social</div>
           <div class="card-programa">Prêmio Dom Phillips e Bruno Pereira</div>
         </div>
-        <span class="badge badge-urgente">21/05</span>
+        <span class="badge badge-urgente">21/05 ⚡</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">21/05/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">21/05/2026 — amanhã!</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas físicas</span></div>
       <div class="card-detail"><span class="card-detail-label">Foco</span><span>Jornalismo investigativo, comunicação popular e educação midiática — proteção ambiental e direitos indígenas e comunidades tradicionais</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Alto alinhamento com a realidade amazônica e povos indígenas do Amapá</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Alto alinhamento com realidade amazônica e povos indígenas do Amapá</span></div>
       <a class="card-link" href="https://www.gov.br/secom/pt-br/assuntos/concurso-dom-phillips-e-bruno-pereira/edital" target="_blank">Ver edital ↗</a>
     </div>
 
@@ -350,8 +332,8 @@
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">Até 22/05/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>R$100.000</strong> por proposta · 10 propostas selecionadas</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs com sede no Brasil e CNPJ ativo há 1+ ano</span></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>HIV/AIDS, Tuberculose, Hepatites Virais, HTLV, IST e Micoses Endêmicas — ações lideradas pelas comunidades</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs com CNPJ ativo há 1+ ano</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>HIV/AIDS, Tuberculose, Hepatites Virais, HTLV, IST e Micoses Endêmicas</span></div>
       <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Comunidades ribeirinhas, indígenas e periferias com vulnerabilidade sanitária</span></div>
       <a class="card-link" href="https://unaids.org.br/2026/04/unaids-publica-edital-para-selecao-de-projetos-focados-no-desenvolvimento-de-acoes-de-base-comunitaria/" target="_blank">Ver edital ↗</a>
     </div>
@@ -369,11 +351,29 @@
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">Até 22/05/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Duração</span><span>24 a 36 meses</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>ONGs, associações e cooperativas sociais com 2+ anos e experiência comprovada</span></div>
-      <div class="card-detail"><span class="card-detail-label">Eixo 1</span><span>Acesso à água em territórios vulneráveis — cisternas, sistemas alternativos, gestão comunitária</span></div>
-      <div class="card-detail"><span class="card-detail-label">Eixo 2</span><span>Infraestrutura verde e azul — recuperação de nascentes, parques lineares, drenagem sustentável</span></div>
-      <div class="card-detail"><span class="card-detail-label">Transversal</span><span>Educação, governança e inovação social em água (obrigatório)</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Comunidades sem acesso a água tratada, assentamentos informais — alta aderência ao Amapá</span></div>
+      <div class="card-detail"><span class="card-detail-label">Eixo 1</span><span>Acesso à água — cisternas, sistemas alternativos, gestão comunitária</span></div>
+      <div class="card-detail"><span class="card-detail-label">Eixo 2</span><span>Infraestrutura verde e azul — recuperação de nascentes, drenagem sustentável</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Comunidades sem acesso a água tratada e assentamentos informais — alta aderência</span></div>
       <a class="card-link" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/chamadas-abertas/Documents/Regulamento_Agua_Cidades_Chamada_002_2026.pdf" target="_blank">Ver regulamento ↗</a>
+    </div>
+
+    <!-- Itaú Viver Mais -->
+    <div class="card card-idoso">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Itaú Viver Mais</div>
+          <div class="card-programa">Projetos Sociais para Pessoa Idosa (50+)</div>
+        </div>
+        <span class="badge badge-idoso">Novo ✦</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-dourado">12/06/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs de direito privado, sem fins lucrativos, com 2+ anos. Projeto deve estar aprovado por Fundo Municipal, Estadual ou Nacional de Direitos da Pessoa Idosa</span></div>
+      <div class="card-detail"><span class="card-detail-label">Categorias</span><span>A: até R$199.999 · B: R$200 mil–R$799.999 · C: acima de R$800 mil</span></div>
+      <div class="card-detail"><span class="card-detail-label">Requisito chave</span><span>Aprovação e autorização expressa do Fundo — enviar documento comprobatório na inscrição</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Projetos sociais para pessoas com 50 anos ou mais — saúde, autonomia, cultura, convivência</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>OSCs que já atuam com idosos e tenham projeto aprovado em Conselho Municipal ou Estadual do AP</span></div>
+      <a class="card-link" href="https://www.itau.com.br/viver-mais" target="_blank">Ver edital ↗</a>
     </div>
 
     <!-- SECULT Amapá -->
@@ -441,7 +441,6 @@
       <div class="card-detail"><span class="card-detail-label">Período</span><span class="prazo-verde">02/01 a 03/10/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Cobertura</span><span>60% do projeto; abaixo de R$200 mil pode ser maior</span></div>
       <div class="card-detail"><span class="card-detail-label">Foco Amapá</span><span>Turismo, cultura indígena, gastronomia regional</span></div>
-      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ apenas; 60 dias de antecedência</span></div>
       <div class="card-detail"><span class="card-detail-label">Evento</span><span><strong>Visit Brazil Summit 2026</strong> — confirmado</span></div>
       <a class="card-link" href="https://patrocinio.embratur.com.br/wp-content/uploads/2026/01/Edital-de-Selecao-Publica-de-Patrocinios-2026-1.pdf" target="_blank">Edital ↗</a>
       <a class="card-link" href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank">Visit Brazil Summit ↗</a>
@@ -474,7 +473,6 @@
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-teal">Cadastro aberto o ano todo</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas jurídicas. Possibilidade para organizações não formais</span></div>
-      <div class="card-detail"><span class="card-detail-label">Modelo</span><span>Produção e oferta de refeições — própria ou apoiando outras cozinhas solidárias</span></div>
       <a class="card-link" href="https://cozinhasolidaria.digital/" target="_blank">Fazer cadastro ↗</a>
       <a class="card-link" href="https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-cozinha-solidaria/programa-cozinha-solidaria" target="_blank">Saber mais ↗</a>
     </div>
@@ -533,7 +531,7 @@
   <!-- MONITORAMENTO -->
   <div class="section-header">
     <div class="section-title">◌ Fontes sem edital aberto — monitoramento contínuo</div>
-    <span class="section-pill pill-azul">10 fontes</span>
+    <span class="section-pill pill-azul">11 fontes</span>
   </div>
 
   <div class="table-card">
@@ -572,16 +570,16 @@
         </tr>
         <tr>
           <td><div class="td-fonte">BNDES</div></td>
-          <td>Fundo Socioambiental / Periferias / Bioinsumos</td>
-          <td><span class="badge badge-fechado">Amazônia Viva encerrado</span></td>
-          <td class="td-obs">Monitorar próximo ciclo — alta relevância para ONGs e cooperativas do AP</td>
-          <td><a class="card-link" style="margin-top:0" href="https://www.bndes.gov.br" target="_blank">Ver BNDES ↗</a></td>
+          <td>Patrocínios e próximos ciclos</td>
+          <td><span class="badge badge-fechado">Sem edital aberto</span></td>
+          <td class="td-obs">Amazônia Viva encerrado em 03/05. Monitorar próximos editais socioambientais</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.bndes.gov.br" target="_blank">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Banco da Amazônia (BASA)</div></td>
           <td>FNO + Patrocínios</td>
           <td><span class="badge badge-verificar">Outubro/2026</span></td>
-          <td class="td-obs">⚠️ Edital geralmente abre em outubro — monitorar com antecedência. Estratégico para municípios e cooperativas</td>
+          <td class="td-obs">⚠️ Edital geralmente abre em outubro — monitorar com antecedência</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.bancoamazonia.com.br/" target="_blank">Ver ↗</a></td>
         </tr>
         <tr>
@@ -607,10 +605,17 @@
         </tr>
         <tr>
           <td><div class="td-fonte">Vale</div></td>
-          <td>Lei Rouanet / Audiovisual</td>
-          <td><span class="badge badge-aberto">Maio–Nov</span></td>
-          <td class="td-obs">Lei Rouanet e Audiovisual abertos de maio a novembro. Recursos próprios o ano todo</td>
+          <td>Instituto Cultural Vale + Lei Rouanet</td>
+          <td><span class="badge badge-fechado">Chamada encerrada</span></td>
+          <td class="td-obs">Chamada ICV encerrada em 15/05. Lei Rouanet continua maio–nov. Recursos próprios o ano todo</td>
           <td><a class="card-link" style="margin-top:0" href="https://institutoculturalvale.org" target="_blank">Ver ICV ↗</a></td>
+        </tr>
+        <tr>
+          <td><div class="td-fonte">Itaú</div></td>
+          <td>Viver Mais — Pessoa Idosa</td>
+          <td><span class="badge badge-aberto">Aberto até 12/06</span></td>
+          <td class="td-obs">Projetos aprovados em Fundo de Direitos da Pessoa Idosa. Até R$800k+</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.itau.com.br/viver-mais" target="_blank">Ver ↗</a></td>
         </tr>
       </tbody>
     </table>
@@ -621,12 +626,12 @@
     <div class="highlight-icon">🌿</div>
     <div>
       <div class="highlight-title">Estratégia de posicionamento — Amapá tem vantagem competitiva</div>
-      <div class="highlight-desc">O Amapá reúne características únicas que aumentam elegibilidade em editais nacionais e internacionais: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas e quilombolas, comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. A SECULT AP é uma oportunidade local estratégica — com R$10M e cotas específicas para indígenas e quilombolas do estado.</div>
+      <div class="highlight-desc">O Amapá reúne características únicas que aumentam elegibilidade em editais nacionais e internacionais: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas e quilombolas, comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. A SECULT AP abre em junho — com R$10M e cotas específicas para indígenas e quilombolas, é a maior oportunidade local do ano.</div>
       <div class="highlight-pills">
         <span class="highlight-pill green">Cultura Local AP</span>
         <span class="highlight-pill green">Povos Indígenas</span>
         <span class="highlight-pill green">Quilombolas</span>
-        <span class="highlight-pill green">Agricultura Familiar</span>
+        <span class="highlight-pill green">Pessoa Idosa</span>
         <span class="highlight-pill green">Saúde Comunitária</span>
         <span class="highlight-pill green">Água e Saneamento</span>
         <span class="highlight-pill">Bioeconomia</span>
