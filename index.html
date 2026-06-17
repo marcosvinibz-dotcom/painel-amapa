@@ -54,7 +54,8 @@
   .card-verificar::before { background: var(--amarelo); }
   .card-local::before { background: linear-gradient(90deg, var(--verde), var(--azul)); }
   .card-local { border-color: #90C8F0; }
-  .card-idoso::before { background: linear-gradient(90deg, var(--dourado), #D97706); }
+  .card-mapfre::before { background: linear-gradient(90deg, #991B1B, #C2410C); }
+  .card-mapfre { border-color: #FCA5A5; }
   .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; gap: 10px; }
   .card-fonte { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); }
   .card-programa { font-size: 12.5px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.4; }
@@ -80,33 +81,37 @@
   .badge-verificar::before { background: var(--amarelo); }
   .badge-local { background: linear-gradient(90deg, var(--verde-fundo), var(--azul-fundo)); color: var(--azul-escuro); }
   .badge-local::before { background: var(--azul); }
-  .badge-idoso { background: var(--dourado-fundo); color: var(--dourado); }
-  .badge-idoso::before { background: var(--dourado); }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
   .card-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--azul); text-decoration: none; margin-top: 10px; margin-right: 6px; padding: 6px 12px; background: var(--azul-fundo); border-radius: 8px; transition: background 0.15s; }
   .card-link:hover { background: #D0DCF8; }
-  .urgente-card { background: white; border-radius: 14px; border: 2px solid #FDE68A; background: #FFFBEB; padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px; margin-bottom: 32px; }
-  .urgente-icon { font-size: 32px; flex-shrink: 0; }
-  .urgente-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); }
-  .urgente-prazo { font-size: 24px; font-weight: 800; font-family: 'Sora', sans-serif; color: var(--dourado); margin: 4px 0; }
-  .urgente-desc { font-size: 12.5px; color: var(--cinza-texto); line-height: 1.6; margin-top: 4px; }
+  .urgentes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin-bottom: 32px; }
+  .urgente-card { background: white; border-radius: 14px; border: 2px solid #FFAAAA; background: #FFF8F8; padding: 20px 22px; display: flex; align-items: flex-start; gap: 16px; }
+  .urgente-card.azul { border-color: #BFDBFE; background: #EFF6FF; }
+  .urgente-icon { font-size: 30px; flex-shrink: 0; }
+  .urgente-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); }
+  .urgente-prazo { font-size: 22px; font-weight: 800; font-family: 'Sora', sans-serif; color: var(--vermelho); margin: 4px 0; }
+  .urgente-prazo.azul { color: var(--azul); }
+  .urgente-desc { font-size: 12px; color: var(--cinza-texto); line-height: 1.5; }
+  .norte-tag { display: inline-block; background: rgba(24,212,75,0.15); color: var(--verde-escuro); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px; margin-top: 6px; }
   .local-box { background: linear-gradient(135deg, #0D3EA3 0%, #0FA034 100%); border-radius: 18px; padding: 26px 36px; margin-bottom: 32px; display: flex; align-items: center; gap: 24px; }
   .local-box-icon { font-size: 36px; flex-shrink: 0; }
   .local-box-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 18px; color: white; margin-bottom: 6px; }
   .local-box-desc { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; }
   .local-box-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
   .local-box-pill { background: rgba(255,255,255,0.2); color: white; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
-  .alerta-row { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
-  .alerta-card { flex: 1; min-width: 180px; background: white; border-radius: 14px; border: 1.5px solid var(--borda); padding: 14px 16px; display: flex; align-items: flex-start; gap: 10px; }
+  .alerta-row { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+  .alerta-card { flex: 1; min-width: 160px; background: white; border-radius: 12px; border: 1.5px solid var(--borda); padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; }
   .alerta-card.prazo { border-color: #90D9AA; background: #F4FDF7; }
   .alerta-card.evento { border-color: #90C0F0; background: #F5F9FF; }
   .alerta-card.teal { border-color: #99D6D0; background: #F0FDFA; }
-  .alerta-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-  .alerta-title { font-weight: 700; font-size: 12px; color: var(--navy); }
-  .alerta-desc { font-size: 11px; color: var(--cinza-texto); margin-top: 2px; line-height: 1.5; }
+  .alerta-card.roxo { border-color: #C4A8F8; background: #FAF5FF; }
+  .alerta-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .alerta-title { font-weight: 700; font-size: 11.5px; color: var(--navy); }
+  .alerta-desc { font-size: 10.5px; color: var(--cinza-texto); margin-top: 2px; line-height: 1.5; }
   .alerta-date { font-weight: 700; color: var(--verde-escuro); }
   .alerta-date.azul { color: var(--azul); }
   .alerta-date.teal { color: var(--teal); }
+  .alerta-date.roxo { color: var(--roxo); }
   .highlight-box { background: linear-gradient(135deg, var(--navy) 0%, #1338A0 100%); border-radius: 18px; padding: 30px 36px; margin-bottom: 40px; display: flex; align-items: center; gap: 28px; }
   .highlight-icon { width: 64px; height: 64px; background: rgba(24,212,75,0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
   .highlight-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: white; margin-bottom: 8px; }
@@ -141,7 +146,7 @@
       </div>
     </div>
     <div style="text-align:right">
-      <div style="font-size:12px;color:rgba(255,255,255,0.4)">Atualizado em 8 de junho de 2026</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4)">Atualizado em 17 de junho de 2026</div>
       <div class="header-tag">✦ Mapeamento Ativo</div>
     </div>
   </div>
@@ -149,7 +154,7 @@
     <div class="metrics-grid">
       <div class="metric-card">
         <div class="metric-label">Fontes mapeadas</div>
-        <div class="metric-value">36</div>
+        <div class="metric-value">37</div>
         <div class="metric-sub">Editais, patrocínios e programas</div>
       </div>
       <div class="metric-card">
@@ -158,14 +163,14 @@
         <div class="metric-sub">Inscrições em andamento</div>
       </div>
       <div class="metric-card">
-        <div class="metric-label">Próximo prazo urgente</div>
-        <div class="metric-value red">12/06</div>
-        <div class="metric-sub">Itaú Viver Mais · SECULT AP aberta até 30/06</div>
+        <div class="metric-label">Prazos urgentes</div>
+        <div class="metric-value red">2</div>
+        <div class="metric-sub">SECULT AP 30/06 · FINEP Agri. 26/06</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Edital local — Amapá</div>
         <div class="metric-value amarelo">1</div>
-        <div class="metric-sub">SECULT AP · R$10M · 466 projetos · Jun/2026</div>
+        <div class="metric-sub">SECULT AP · R$10M · 466 projetos · aberto agora</div>
       </div>
     </div>
   </div>
@@ -177,97 +182,96 @@
   <div class="local-box">
     <div class="local-box-icon">⭐</div>
     <div>
-      <div class="local-box-title">Edital Local — Secretaria de Cultura do Amapá (SECULT) · Inscrições 01–30/06/2026</div>
-      <div class="local-box-desc">R$10 milhões · 466 projetos · 18 segmentos culturais. Cotas: 20% negros/quilombolas/ribeirinhos · 10% indígenas · 12% novos talentos · 5% PcD. Valores de R$10 mil a R$120 mil. Residência mínima 2 anos no AP (PF) ou 3 anos (PJ).</div>
+      <div class="local-box-title">Edital Local ABERTO — Secretaria de Cultura do Amapá (SECULT) · Inscrições até 30/06/2026</div>
+      <div class="local-box-desc">R$10 milhões · 466 projetos · 18 segmentos culturais · Inscrições abertas agora! Cotas: 20% negros/quilombolas/ribeirinhos · 10% indígenas · 12% novos talentos · 5% PcD. Valores de R$10 mil a R$120 mil. Residência mínima 2 anos no AP (PF) ou 3 anos (PJ).</div>
       <div class="local-box-pills">
         <span class="local-box-pill">Teatro · Música · Dança</span>
         <span class="local-box-pill">Cultura Indígena · Marabaixo</span>
         <span class="local-box-pill">Audiovisual · Artesanato</span>
-        <span class="local-box-pill">Mostras e Festivais</span>
+        <span class="local-box-pill">Mostras e Festivais até R$120k</span>
         <span class="local-box-pill">Cultura Afro · Hip-Hop · Circo</span>
+        <span class="local-box-pill">Resultado final: 03/08/2026</span>
       </div>
     </div>
   </div>
 
-  <!-- URGENTE -->
+  <!-- URGENTES -->
   <div class="section-header">
-    <div class="section-title">🚨 Próximo prazo — ação necessária</div>
-    <span class="section-pill pill-vermelho">1 oportunidade</span>
+    <div class="section-title">🚨 Prazos iminentes — ação necessária</div>
+    <span class="section-pill pill-vermelho">2 oportunidades</span>
   </div>
 
-  <div class="urgente-card">
-    <div class="urgente-icon">👴</div>
-    <div style="flex:1">
-      <div class="urgente-title">Itaú Viver Mais — Projetos Sociais para Pessoa Idosa (50+)</div>
-      <div class="urgente-prazo">12/06/2026</div>
-      <div class="urgente-desc">OSCs de direito privado, sem fins lucrativos, com 2+ anos. O projeto <strong>deve estar previamente aprovado por Fundo Municipal, Estadual ou Nacional de Direitos da Pessoa Idosa</strong> — enviar documento comprobatório na inscrição. Categorias: A (até R$199.999) · B (R$200k–R$799.999) · C (acima de R$800k). Sem limite de projetos selecionados.</div>
-      <a class="card-link" href="https://www.itau.com.br/viver-mais" target="_blank" style="margin-top:12px">Ver edital ↗</a>
+  <div class="urgentes-grid">
+    <div class="urgente-card">
+      <div class="urgente-icon">📋</div>
+      <div>
+        <div class="urgente-title">FINEP — Agricultura Familiar / ICTs 2026</div>
+        <div class="urgente-prazo">26/06/2026</div>
+        <div class="urgente-desc">ICTs públicas ou privadas sem fins lucrativos (3+ anos). Mínimo 30% dos recursos para ICTs executoras do Norte.</div>
+        <div class="norte-tag">✦ Bônus para o Norte</div>
+        <a class="card-link" href="http://www.finep.gov.br/images/chamadas-publicas/2026/25_03_2026_AgriFam-ICT_2026_Edital.pdf" target="_blank" style="margin-top:10px">Ver edital ↗</a>
+      </div>
+    </div>
+    <div class="urgente-card azul">
+      <div class="urgente-icon">🎭</div>
+      <div>
+        <div class="urgente-title">SECULT Amapá — Edital Cultural Local</div>
+        <div class="urgente-prazo azul">30/06/2026</div>
+        <div class="urgente-desc">R$10M · 466 projetos · Residência AP. Teatro, Música, Dança, Audiovisual, Cultura Indígena, Marabaixo e mais 12 segmentos.</div>
+        <a class="card-link" href="https://matrix.amapa.gov.br/storage/publications/40/063124-EDITAL%20001_2026_FEC_SECULT_DEMANDA_ESPONTANEA_.pdf" target="_blank" style="margin-top:10px">Ver edital ↗</a>
+      </div>
     </div>
   </div>
 
   <!-- ALERTAS -->
   <div class="alerta-row">
     <div class="alerta-card prazo">
-      <div class="alerta-icon">🎭</div>
-      <div>
-        <div class="alerta-title">SECULT Amapá — Edital Cultural</div>
-        <div class="alerta-desc">Inscrições <span class="alerta-date azul">01–30/06/2026</span>. R$10M · 466 projetos locais.</div>
-      </div>
-    </div>
-    <div class="alerta-card prazo">
-      <div class="alerta-icon">👗</div>
-      <div>
-        <div class="alerta-title">Renner — Patrocínios Culturais e Esporte</div>
-        <div class="alerta-desc"><span class="alerta-date teal">Contínuo</span>. Até 80% do projeto. Cultura via site Renner; esporte/infância/idoso via Instituto.</div>
-      </div>
-    </div>
-    <div class="alerta-card prazo">
       <div class="alerta-icon">👶</div>
       <div>
         <div class="alerta-title">Itaú FIA 2026 — Criança e Adolescente</div>
-        <div class="alerta-desc">Até <span class="alerta-date">13/07/2026</span>. Via CMDCA. Até R$500k. <strong>Bônus Norte!</strong></div>
-      </div>
-    </div>
-    <div class="alerta-card evento">
-      <div class="alerta-icon">🛵</div>
-      <div>
-        <div class="alerta-title">iFood Chega Junto</div>
-        <div class="alerta-desc">Prazo <span class="alerta-date azul">out/2026</span>. Entregadores e comunidades. Até R$1M.</div>
-      </div>
-    </div>
-    <div class="alerta-card prazo">
-      <div class="alerta-icon">📋</div>
-      <div>
-        <div class="alerta-title">FINEP — Agricultura Familiar</div>
-        <div class="alerta-desc">Até <span class="alerta-date">26/06/2026</span>. 30% dos recursos para o Norte.</div>
+        <div class="alerta-desc">Até <span class="alerta-date">13/07/2026</span>. Via CMDCA. Até R$500k. Bônus Norte!</div>
       </div>
     </div>
     <div class="alerta-card prazo">
       <div class="alerta-icon">🔬</div>
       <div>
         <div class="alerta-title">FINEP — Economia Circular</div>
-        <div class="alerta-desc">Até <span class="alerta-date">31/08/2026</span>. Bônus para projetos no Norte.</div>
+        <div class="alerta-desc">Até <span class="alerta-date">31/08/2026</span>. Bônus Norte.</div>
+      </div>
+    </div>
+    <div class="alerta-card roxo">
+      <div class="alerta-icon">🗺️</div>
+      <div>
+        <div class="alerta-title">Mapfre — Patrocínio Cultural (PRONAC)</div>
+        <div class="alerta-desc">Até <span class="alerta-date roxo">30/09/2026</span>. Artes cênicas, visuais e música.</div>
       </div>
     </div>
     <div class="alerta-card evento">
       <div class="alerta-icon">🐚</div>
       <div>
         <div class="alerta-title">Shell — Patrocínios Incentivados</div>
-        <div class="alerta-desc">Janela aberta até <span class="alerta-date azul">31/10/2026</span>. Programa contínuo de patrocínios via leis de incentivo.</div>
+        <div class="alerta-desc">Até <span class="alerta-date azul">31/10/2026</span>. Via leis de incentivo.</div>
       </div>
     </div>
     <div class="alerta-card evento">
       <div class="alerta-icon">✈️</div>
       <div>
         <div class="alerta-title">Embratur — Visit Brazil Summit</div>
-        <div class="alerta-desc">Até <span class="alerta-date azul">03/10/2026</span>. <a href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank" style="color:var(--azul);font-weight:600;">Ver evento ↗</a></div>
+        <div class="alerta-desc">Até <span class="alerta-date azul">03/10/2026</span>. PJ apenas.</div>
+      </div>
+    </div>
+    <div class="alerta-card evento">
+      <div class="alerta-icon">🛵</div>
+      <div>
+        <div class="alerta-title">iFood Chega Junto</div>
+        <div class="alerta-desc">Prazo <span class="alerta-date azul">out/2026</span>. Até R$1M.</div>
       </div>
     </div>
     <div class="alerta-card teal">
       <div class="alerta-icon">🍽️</div>
       <div>
         <div class="alerta-title">Cozinha Solidária — MDS</div>
-        <div class="alerta-desc"><span class="alerta-date teal">Cadastro aberto o ano todo</span>.</div>
+        <div class="alerta-desc"><span class="alerta-date teal">Cadastro o ano todo</span>.</div>
       </div>
     </div>
   </div>
@@ -280,24 +284,6 @@
 
   <div class="cards-grid">
 
-    <!-- Itaú Viver Mais -->
-    <div class="card card-idoso">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Itaú Viver Mais</div>
-          <div class="card-programa">Projetos Sociais para Pessoa Idosa (50+)</div>
-        </div>
-        <span class="badge badge-urgente">12/06</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-dourado">12/06/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSCs de direito privado, sem fins lucrativos, com 2+ anos. Projeto deve estar aprovado em Fundo de Direitos da Pessoa Idosa</span></div>
-      <div class="card-detail"><span class="card-detail-label">Categorias</span><span>A: até R$199.999 · B: R$200k–R$799.999 · C: acima de R$800k</span></div>
-      <div class="card-detail"><span class="card-detail-label">Atenção</span><span>Aprovação do Fundo é pré-requisito — obrigatório enviar documento comprobatório na inscrição</span></div>
-      <div class="card-detail"><span class="card-detail-label">Excluídas</span><span>Pessoas físicas, órgãos governamentais, orgs. com diretoria em cargos eletivos ou partidos</span></div>
-      <a class="card-link" href="https://www.itau.com.br/viver-mais" target="_blank">Ver edital ↗</a>
-    </div>
-
     <!-- SECULT Amapá -->
     <div class="card card-local">
       <div class="card-header">
@@ -308,29 +294,68 @@
         <span class="badge badge-local">Local AP ⭐</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Inscrições</span><span class="prazo-azul">01/06 a 30/06/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Inscrições</span><span class="prazo-vermelho">Até 30/06/2026 — aberto agora!</span></div>
       <div class="card-detail"><span class="card-detail-label">Total</span><span><strong>R$10 milhões</strong> · 466 projetos selecionados</span></div>
       <div class="card-detail"><span class="card-detail-label">Valores</span><span>Cat. A: R$10k · B: R$20k · C: R$30k · Mostras A: R$80k · Mostras B: R$120k</span></div>
       <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>Residência mínima 2 anos AP (PF) ou 3 anos (PJ). Conta corrente no Banco do Brasil</span></div>
       <div class="card-detail"><span class="card-detail-label">Cotas</span><span>20% negros/quilombolas/ribeirinhos · 12% novos talentos · 10% indígenas · 5% PcD</span></div>
-      <div class="card-detail"><span class="card-detail-label">Segmentos</span><span>18: Teatro, Música, Dança, Audiovisual, Cultura Indígena, Marabaixo, Afro, Hip-Hop, Circo e mais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Datas-chave</span><span>Resultado preliminar: 17/07 · Resultado final: 03/08 · Assinatura TEC: 01–07/09/2026</span></div>
       <a class="card-link" href="https://matrix.amapa.gov.br/storage/publications/40/063124-EDITAL%20001_2026_FEC_SECULT_DEMANDA_ESPONTANEA_.pdf" target="_blank">Ver edital completo ↗</a>
     </div>
 
     <!-- FINEP Agricultura Familiar -->
-    <div class="card card-aberto">
+    <div class="card card-urgente">
       <div class="card-header">
         <div>
           <div class="card-fonte">FINEP</div>
           <div class="card-programa">Agricultura Familiar e Sistemas Agroalimentares — ICTs 2026</div>
         </div>
-        <span class="badge badge-aberto">Aberto</span>
+        <span class="badge badge-urgente">26/06</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 26/06/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">Até 26/06/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>ICTs públicas ou privadas sem fins lucrativos (mínimo 3 anos)</span></div>
-      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span>Mínimo 30% dos recursos para ICTs executoras sediadas no Norte</span></div>
+      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span style="color:var(--verde-escuro);font-weight:700">Mínimo 30% dos recursos para ICTs sediadas no Norte ✦</span></div>
       <a class="card-link" href="http://www.finep.gov.br/images/chamadas-publicas/2026/25_03_2026_AgriFam-ICT_2026_Edital.pdf" target="_blank">Ver edital ↗</a>
+    </div>
+
+    <!-- Itaú FIA 2026 -->
+    <div class="card card-aberto">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Fundação Itaú — FIA 2026</div>
+          <div class="card-programa">Fundos da Infância e da Adolescência — Educação Integral</div>
+        </div>
+        <span class="badge badge-aberto">13/07</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 13/07/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>R$500.000</strong> por projeto, depositado no FMDCA</span></div>
+      <div class="card-detail"><span class="card-detail-label">Quem inscreve</span><span><strong>CMDCA</strong> do município — 1 projeto por conselho. OSC ou órgão público executa</span></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Educação integral, arte e cultura, letramento, permanência escolar, proteção digital</span></div>
+      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span style="color:var(--verde-escuro);font-weight:700">Municípios do Norte nunca contemplados têm prioridade ✦</span></div>
+      <div class="card-detail"><span class="card-detail-label">Atenção</span><span>FMDCA precisa ter CNPJ ativo e conta bancária em instituição pública antes da inscrição</span></div>
+      <a class="card-link" href="https://www.itausocial.org.br/editais/edital-fundos-da-infancia-e-da-adolescencia-2026/" target="_blank">Ver edital ↗</a>
+    </div>
+
+    <!-- Mapfre -->
+    <div class="card card-mapfre">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Mapfre</div>
+          <div class="card-programa">Edital de Patrocínio Cultural — Projetos com PRONAC aprovado</div>
+        </div>
+        <span class="badge badge-aberto">30/09</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 30/09/2026</span></div>
+      <div class="card-detail"><span class="card-detail-label">Pré-requisito</span><span><strong>PRONAC aprovado</strong> na Lei Federal de Incentivo à Cultura — obrigatório</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Apenas pessoas jurídicas (associações, institutos, fundações, empresas culturais)</span></div>
+      <div class="card-detail"><span class="card-detail-label">Prioridade</span><span>Artes cênicas (espetáculos, dança, teatro), artes visuais (exposições, fotografia) e música</span></div>
+      <div class="card-detail"><span class="card-detail-label">Execução</span><span>Recursos para projetos com execução prevista em 2027</span></div>
+      <div class="card-detail"><span class="card-detail-label">Cronograma</span><span>Inscrições até 30/09 · Avaliação idoneidade até 23/10 · Comitê até 15/11 · Resultado: jan/2027</span></div>
+      <div class="card-detail"><span class="card-detail-label">Atenção</span><span>Projetos sem caráter político-partidário ou religioso; sem uso de nome de autoridades públicas</span></div>
+      <a class="card-link" href="https://mapfre.hubdoincentivo.com.br/" target="_blank">Fazer inscrição ↗</a>
     </div>
 
     <!-- FINEP Economia Circular -->
@@ -364,9 +389,59 @@
       <div class="card-detail"><span class="card-detail-label">Cobertura</span><span>60% do projeto; abaixo de R$200 mil pode ser maior</span></div>
       <div class="card-detail"><span class="card-detail-label">Foco Amapá</span><span>Turismo, cultura indígena, gastronomia regional</span></div>
       <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ apenas; 60 dias de antecedência</span></div>
-      <div class="card-detail"><span class="card-detail-label">Evento</span><span><strong>Visit Brazil Summit 2026</strong> — confirmado</span></div>
       <a class="card-link" href="https://patrocinio.embratur.com.br/wp-content/uploads/2026/01/Edital-de-Selecao-Publica-de-Patrocinios-2026-1.pdf" target="_blank">Edital ↗</a>
       <a class="card-link" href="https://embratur.com.br/eventos/visit-brasil-summit-2026/" target="_blank">Visit Brazil Summit ↗</a>
+    </div>
+
+    <!-- iFood Chega Junto -->
+    <div class="card card-aberto">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">iFood</div>
+          <div class="card-programa">Edital Chega Junto — Entregadores e Comunidades</div>
+        </div>
+        <span class="badge badge-aberto">Out/2026</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até out/2026 — verificar chamada aberta</span></div>
+      <div class="card-detail"><span class="card-detail-label">Total</span><span><strong>R$10 milhões</strong> investidos</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas físicas (entregadores ativos iFood) e OSCs com 3+ meses. MEIs não aceitos</span></div>
+      <div class="card-detail"><span class="card-detail-label">Valores</span><span>P: até R$100k · M regional: até R$300k · G multi-cidades: até R$500k · Nacional: até <strong>R$1M</strong></span></div>
+      <div class="card-detail"><span class="card-detail-label">Temas</span><span>Educação, saúde, segurança alimentar, renda, segurança viária e sustentabilidade</span></div>
+      <a class="card-link" href="https://entregador.ifood.com.br/programa-de-incentivo-ifood-chega-junto" target="_blank">Ver chamada ↗</a>
+    </div>
+
+    <!-- Shell -->
+    <div class="card card-continuo">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Shell</div>
+          <div class="card-programa">Programa Shell de Patrocínios Incentivados</div>
+        </div>
+        <span class="badge badge-continuo">Até 31/10</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Janela</span><span class="prazo-teal">01/03 a 31/10/2026 — aberto agora</span></div>
+      <div class="card-detail"><span class="card-detail-label">Modelo</span><span>Patrocínios via leis de incentivo — Lei Rouanet, Lei de Incentivo ao Esporte, Audiovisual e outras</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Projetos culturais, esportivos, socioambientais com captação via incentivos fiscais</span></div>
+      <a class="card-link" href="https://www.shell.com.br" target="_blank">Ver programa ↗</a>
+    </div>
+
+    <!-- Renner -->
+    <div class="card card-continuo">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Lojas Renner</div>
+          <div class="card-programa">Patrocínios Culturais + Instituto Lojas Renner</div>
+        </div>
+        <span class="badge badge-continuo">Contínuo</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Cultura</span><span>Patrocínios culturais via site da Renner — até <strong>80% do projeto</strong></span></div>
+      <div class="card-detail"><span class="card-detail-label">Instituto</span><span>Esporte, criança, adolescente, idoso, atenção oncológica e saúde da PcD — via Instituto Lojas Renner</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Projetos culturais amazônicos, indígenas e de identidade regional</span></div>
+      <a class="card-link" href="https://www.lojasrennersa.com.br/patrocinios-e-projetos/" target="_blank">Patrocínios culturais ↗</a>
+      <a class="card-link" href="https://prosas.com.br/editais/9048-elas-avancam-ambientes-prosperos-para-o-protagonismo-feminino?locale=br" target="_blank">Instituto Renner ↗</a>
     </div>
 
     <!-- Aldir Blanc -->
@@ -376,7 +451,7 @@
           <div class="card-fonte">MinC — Política Nacional Aldir Blanc</div>
           <div class="card-programa">Recursos remanescentes — municípios</div>
         </div>
-        <span class="badge badge-aberto">Recursos disponíveis</span>
+        <span class="badge badge-aberto">Disponível</span>
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Uso</span><span>Festejos, bens culturais, espaços culturais, fomento à cultura local</span></div>
@@ -398,78 +473,6 @@
       <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas jurídicas. Possibilidade para organizações não formais</span></div>
       <a class="card-link" href="https://cozinhasolidaria.digital/" target="_blank">Fazer cadastro ↗</a>
       <a class="card-link" href="https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-cozinha-solidaria/programa-cozinha-solidaria" target="_blank">Saber mais ↗</a>
-    </div>
-
-    <!-- Itaú FIA 2026 -->
-    <div class="card card-aberto">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Fundação Itaú — FIA 2026</div>
-          <div class="card-programa">Fundos da Infância e da Adolescência — Educação Integral</div>
-        </div>
-        <span class="badge badge-aberto">13/07</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 13/07/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valor</span><span>Até <strong>R$500.000</strong> por projeto, depositado no Fundo Municipal dos Direitos da Criança e do Adolescente</span></div>
-      <div class="card-detail"><span class="card-detail-label">Quem inscreve</span><span>O <strong>CMDCA</strong> (Conselho Municipal dos Direitos da Criança e do Adolescente) do município — 1 projeto por conselho</span></div>
-      <div class="card-detail"><span class="card-detail-label">Quem executa</span><span>Uma OSC ou órgão público escolhido previamente pelo CMDCA</span></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Educação integral, arte e cultura, letramento, permanência escolar, proteção digital e fortalecimento de vínculos família-escola-comunidade</span></div>
-      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span style="color:var(--verde-escuro);font-weight:700">Municípios do Norte nunca contemplados têm prioridade na seleção final ✦</span></div>
-      <div class="card-detail"><span class="card-detail-label">Atenção</span><span>FMDCA precisa ter CNPJ ativo e conta bancária em instituição pública antes da inscrição</span></div>
-      <a class="card-link" href="https://www.itausocial.org.br/editais/edital-fundos-da-infancia-e-da-adolescencia-2026/" target="_blank">Ver edital ↗</a>
-    </div>
-
-    <!-- iFood Chega Junto -->
-    <div class="card card-aberto">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">iFood</div>
-          <div class="card-programa">Edital Chega Junto — Entregadores e Comunidades</div>
-        </div>
-        <span class="badge badge-aberto">Out/2026</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até out/2026 — verificar chamada aberta</span></div>
-      <div class="card-detail"><span class="card-detail-label">Total</span><span><strong>R$10 milhões</strong> investidos</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas físicas (entregadores parceiros iFood, 18+, ativos nos últimos 6 meses) e OSCs com 3+ meses de formalização. MEIs não aceitos</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valores</span><span>P: PF até R$50k / PJ até R$100k · M regional: até R$300k · G multi-cidades: até R$500k · Nacional: até <strong>R$1M</strong></span></div>
-      <div class="card-detail"><span class="card-detail-label">Temas</span><span>Educação, saúde, segurança alimentar, fortalecimento de renda, segurança viária e sustentabilidade ambiental</span></div>
-      <div class="card-detail"><span class="card-detail-label">Bônus</span><span>+2 pontos para projetos voltados a grupos sub-representados</span></div>
-      <a class="card-link" href="https://entregador.ifood.com.br/programa-de-incentivo-ifood-chega-junto" target="_blank">Ver chamada ↗</a>
-    </div>
-
-    <!-- Renner -->
-    <div class="card card-continuo">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Lojas Renner</div>
-          <div class="card-programa">Patrocínios Culturais + Instituto Lojas Renner</div>
-        </div>
-        <span class="badge badge-continuo">Contínuo</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Cultura</span><span>Patrocínios culturais via site da Renner — até <strong>80% do projeto</strong></span></div>
-      <div class="card-detail"><span class="card-detail-label">Instituto</span><span>Esporte, criança, adolescente, idoso, atenção oncológica e saúde da pessoa com deficiência — via Instituto Lojas Renner</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Projetos culturais amazônicos, indígenas e de identidade regional têm boa aderência ao portfólio da Renner</span></div>
-      <a class="card-link" href="https://www.lojasrennersa.com.br/patrocinios-e-projetos/" target="_blank">Patrocínios culturais ↗</a>
-      <a class="card-link" href="https://prosas.com.br/editais/9048-elas-avancam-ambientes-prosperos-para-o-protagonismo-feminino?locale=br" target="_blank">Instituto Renner ↗</a>
-    </div>
-
-    <!-- Shell -->
-    <div class="card card-continuo">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Shell</div>
-          <div class="card-programa">Programa Shell de Patrocínios Incentivados</div>
-        </div>
-        <span class="badge badge-continuo">Aberto até 31/10</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Janela</span><span class="prazo-teal">01/03 a 31/10/2026 — ainda aberto!</span></div>
-      <div class="card-detail"><span class="card-detail-label">Modelo</span><span>Patrocínios via leis de incentivo — Lei Rouanet, Lei de Incentivo ao Esporte, Audiovisual e outras</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Projetos culturais, esportivos, socioambientais e de diversidade com captação via incentivos fiscais</span></div>
-      <a class="card-link" href="https://www.shell.com.br" target="_blank">Ver programa ↗</a>
     </div>
 
     <!-- Instituto Impactarte -->
@@ -566,7 +569,7 @@
         <tr>
           <td><div class="td-fonte">BNDES</div></td>
           <td>Patrocínios e próximos ciclos</td>
-          <td><span class="badge badge-fechado">Sem edital aberto</span></td>
+          <td><span class="badge badge-fechado">Sem edital</span></td>
           <td class="td-obs">Amazônia Viva encerrado. Monitorar próximos editais socioambientais</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.bndes.gov.br" target="_blank">Ver ↗</a></td>
         </tr>
@@ -581,7 +584,7 @@
           <td><div class="td-fonte">Caixa Econômica Federal</div></td>
           <td>Fundo Socioambiental (próxima chamada)</td>
           <td><span class="badge badge-verificar">Outubro/2026</span></td>
-          <td class="td-obs">⚠️ Chamadas 001 e 002/2026 encerradas. Próximos prazos em outubro</td>
+          <td class="td-obs">⚠️ Chamadas 001 e 002 encerradas. Novos prazos em outubro</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/chamadas-abertas/Paginas/default.aspx" target="_blank">Ver ↗</a></td>
         </tr>
         <tr>
@@ -602,20 +605,27 @@
           <td><div class="td-fonte">Vale</div></td>
           <td>Instituto Cultural Vale + Lei Rouanet</td>
           <td><span class="badge badge-fechado">Chamada encerrada</span></td>
-          <td class="td-obs">Chamada ICV encerrada em 15/05. Lei Rouanet continua maio–nov via captação direta</td>
+          <td class="td-obs">Chamada ICV encerrada. Lei Rouanet continua maio–nov via captação direta</td>
           <td><a class="card-link" style="margin-top:0" href="https://institutoculturalvale.org" target="_blank">Ver ICV ↗</a></td>
+        </tr>
+        <tr>
+          <td><div class="td-fonte">Itaú — Viver Mais</div></td>
+          <td>Projetos para Pessoa Idosa (50+)</td>
+          <td><span class="badge badge-fechado">Encerrado 12/06</span></td>
+          <td class="td-obs">Prazo encerrado. Monitorar próxima edição. OSCs com projeto aprovado em Fundo de Direitos do Idoso</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.itau.com.br/viver-mais" target="_blank">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Juventude Solidária — MinC</div></td>
           <td>Cultura — Conexão Juventude</td>
-          <td><span class="badge badge-fechado">Sem edital aberto</span></td>
-          <td class="td-obs">Conectar juventude a projetos culturais — monitorar abertura de chamada pelo MinC</td>
-          <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/cultura/pt-br" target="_blank">Ver MinC ↗</a></td>
+          <td><span class="badge badge-fechado">Sem edital</span></td>
+          <td class="td-obs">Conectar juventude a projetos culturais — aguardar chamada do MinC</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/cultura/pt-br" target="_blank">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">ABDI</div></td>
           <td>Edital Micro e Pequenas Empresas</td>
-          <td><span class="badge badge-verificar">Verificar status</span></td>
+          <td><span class="badge badge-verificar">Verificar</span></td>
           <td class="td-obs">E-Commerce.BR 2026 encerrado. Verificar novos editais da ABDI</td>
           <td><a class="card-link" style="margin-top:0" href="https://www.abdi.com.br" target="_blank">Ver ↗</a></td>
         </tr>
@@ -628,18 +638,20 @@
     <div class="highlight-icon">🌿</div>
     <div>
       <div class="highlight-title">Estratégia de posicionamento — Amapá tem vantagem competitiva</div>
-      <div class="highlight-desc">O Amapá reúne características únicas que aumentam elegibilidade em editais nacionais e internacionais: maior área protegida do Brasil, biodiversidade amazônica, povos indígenas e quilombolas, comunidades tradicionais, fronteira com a Guiana Francesa e forte perfil de agricultura familiar. Junho é o mês mais importante do semestre — a SECULT AP abre com R$10M e o Itaú Viver Mais encerra no dia 12.</div>
+      <div class="highlight-desc">Junho é o mês mais importante do semestre: a SECULT AP está com inscrições abertas até 30/06 — R$10M com cotas específicas para indígenas, quilombolas e novos talentos. Os municípios do Amapá também têm bônus no edital FIA da Fundação Itaú (prazo 13/07). O novo edital da Mapfre amplia a captação via PRONAC para projetos culturais com execução em 2027.</div>
       <div class="highlight-pills">
         <span class="highlight-pill green">Cultura Local AP</span>
-        <span class="highlight-pill green">Pessoa Idosa</span>
         <span class="highlight-pill green">Povos Indígenas</span>
         <span class="highlight-pill green">Quilombolas</span>
+        <span class="highlight-pill green">Infância e Adolescência</span>
         <span class="highlight-pill green">Agricultura Familiar</span>
         <span class="highlight-pill green">Segurança Alimentar</span>
         <span class="highlight-pill">Bioeconomia</span>
         <span class="highlight-pill">Economia Circular</span>
         <span class="highlight-pill">Turismo Sustentável</span>
+        <span class="highlight-pill">Patrocínio Cultural</span>
         <span class="highlight-pill">Cooperação Internacional</span>
+        <span class="highlight-pill">Entregadores e Comunidades</span>
       </div>
     </div>
   </div>
