@@ -1,137 +1,270 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oportunidades de Financiamento – Amapá</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --verde: #18D44B; --verde-escuro: #0FA034; --verde-fundo: #E8FBF0;
-    --azul: #1756D6; --azul-escuro: #0D3EA3; --azul-fundo: #EBF1FE;
-    --navy: #091A3E; --cinza-bg: #F4F6FA; --cinza-texto: #5B6480; --borda: #DEE3F0;
-    --amarelo: #E07A10; --amarelo-fundo: #FEF5E7;
-    --vermelho: #CC2222; --vermelho-fundo: #FDEAEA;
-    --roxo: #7C3AED; --roxo-fundo: #F3EFFE;
-    --teal: #0D9488; --teal-fundo: #F0FDFA;
-    --dourado: #B45309; --dourado-fundo: #FFFBEB;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', sans-serif; background: var(--cinza-bg); color: var(--navy); }
-  .header-stripe { height: 5px; background: linear-gradient(90deg, var(--verde), var(--azul)); }
-  header { background: var(--navy); }
-  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; }
-  .logo-area { display: flex; align-items: center; gap: 20px; }
-  .logo-badge { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, var(--verde), var(--azul)); display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 22px; color: white; }
-  .header-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 22px; color: white; }
-  .header-subtitle { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 4px; }
-  .header-tag { display: inline-block; background: rgba(24,212,75,0.18); color: var(--verde); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-top: 6px; }
-  .metrics-section { background: var(--navy); padding: 0 48px 36px; }
-  .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
-  .metric-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 20px 22px; }
-  .metric-label { font-size: 12px; color: rgba(255,255,255,0.45); font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; }
-  .metric-value { font-family: 'Sora', sans-serif; font-size: 34px; font-weight: 800; color: white; margin-top: 6px; line-height: 1; }
-  .metric-value.green { color: var(--verde); }
-  .metric-value.red { color: #FF6B6B; }
-  .metric-value.amarelo { color: #FBBF24; }
-  .metric-sub { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 6px; }
-  .main { padding: 40px 48px; }
-  .section-header { display: flex; align-items: center; margin-bottom: 20px; gap: 12px; }
-  .section-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: var(--navy); }
-  .section-pill { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
-  .pill-verde { background: var(--verde-fundo); color: var(--verde-escuro); }
-  .pill-azul { background: var(--azul-fundo); color: var(--azul-escuro); }
-  .pill-amarelo { background: var(--amarelo-fundo); color: var(--amarelo); }
-  .pill-vermelho { background: var(--vermelho-fundo); color: var(--vermelho); }
-  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 18px; margin-bottom: 40px; }
-  .card { background: white; border-radius: 16px; border: 1.5px solid var(--borda); padding: 22px 24px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(9,26,62,0.12); }
-  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
-  .card-urgente::before { background: var(--vermelho); }
-  .card-urgente { border-color: #FFAAAA; }
-  .card-aberto::before { background: var(--verde); }
-  .card-continuo::before { background: var(--teal); }
-  .card-verificar::before { background: var(--amarelo); }
-  .card-mapfre::before { background: linear-gradient(90deg, #991B1B, #C2410C); }
-  .card-verde-social::before { background: linear-gradient(90deg, #15803D, #0FA034); }
-  .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; gap: 10px; }
-  .card-fonte { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); }
-  .card-programa { font-size: 12.5px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.4; }
-  .card-divider { height: 1px; background: var(--borda); margin: 14px 0; }
-  .card-detail { display: flex; gap: 8px; font-size: 12.5px; color: var(--cinza-texto); margin-bottom: 8px; align-items: flex-start; line-height: 1.5; }
-  .card-detail-label { font-weight: 600; color: var(--navy); min-width: 78px; flex-shrink: 0; font-size: 12px; }
-  .prazo-verde { color: var(--verde-escuro); font-weight: 700; }
-  .prazo-vermelho { color: var(--vermelho); font-weight: 700; }
-  .prazo-teal { color: var(--teal); font-weight: 700; }
-  .prazo-azul { color: var(--azul); font-weight: 700; }
-  .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
-  .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
-  .badge-urgente { background: var(--vermelho-fundo); color: var(--vermelho); animation: pulse 2s infinite; }
-  .badge-urgente::before { background: var(--vermelho); }
-  .badge-aberto { background: var(--verde-fundo); color: var(--verde-escuro); }
-  .badge-aberto::before { background: var(--verde); }
-  .badge-continuo { background: var(--teal-fundo); color: var(--teal); }
-  .badge-continuo::before { background: var(--teal); }
-  .badge-fechado { background: #F0F0F4; color: #7A8098; }
-  .badge-fechado::before { background: #B0B5C8; }
-  .badge-verificar { background: var(--amarelo-fundo); color: var(--amarelo); }
-  .badge-verificar::before { background: var(--amarelo); }
-  .badge-novo { background: var(--azul-fundo); color: var(--azul-escuro); }
-  .badge-novo::before { background: var(--azul); }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
-  .card-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--azul); text-decoration: none; margin-top: 10px; margin-right: 6px; padding: 6px 12px; background: var(--azul-fundo); border-radius: 8px; transition: background 0.15s; }
-  .card-link:hover { background: #D0DCF8; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Financiamentos — Amapá | Gabinete Sen. Randolfe Rodrigues</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===================== RESET ===================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #F4F6FA; color: #091A3E; line-height: 1.5; }
+    a { text-decoration: none; }
 
-  /* URGENTE ÚNICO */
-  .urgente-destaque { background: white; border-radius: 16px; border: 2px solid #FFAAAA; background: linear-gradient(135deg, #FFF8F8 0%, #FFF 100%); padding: 24px 28px; display: flex; align-items: flex-start; gap: 20px; margin-bottom: 32px; }
-  .urgente-destaque-icon { font-size: 40px; flex-shrink: 0; }
-  .urgente-destaque-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 17px; color: var(--navy); }
-  .urgente-destaque-prazo { font-size: 28px; font-weight: 800; font-family: 'Sora', sans-serif; color: var(--vermelho); margin: 6px 0; }
-  .urgente-destaque-desc { font-size: 13px; color: var(--cinza-texto); line-height: 1.6; }
-  .req-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .req-tag { background: var(--vermelho-fundo); color: #991B1B; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; }
-  .req-tag.verde { background: var(--verde-fundo); color: var(--verde-escuro); }
+    /* ===================== TOKENS ===================== */
+    :root {
+      --verde:        #18D44B;
+      --verde-escuro: #0FA034;
+      --verde-fundo:  #E8FBF0;
+      --azul:         #1756D6;
+      --azul-escuro:  #0D3EA3;
+      --azul-fundo:   #EBF1FE;
+      --navy:         #091A3E;
+      --cinza-bg:     #F4F6FA;
+      --cinza-texto:  #5B6480;
+      --borda:        #DEE3F0;
+      --vermelho:     #CC2222;
+      --verm-fundo:   #FDEAEA;
+      --amarelo:      #E07A10;
+      --amar-fundo:   #FEF5E7;
+      --roxo:         #7C3AED;
+      --roxo-fundo:   #F3EFFE;
+      --teal:         #0D9488;
+      --teal-fundo:   #F0FDFA;
+      --dourado:      #B45309;
+      --dour-fundo:   #FFFBEB;
+    }
 
-  /* ALERTAS */
-  .alerta-row { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
-  .alerta-card { flex: 1; min-width: 155px; background: white; border-radius: 12px; border: 1.5px solid var(--borda); padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; }
-  .alerta-card.prazo { border-color: #90D9AA; background: #F4FDF7; }
-  .alerta-card.evento { border-color: #90C0F0; background: #F5F9FF; }
-  .alerta-card.teal { border-color: #99D6D0; background: #F0FDFA; }
-  .alerta-card.roxo { border-color: #C4A8F8; background: #FAF5FF; }
-  .alerta-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .alerta-title { font-weight: 700; font-size: 11.5px; color: var(--navy); }
-  .alerta-desc { font-size: 10.5px; color: var(--cinza-texto); margin-top: 2px; line-height: 1.5; }
-  .alerta-date { font-weight: 700; color: var(--verde-escuro); }
-  .alerta-date.azul { color: var(--azul); }
-  .alerta-date.teal { color: var(--teal); }
-  .alerta-date.roxo { color: var(--roxo); }
+    /* ===================== HEADER ===================== */
+    .header-stripe { height: 5px; background: linear-gradient(90deg, var(--verde), var(--azul)); }
 
-  .highlight-box { background: linear-gradient(135deg, var(--navy) 0%, #1338A0 100%); border-radius: 18px; padding: 30px 36px; margin-bottom: 40px; display: flex; align-items: center; gap: 28px; }
-  .highlight-icon { width: 64px; height: 64px; background: rgba(24,212,75,0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
-  .highlight-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: white; margin-bottom: 8px; }
-  .highlight-desc { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
-  .highlight-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .highlight-pill { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 12px; padding: 4px 12px; border-radius: 20px; }
-  .highlight-pill.green { background: rgba(24,212,75,0.25); color: var(--verde); }
+    header { background: var(--navy); }
 
-  .table-card { background: white; border-radius: 16px; border: 1.5px solid var(--borda); overflow: hidden; margin-bottom: 40px; }
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  thead th { background: var(--cinza-bg); color: var(--cinza-texto); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px; padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--borda); }
-  tbody td { padding: 12px 16px; border-bottom: 1px solid #F0F2F8; color: var(--navy); vertical-align: middle; }
-  tbody tr:last-child td { border-bottom: none; }
-  tbody tr:hover td { background: #F8FAFF; }
-  .td-fonte { font-weight: 600; }
-  .td-obs { font-size: 12px; color: var(--cinza-texto); max-width: 200px; line-height: 1.4; }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 48px;
+      gap: 16px;
+    }
+    .logo-area { display: flex; align-items: center; gap: 18px; }
+    .logo-badge {
+      width: 54px; height: 54px; border-radius: 14px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--verde), var(--azul));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 22px; color: #fff;
+    }
+    .header-title    { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 21px; color: #fff; }
+    .header-subtitle { font-size: 12.5px; color: rgba(255,255,255,.5); margin-top: 3px; }
+    .header-tag {
+      display: inline-block; margin-top: 7px;
+      background: rgba(24,212,75,.16); color: var(--verde);
+      font-size: 11.5px; font-weight: 600; padding: 4px 12px; border-radius: 20px;
+    }
+    .header-date { font-size: 12px; color: rgba(255,255,255,.4); text-align: right; }
 
-  .footer-stripe { height: 4px; background: linear-gradient(90deg, var(--azul), var(--verde)); }
-  footer { background: var(--navy); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; }
-  .footer-text { font-size: 12px; color: rgba(255,255,255,0.4); }
-  .footer-brand { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; color: rgba(255,255,255,0.7); }
-</style>
+    /* ===================== METRICS ===================== */
+    .metrics-section { background: var(--navy); padding: 0 48px 32px; }
+    .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+    .metric-card {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 14px; padding: 18px 20px;
+    }
+    .metric-label {
+      font-size: 11px; color: rgba(255,255,255,.4); font-weight: 500;
+      text-transform: uppercase; letter-spacing: .8px;
+    }
+    .metric-value {
+      font-family: 'Sora', sans-serif; font-size: 32px; font-weight: 800;
+      color: #fff; margin-top: 6px; line-height: 1;
+    }
+    .metric-value.green  { color: var(--verde); }
+    .metric-value.red    { color: #FF6B6B; }
+    .metric-value.gold   { color: #FBBF24; }
+    .metric-sub { font-size: 11.5px; color: rgba(255,255,255,.32); margin-top: 5px; }
+
+    /* ===================== MAIN LAYOUT ===================== */
+    .main { padding: 40px 48px; }
+
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .section-title  { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; color: var(--navy); }
+    .section-pill {
+      font-size: 11.5px; font-weight: 600; padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+    }
+    .pill-verde   { background: var(--verde-fundo); color: var(--verde-escuro); }
+    .pill-azul    { background: var(--azul-fundo);  color: var(--azul-escuro); }
+    .pill-amarelo { background: var(--amar-fundo);  color: var(--amarelo); }
+    .pill-vermelho{ background: var(--verm-fundo);  color: var(--vermelho); }
+
+    /* ===================== URGENTE DESTAQUE ===================== */
+    .urgente-destaque {
+      background: linear-gradient(135deg, #FFF8F8 0%, #fff 100%);
+      border: 2px solid #FFAAAA; border-radius: 16px;
+      padding: 24px 28px; display: flex; align-items: flex-start; gap: 20px;
+      margin-bottom: 32px;
+    }
+    .urgente-destaque-icon { font-size: 38px; flex-shrink: 0; line-height: 1; }
+    .urgente-destaque-body { flex: 1; }
+    .urgente-destaque-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+    .urgente-destaque-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 16px; color: var(--navy); }
+    .urgente-prazo  { font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 800; color: var(--vermelho); margin: 4px 0 10px; }
+    .urgente-desc   { font-size: 13px; color: var(--cinza-texto); line-height: 1.6; margin-bottom: 10px; }
+    .req-grid       { display: flex; flex-wrap: wrap; gap: 7px; }
+    .req-tag {
+      font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px;
+      background: var(--verm-fundo); color: #991B1B;
+    }
+    .req-tag.verde { background: var(--verde-fundo); color: var(--verde-escuro); }
+
+    /* ===================== ALERTAS ===================== */
+    .alerta-row { display: flex; gap: 11px; flex-wrap: wrap; margin-bottom: 32px; }
+    .alerta-card {
+      flex: 1; min-width: 152px; background: #fff;
+      border: 1.5px solid var(--borda); border-radius: 12px;
+      padding: 12px 13px; display: flex; align-items: flex-start; gap: 9px;
+    }
+    .alerta-card.prazo { border-color: #86EFAC; background: #F0FDF4; }
+    .alerta-card.roxo  { border-color: #C4B5FD; background: #FAF5FF; }
+    .alerta-card.evento{ border-color: #93C5FD; background: #EFF6FF; }
+    .alerta-card.teal  { border-color: #99F6E4; background: var(--teal-fundo); }
+    .alerta-icon  { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+    .alerta-title { font-weight: 700; font-size: 11.5px; color: var(--navy); }
+    .alerta-desc  { font-size: 10.5px; color: var(--cinza-texto); margin-top: 2px; line-height: 1.5; }
+    .alerta-date  { font-weight: 700; color: var(--verde-escuro); }
+    .alerta-date.azul { color: var(--azul); }
+    .alerta-date.roxo { color: var(--roxo); }
+    .alerta-date.teal { color: var(--teal); }
+
+    /* ===================== CARDS GRID ===================== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px,1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    /* CARD base */
+    .card {
+      background: #fff; border-radius: 16px; border: 1.5px solid var(--borda);
+      padding: 20px 22px; position: relative; overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(9,26,62,.1); }
+
+    /* top colour bar */
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    }
+    .card-urgente::before  { background: var(--vermelho); }
+    .card-urgente          { border-color: #FCA5A5; }
+    .card-aberto::before   { background: var(--verde); }
+    .card-continuo::before { background: var(--teal); }
+    .card-verificar::before{ background: var(--amarelo); }
+    .card-mapfre::before   { background: linear-gradient(90deg, #991B1B, #C2410C); }
+    .card-mapfre           { border-color: #FCA5A5; }
+    .card-mapfre-esporte::before { background: linear-gradient(90deg, #1D4ED8, #7C3AED); }
+    .card-mapfre-esporte   { border-color: #C7D2FE; }
+
+    .card-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 10px; margin-bottom: 12px;
+    }
+    .card-fonte   { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14.5px; color: var(--navy); }
+    .card-programa{ font-size: 12px; color: var(--cinza-texto); margin-top: 3px; line-height: 1.4; }
+    .card-divider { height: 1px; background: var(--borda); margin: 12px 0; }
+
+    .card-detail {
+      display: flex; gap: 8px; font-size: 12px; color: var(--cinza-texto);
+      margin-bottom: 7px; align-items: flex-start; line-height: 1.5;
+    }
+    .card-detail-label {
+      font-weight: 600; color: var(--navy); min-width: 78px; flex-shrink: 0; font-size: 11.5px;
+    }
+    .prazo-verde   { color: var(--verde-escuro); font-weight: 700; }
+    .prazo-vermelho{ color: var(--vermelho);     font-weight: 700; }
+    .prazo-teal    { color: var(--teal);         font-weight: 700; }
+    .prazo-azul    { color: var(--azul);         font-weight: 700; }
+    .destaque      { color: var(--verde-escuro); font-weight: 700; }
+
+    /* ===================== BADGES ===================== */
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600; padding: 4px 10px;
+      border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+    }
+    .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+
+    .badge-urgente  { background: var(--verm-fundo); color: var(--vermelho); animation: pulse 2s infinite; }
+    .badge-urgente::before  { background: var(--vermelho); }
+    .badge-aberto   { background: var(--verde-fundo); color: var(--verde-escuro); }
+    .badge-aberto::before   { background: var(--verde); }
+    .badge-continuo { background: var(--teal-fundo);  color: var(--teal); }
+    .badge-continuo::before { background: var(--teal); }
+    .badge-fechado  { background: #F0F0F4; color: #6B7280; }
+    .badge-fechado::before  { background: #9CA3AF; }
+    .badge-verificar{ background: var(--amar-fundo); color: var(--amarelo); }
+    .badge-verificar::before{ background: var(--amarelo); }
+    .badge-novo     { background: var(--azul-fundo);  color: var(--azul-escuro); }
+    .badge-novo::before     { background: var(--azul); }
+    .badge-esporte  { background: #EEF2FF; color: #4338CA; }
+    .badge-esporte::before  { background: #4338CA; }
+
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.55} }
+
+    /* ===================== CARD LINK ===================== */
+    .card-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11.5px; font-weight: 600; color: var(--azul);
+      padding: 5px 11px; background: var(--azul-fundo); border-radius: 8px;
+      margin-top: 10px; margin-right: 5px; transition: background .15s;
+    }
+    .card-link:hover { background: #D0DCF8; }
+
+    /* ===================== HIGHLIGHT BOX ===================== */
+    .highlight-box {
+      background: linear-gradient(135deg, var(--navy) 0%, #1338A0 100%);
+      border-radius: 18px; padding: 28px 36px; margin-bottom: 40px;
+      display: flex; align-items: center; gap: 26px;
+    }
+    .highlight-icon {
+      width: 62px; height: 62px; flex-shrink: 0;
+      background: rgba(24,212,75,.18); border-radius: 16px;
+      display: flex; align-items: center; justify-content: center; font-size: 26px;
+    }
+    .highlight-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; color: #fff; margin-bottom: 7px; }
+    .highlight-desc  { font-size: 13px; color: rgba(255,255,255,.62); line-height: 1.65; }
+    .highlight-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+    .highlight-pill  { background: rgba(255,255,255,.1); color: rgba(255,255,255,.82); font-size: 11.5px; padding: 4px 11px; border-radius: 20px; }
+    .highlight-pill.green { background: rgba(24,212,75,.22); color: var(--verde); }
+
+    /* ===================== TABLE ===================== */
+    .table-card { background: #fff; border-radius: 16px; border: 1.5px solid var(--borda); overflow: hidden; margin-bottom: 40px; }
+    table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    thead th {
+      background: var(--cinza-bg); color: var(--cinza-texto);
+      font-weight: 600; font-size: 11px; text-transform: uppercase;
+      letter-spacing: .7px; padding: 10px 15px; text-align: left;
+      border-bottom: 1px solid var(--borda);
+    }
+    tbody td { padding: 11px 15px; border-bottom: 1px solid #F0F2F8; vertical-align: middle; }
+    tbody tr:last-child td  { border-bottom: none; }
+    tbody tr:hover td       { background: #F8FAFF; }
+    .td-fonte { font-weight: 600; color: var(--navy); }
+    .td-obs   { font-size: 11.5px; color: var(--cinza-texto); max-width: 220px; line-height: 1.45; }
+
+    /* ===================== FOOTER ===================== */
+    .footer-stripe { height: 4px; background: linear-gradient(90deg, var(--azul), var(--verde)); }
+    footer {
+      background: var(--navy); padding: 22px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-text  { font-size: 11.5px; color: rgba(255,255,255,.38); }
+    .footer-brand { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 12.5px; color: rgba(255,255,255,.65); }
+  </style>
 </head>
 <body>
 
+<!-- ===================== HEADER ===================== -->
 <div class="header-stripe"></div>
 <header>
   <div class="header-inner">
@@ -140,18 +273,18 @@
       <div>
         <div class="header-title">Painel de Financiamentos — Amapá</div>
         <div class="header-subtitle">Assessoria de Desenvolvimento de Projetos · Gabinete Senador Randolfe Rodrigues</div>
+        <div class="header-tag">✦ Mapeamento Ativo</div>
       </div>
     </div>
-    <div style="text-align:right">
-      <div style="font-size:12px;color:rgba(255,255,255,0.4)">Atualizado em 6 de agosto de 2026</div>
-      <div class="header-tag">✦ Mapeamento Ativo</div>
-    </div>
+    <div class="header-date">Atualizado em 13 de agosto de 2026</div>
   </div>
+
+  <!-- METRICS -->
   <div class="metrics-section">
     <div class="metrics-grid">
       <div class="metric-card">
         <div class="metric-label">Fontes mapeadas</div>
-        <div class="metric-value">37</div>
+        <div class="metric-value">38</div>
         <div class="metric-sub">Editais, patrocínios e programas</div>
       </div>
       <div class="metric-card">
@@ -160,47 +293,53 @@
         <div class="metric-sub">Inscrições em andamento</div>
       </div>
       <div class="metric-card">
-        <div class="metric-label">Prazo urgente</div>
-        <div class="metric-value red">11</div>
-        <div class="metric-sub">dias para Futuro Bem Maior — 17/08/2026</div>
+        <div class="metric-label">Prazo mais próximo</div>
+        <div class="metric-value red">17/08</div>
+        <div class="metric-sub">Futuro Bem Maior — 4 dias restantes</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Horizonte próximo</div>
-        <div class="metric-value amarelo">3</div>
-        <div class="metric-sub">prazos até outubro: FINEP · Mapfre · Shell</div>
+        <div class="metric-value gold">4</div>
+        <div class="metric-sub">prazos até out/2026: FINEP · Mapfre · Shell · Embratur</div>
       </div>
     </div>
   </div>
 </header>
 
-<div class="main">
+<!-- ===================== MAIN ===================== -->
+<main class="main">
 
   <!-- URGENTE -->
   <div class="section-header">
-    <div class="section-title">🚨 Ação imediata — prazo em 11 dias</div>
+    <div class="section-title">🚨 Ação imediata — prazo em 4 dias</div>
     <span class="section-pill pill-vermelho">Encerra 17/08</span>
   </div>
 
   <div class="urgente-destaque">
     <div class="urgente-destaque-icon">🌱</div>
-    <div style="flex:1">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+    <div class="urgente-destaque-body">
+      <div class="urgente-destaque-header">
         <div class="urgente-destaque-title">Edital Futuro Bem Maior — Movimento Bem Maior</div>
         <span class="badge badge-urgente">17/08/2026</span>
         <span class="badge badge-novo">Novo ✦</span>
       </div>
-      <div class="urgente-destaque-prazo">17/08/2026 — 11 dias</div>
-      <div class="urgente-destaque-desc">Edital voltado a OSCs e coletivos de pequeno porte em municípios de até 200.000 habitantes. Foco em organizações enraizadas territorialmente com pelo menos 5 anos de atuação comprovada. Oferece trilha formativa além do apoio financeiro.</div>
-      <div class="req-grid">
-        <span class="req-tag">OSC ou coletivo não formalizado</span>
-        <span class="req-tag">Município até 200 mil hab.</span>
-        <span class="req-tag">5+ anos de atuação comprovada</span>
-        <span class="req-tag">Receita anual &lt; R$500k em 2025</span>
-        <span class="req-tag">Atuação somente no estado-sede</span>
-        <span class="req-tag verde">2 gestores disponíveis para trilha formativa</span>
-        <span class="req-tag verde">Sem fins religiosos nem filiação partidária</span>
+      <div class="urgente-prazo">17/08/2026 — 4 dias!</div>
+      <div class="urgente-desc">
+        Edital voltado a OSCs e coletivos de pequeno porte em municípios com até 200.000 habitantes —
+        perfil ideal para o interior do Amapá, onde a maioria dos municípios é de pequeno porte.
+        Além do apoio financeiro, inclui <strong>trilha formativa de capacitação</strong>.
       </div>
-      <a class="card-link" href="#" style="margin-top:14px">Ver edital ↗</a>
+      <div class="req-grid">
+        <span class="req-tag">OSC sem fins lucrativos ou coletivo não formalizado</span>
+        <span class="req-tag">Município com no máximo 200 mil hab. (IBGE)</span>
+        <span class="req-tag">5+ anos de atuação comprovada no território</span>
+        <span class="req-tag">Receita anual abaixo de R$500 mil em 2025</span>
+        <span class="req-tag">Atuar somente no estado-sede</span>
+        <span class="req-tag verde">Sem fins religiosos nem filiação partidária</span>
+        <span class="req-tag verde">Mínimo 2 gestores disponíveis para trilha formativa</span>
+        <span class="req-tag verde">Representantes sem cargo político com influência sobre políticas públicas</span>
+      </div>
+      <a class="card-link" href="https://www.movimentobemmaior.org.br" target="_blank" rel="noopener">Ver edital ↗</a>
     </div>
   </div>
 
@@ -216,15 +355,15 @@
     <div class="alerta-card roxo">
       <div class="alerta-icon">🗺️</div>
       <div>
-        <div class="alerta-title">Mapfre — Patrocínio Cultural</div>
-        <div class="alerta-desc">Até <span class="alerta-date roxo">30/09/2026</span>. Precisa ter PRONAC aprovado.</div>
+        <div class="alerta-title">Mapfre Cultura (PRONAC)</div>
+        <div class="alerta-desc">Até <span class="alerta-date roxo">30/09/2026</span>. Artes cênicas, visuais e música.</div>
       </div>
     </div>
-    <div class="alerta-card evento">
-      <div class="alerta-icon">🐚</div>
+    <div class="alerta-card roxo">
+      <div class="alerta-icon">🏆</div>
       <div>
-        <div class="alerta-title">Shell — Patrocínios Incentivados</div>
-        <div class="alerta-desc">Até <span class="alerta-date azul">31/10/2026</span>. Via leis de incentivo.</div>
+        <div class="alerta-title">Mapfre Esporte (Lei Esporte)</div>
+        <div class="alerta-desc">Até <span class="alerta-date roxo">30/09/2026</span>. Projeto aprovado em lei de incentivo.</div>
       </div>
     </div>
     <div class="alerta-card evento">
@@ -232,6 +371,13 @@
       <div>
         <div class="alerta-title">Embratur — Patrocínios 2026</div>
         <div class="alerta-desc">Até <span class="alerta-date azul">03/10/2026</span>. PJ apenas. 60% do projeto.</div>
+      </div>
+    </div>
+    <div class="alerta-card evento">
+      <div class="alerta-icon">🐚</div>
+      <div>
+        <div class="alerta-title">Shell — Patrocínios Incentivados</div>
+        <div class="alerta-desc">Até <span class="alerta-date azul">31/10/2026</span>. Via leis de incentivo.</div>
       </div>
     </div>
     <div class="alerta-card evento">
@@ -245,19 +391,19 @@
       <div class="alerta-icon">🏦</div>
       <div>
         <div class="alerta-title">BASA + CEF — próximos editais</div>
-        <div class="alerta-desc">Editais geralmente abrem em <span class="alerta-date azul">outubro/2026</span>. Monitorar.</div>
+        <div class="alerta-desc">Geralmente abrem em <span class="alerta-date azul">outubro/2026</span>. Monitorar.</div>
       </div>
     </div>
     <div class="alerta-card teal">
       <div class="alerta-icon">🍽️</div>
       <div>
         <div class="alerta-title">Cozinha Solidária — MDS</div>
-        <div class="alerta-desc"><span class="alerta-date teal">Cadastro o ano todo</span>.</div>
+        <div class="alerta-desc"><span class="alerta-date teal">Cadastro aberto o ano todo</span>.</div>
       </div>
     </div>
   </div>
 
-  <!-- EDITAIS ABERTOS -->
+  <!-- TODOS OS EDITAIS ABERTOS -->
   <div class="section-header">
     <div class="section-title">✦ Todos os editais com inscrições abertas</div>
     <span class="section-pill pill-verde">10 oportunidades</span>
@@ -265,7 +411,7 @@
 
   <div class="cards-grid">
 
-    <!-- Futuro Bem Maior -->
+    <!-- 1. Futuro Bem Maior -->
     <div class="card card-urgente">
       <div class="card-header">
         <div>
@@ -275,17 +421,15 @@
         <span class="badge badge-urgente">17/08</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">17/08/2026 — 11 dias!</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSC sem fins lucrativos ou coletivo não formalizado. Sede em município com no máximo 200.000 habitantes</span></div>
-      <div class="card-detail"><span class="card-detail-label">Tempo mínimo</span><span>5+ anos de atuação comprovada no território (fotos, publicações, relatórios)</span></div>
-      <div class="card-detail"><span class="card-detail-label">Receita</span><span>Anual abaixo de R$500.000 em 2025</span></div>
-      <div class="card-detail"><span class="card-detail-label">Abrangência</span><span>Atuar somente no estado onde fica a sede</span></div>
-      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>Sem fins religiosos nem filiação partidária; representantes sem cargo político; 2 gestores disponíveis para trilha formativa</span></div>
-      <div class="card-detail"><span class="card-detail-label">Diferencial</span><span>Além do apoio financeiro, inclui trilha formativa de capacitação</span></div>
-      <a class="card-link" href="#" target="_blank">Ver edital ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-vermelho">17/08/2026 — 4 dias!</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>OSC ou coletivo não formalizado. Sede em município com no máximo 200.000 habitantes</span></div>
+      <div class="card-detail"><span class="card-detail-label">Atuação</span><span>5+ anos comprovados no território (fotos, publicações, relatórios). Receita anual abaixo de R$500 mil em 2025</span></div>
+      <div class="card-detail"><span class="card-detail-label">Restrições</span><span>Sem fins religiosos. Sem filiação partidária. Representantes sem cargo político com influência sobre políticas públicas</span></div>
+      <div class="card-detail"><span class="card-detail-label">Diferencial</span><span>Inclui trilha formativa de capacitação. Mín. 2 gestores disponíveis</span></div>
+      <a class="card-link" href="https://www.movimentobemmaior.org.br" target="_blank" rel="noopener">Ver edital ↗</a>
     </div>
 
-    <!-- FINEP Economia Circular -->
+    <!-- 2. FINEP Economia Circular -->
     <div class="card card-aberto">
       <div class="card-header">
         <div>
@@ -296,32 +440,51 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 31/08/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span style="color:var(--verde-escuro);font-weight:700">Projetos no Norte têm maior pontuação no mérito ✦</span></div>
-      <div class="card-detail"><span class="card-detail-label">Diferencial</span><span>Maior nota para cooperativas de catadores, extrativistas, agricultores familiares e povos tradicionais</span></div>
-      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ; ICTs obrigatórias; contrapartida obrigatória</span></div>
-      <a class="card-link" href="http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Regulamento.pdf" target="_blank">Regulamento ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Bônus Norte</span><span class="destaque">Projetos no Norte têm maior pontuação no mérito ✦</span></div>
+      <div class="card-detail"><span class="card-detail-label">Diferencial</span><span>Maior nota para cooperativas de catadores, extrativistas, agricultores familiares e povos e comunidades tradicionais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ apenas; ICTs obrigatórias; contrapartida obrigatória</span></div>
+      <a class="card-link" href="http://www.finep.gov.br/images/chamadas-publicas/2026/13_02_2026_EC_Regulamento.pdf" target="_blank" rel="noopener">Regulamento ↗</a>
     </div>
 
-    <!-- Mapfre -->
+    <!-- 3. Mapfre Cultura -->
     <div class="card card-mapfre">
       <div class="card-header">
         <div>
-          <div class="card-fonte">Mapfre</div>
-          <div class="card-programa">Edital de Patrocínio Cultural — Projetos com PRONAC aprovado</div>
+          <div class="card-fonte">Mapfre — Cultura</div>
+          <div class="card-programa">Patrocínio Cultural — Projetos com PRONAC aprovado</div>
         </div>
         <span class="badge badge-aberto">30/09</span>
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até 30/09/2026</span></div>
       <div class="card-detail"><span class="card-detail-label">Pré-requisito</span><span><strong>PRONAC aprovado</strong> na Lei Federal de Incentivo à Cultura — obrigatório</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Apenas pessoas jurídicas (associações, institutos, fundações, empresas culturais)</span></div>
-      <div class="card-detail"><span class="card-detail-label">Prioridade</span><span>Artes cênicas, artes visuais e música — foco em acesso à cultura e inclusão social</span></div>
-      <div class="card-detail"><span class="card-detail-label">Execução</span><span>Recursos para projetos com execução em 2027 · Resultado final: jan/2027</span></div>
-      <div class="card-detail"><span class="card-detail-label">Atenção</span><span>Sem caráter político-partidário ou religioso; sem uso de nome de autoridades públicas</span></div>
-      <a class="card-link" href="https://mapfre.hubdoincentivo.com.br/" target="_blank">Fazer inscrição ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Apenas PJ (associações, institutos, fundações, empresas culturais). PF não aceito</span></div>
+      <div class="card-detail"><span class="card-detail-label">Categorias</span><span>Artes cênicas (espetáculos, dança, teatro), artes visuais (exposições, fotografia, escultura) e música</span></div>
+      <div class="card-detail"><span class="card-detail-label">Execução</span><span>Projetos com execução prevista em 2027. Resultado: janeiro/2027</span></div>
+      <div class="card-detail"><span class="card-detail-label">Atenção</span><span>Sem caráter político-partidário ou religioso. Sem uso de nome de autoridades públicas</span></div>
+      <a class="card-link" href="https://mapfre.hubdoincentivo.com.br/" target="_blank" rel="noopener">Fazer inscrição ↗</a>
     </div>
 
-    <!-- Embratur -->
+    <!-- 4. Mapfre Esporte -->
+    <div class="card card-mapfre-esporte">
+      <div class="card-header">
+        <div>
+          <div class="card-fonte">Mapfre — Esporte</div>
+          <div class="card-programa">Patrocínio via Lei de Incentivo ao Esporte e outras leis</div>
+        </div>
+        <span class="badge badge-esporte">Novo ✦</span>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo geral</span><span class="prazo-verde">Até 30/09/2026</span> <span style="font-size:11px;color:var(--cinza-texto)">(Cultura, Esporte, FIA, Idoso, Reciclagem)</span></div>
+      <div class="card-detail"><span class="card-detail-label">Prazo PRONAS</span><span class="prazo-verde">Até 15/12/2026</span> <span style="font-size:11px;color:var(--cinza-texto)">(PRONAS e PRONON)</span></div>
+      <div class="card-detail"><span class="card-detail-label">Pré-requisito</span><span><strong>Projeto já aprovado</strong> em uma das leis de incentivo elegíveis (Esporte, FIA, Idoso, Reciclagem, PRONAS, PRONON)</span></div>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Apenas PJ — instituições, sociedades, fundações ou associações, com ou sem fins lucrativos, com objetivos esportivos ou sociais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Critérios</span><span>Conformidade com política Mapfre, idoneidade, qualidade e impacto social, viabilidade orçamentária, experiência com leis de incentivo e possibilidade de voluntariado Mapfre</span></div>
+      <div class="card-detail"><span class="card-detail-label">Execução</span><span>Realização prevista para 2027. Resultado: janeiro/2027</span></div>
+      <a class="card-link" href="https://mapfre.hubdoincentivo.com.br/" target="_blank" rel="noopener">Fazer inscrição ↗</a>
+    </div>
+
+    <!-- 5. Embratur -->
     <div class="card card-aberto">
       <div class="card-header">
         <div>
@@ -332,13 +495,13 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Período</span><span class="prazo-verde">02/01 a 03/10/2026</span></div>
-      <div class="card-detail"><span class="card-detail-label">Cobertura</span><span>60% do projeto; abaixo de R$200 mil pode ser maior</span></div>
+      <div class="card-detail"><span class="card-detail-label">Cobertura</span><span>60% do projeto; projetos abaixo de R$200 mil podem ter percentual maior</span></div>
       <div class="card-detail"><span class="card-detail-label">Foco Amapá</span><span>Turismo, cultura indígena, gastronomia regional</span></div>
-      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ apenas; 60 dias de antecedência</span></div>
-      <a class="card-link" href="https://patrocinio.embratur.com.br/wp-content/uploads/2026/01/Edital-de-Selecao-Publica-de-Patrocinios-2026-1.pdf" target="_blank">Edital ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Requisitos</span><span>PJ apenas; submissão com no mínimo 60 dias de antecedência</span></div>
+      <a class="card-link" href="https://patrocinio.embratur.com.br/wp-content/uploads/2026/01/Edital-de-Selecao-Publica-de-Patrocinios-2026-1.pdf" target="_blank" rel="noopener">Edital ↗</a>
     </div>
 
-    <!-- iFood Chega Junto -->
+    <!-- 6. iFood Chega Junto -->
     <div class="card card-aberto">
       <div class="card-header">
         <div>
@@ -349,30 +512,31 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-verde">Até out/2026 — verificar chamada ativa</span></div>
-      <div class="card-detail"><span class="card-detail-label">Total</span><span><strong>R$10 milhões</strong></span></div>
+      <div class="card-detail"><span class="card-detail-label">Total</span><span><strong>R$10 milhões</strong> investidos no fundo</span></div>
       <div class="card-detail"><span class="card-detail-label">Público</span><span>Entregadores ativos iFood (PF) e OSCs com 3+ meses. MEIs não aceitos</span></div>
-      <div class="card-detail"><span class="card-detail-label">Valores</span><span>PJ até R$100k · Regional até R$300k · Multi-cidades até R$500k · Nacional até <strong>R$1M</strong></span></div>
-      <div class="card-detail"><span class="card-detail-label">Temas</span><span>Educação, saúde, segurança alimentar, renda, segurança viária e sustentabilidade</span></div>
-      <a class="card-link" href="https://entregador.ifood.com.br/programa-de-incentivo-ifood-chega-junto" target="_blank">Ver chamada ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Valores</span><span>PJ: até R$100k · Regional: até R$300k · Multi-cidades: até R$500k · Nacional: até <strong>R$1M</strong></span></div>
+      <div class="card-detail"><span class="card-detail-label">Temas</span><span>Educação, saúde, segurança alimentar, renda, segurança viária e sustentabilidade ambiental</span></div>
+      <div class="card-detail"><span class="card-detail-label">Bônus</span><span>+2 pontos para projetos voltados a grupos sub-representados</span></div>
+      <a class="card-link" href="https://entregador.ifood.com.br/programa-de-incentivo-ifood-chega-junto" target="_blank" rel="noopener">Ver chamada ↗</a>
     </div>
 
-    <!-- Shell -->
+    <!-- 7. Shell -->
     <div class="card card-continuo">
       <div class="card-header">
         <div>
           <div class="card-fonte">Shell</div>
-          <div class="card-programa">Programa Shell de Patrocínios Incentivados</div>
+          <div class="card-programa">Programa de Patrocínios Incentivados</div>
         </div>
         <span class="badge badge-continuo">Até 31/10</span>
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Janela</span><span class="prazo-teal">01/03 a 31/10/2026 — aberto agora</span></div>
       <div class="card-detail"><span class="card-detail-label">Modelo</span><span>Patrocínios via leis de incentivo — Lei Rouanet, Lei de Incentivo ao Esporte, Audiovisual e outras</span></div>
-      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Projetos culturais, esportivos, socioambientais com captação via incentivos fiscais</span></div>
-      <a class="card-link" href="https://www.shell.com.br" target="_blank">Ver programa ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Projetos culturais, esportivos e socioambientais com captação via incentivos fiscais</span></div>
+      <a class="card-link" href="https://www.shell.com.br" target="_blank" rel="noopener">Ver programa ↗</a>
     </div>
 
-    <!-- Renner -->
+    <!-- 8. Renner -->
     <div class="card card-continuo">
       <div class="card-header">
         <div>
@@ -382,28 +546,29 @@
         <span class="badge badge-continuo">Contínuo</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Cultura</span><span>Patrocínios culturais via site da Renner — até <strong>80% do projeto</strong></span></div>
-      <div class="card-detail"><span class="card-detail-label">Instituto</span><span>Esporte, criança, adolescente, idoso, saúde da PcD — via Instituto Lojas Renner</span></div>
-      <a class="card-link" href="https://www.lojasrennersa.com.br/patrocinios-e-projetos/" target="_blank">Patrocínios culturais ↗</a>
-      <a class="card-link" href="https://prosas.com.br/editais/9048-elas-avancam-ambientes-prosperos-para-o-protagonismo-feminino?locale=br" target="_blank">Instituto Renner ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Cultura</span><span>Patrocínios culturais diretos — até <strong>80% do projeto</strong>, via site da Renner</span></div>
+      <div class="card-detail"><span class="card-detail-label">Instituto</span><span>Esporte, criança, adolescente, idoso, atenção oncológica e saúde da PcD — via Instituto Lojas Renner</span></div>
+      <div class="card-detail"><span class="card-detail-label">Potencial AP</span><span>Projetos culturais amazônicos, indígenas e de identidade regional têm boa aderência</span></div>
+      <a class="card-link" href="https://www.lojasrennersa.com.br/patrocinios-e-projetos/" target="_blank" rel="noopener">Patrocínios culturais ↗</a>
+      <a class="card-link" href="https://prosas.com.br/editais/9048-elas-avancam-ambientes-prosperos-para-o-protagonismo-feminino?locale=br" target="_blank" rel="noopener">Instituto Renner ↗</a>
     </div>
 
-    <!-- Aldir Blanc -->
+    <!-- 9. Aldir Blanc -->
     <div class="card card-aberto">
       <div class="card-header">
         <div>
           <div class="card-fonte">MinC — Política Nacional Aldir Blanc</div>
-          <div class="card-programa">Recursos remanescentes — municípios</div>
+          <div class="card-programa">Recursos remanescentes — municípios do Amapá</div>
         </div>
         <span class="badge badge-aberto">Disponível</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Uso</span><span>Festejos, bens culturais, espaços culturais, fomento à cultura local</span></div>
-      <div class="card-detail"><span class="card-detail-label">Também</span><span>Lei Rouanet e Lei Paulo Gustavo — consultar MinC</span></div>
-      <a class="card-link" href="https://www.gov.br/cultura/pt-br/assuntos/politica-nacional-aldir-blanc" target="_blank">Acessar portal ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Uso</span><span>Festejos populares, aquisição de bens culturais, construção e manutenção de espaços culturais e fomento à cultura local</span></div>
+      <div class="card-detail"><span class="card-detail-label">Também</span><span>Lei Rouanet e Lei Paulo Gustavo — consultar MinC para disponibilidade</span></div>
+      <a class="card-link" href="https://www.gov.br/cultura/pt-br/assuntos/politica-nacional-aldir-blanc" target="_blank" rel="noopener">Acessar portal ↗</a>
     </div>
 
-    <!-- Cozinha Solidária -->
+    <!-- 10. Cozinha Solidária -->
     <div class="card card-continuo">
       <div class="card-header">
         <div>
@@ -414,26 +579,13 @@
       </div>
       <div class="card-divider"></div>
       <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-teal">Cadastro aberto o ano todo</span></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas jurídicas. Possibilidade para organizações não formais</span></div>
-      <a class="card-link" href="https://cozinhasolidaria.digital/" target="_blank">Fazer cadastro ↗</a>
-      <a class="card-link" href="https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-cozinha-solidaria/programa-cozinha-solidaria" target="_blank">Saber mais ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Público</span><span>Pessoas jurídicas (sem fins lucrativos). Possibilidade para organizações não formais</span></div>
+      <div class="card-detail"><span class="card-detail-label">Modelo</span><span>Produção e oferta de refeições — direta (equipamento próprio) ou indireta (apoio a outras cozinhas)</span></div>
+      <a class="card-link" href="https://cozinhasolidaria.digital/" target="_blank" rel="noopener">Fazer cadastro ↗</a>
+      <a class="card-link" href="https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-cozinha-solidaria/programa-cozinha-solidaria" target="_blank" rel="noopener">Saber mais ↗</a>
     </div>
 
-    <!-- Instituto Impactarte -->
-    <div class="card card-continuo">
-      <div class="card-header">
-        <div>
-          <div class="card-fonte">Instituto Impactarte</div>
-          <div class="card-programa">Edital — OSCs</div>
-        </div>
-        <span class="badge badge-continuo">Contínuo</span>
-      </div>
-      <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Público</span><span>Organizações da Sociedade Civil (OSCs)</span></div>
-      <div class="card-detail"><span class="card-detail-label">Prazo</span><span class="prazo-teal">Edital contínuo — acessível a qualquer momento</span></div>
-    </div>
-
-  </div>
+  </div><!-- /cards-grid -->
 
   <!-- A VERIFICAR -->
   <div class="section-header">
@@ -442,33 +594,47 @@
   </div>
 
   <div class="cards-grid" style="margin-bottom:40px">
+
     <div class="card card-verificar">
       <div class="card-header">
-        <div><div class="card-fonte">Expertise France</div><div class="card-programa">Projeto AMABIO — Bioeconomia na Amazônia</div></div>
+        <div>
+          <div class="card-fonte">Expertise France</div>
+          <div class="card-programa">Projeto AMABIO — Bioeconomia na Amazônia</div>
+        </div>
         <span class="badge badge-verificar">Verificar</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Bioeconomia, conservação e uso sustentável da biodiversidade amazônica</span></div>
-      <a class="card-link" href="https://www.expertisefrance.fr/en/projects/amabio" target="_blank">Ver projeto ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Bioeconomia, conservação e uso sustentável da biodiversidade amazônica. Cooperação França–Amazônia</span></div>
+      <a class="card-link" href="https://www.expertisefrance.fr/en/projects/amabio" target="_blank" rel="noopener">Ver projeto ↗</a>
     </div>
+
     <div class="card card-verificar">
       <div class="card-header">
-        <div><div class="card-fonte">SEBRAE Amapá</div><div class="card-programa">Editais e chamadas regionais</div></div>
+        <div>
+          <div class="card-fonte">SEBRAE Amapá</div>
+          <div class="card-programa">Editais e chamadas regionais</div>
+        </div>
         <span class="badge badge-verificar">Verificar</span>
       </div>
       <div class="card-divider"></div>
-      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Empreendedorismo, MEIs, associações produtivas locais do AP</span></div>
-      <a class="card-link" href="https://sebrae.com.br/sites/PortalSebrae/ufs/ap/chamada_projeto?codUf=3" target="_blank">Ver portal ↗</a>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Empreendedorismo, MEIs, associações produtivas e cooperativas locais do AP</span></div>
+      <a class="card-link" href="https://sebrae.com.br/sites/PortalSebrae/ufs/ap/chamada_projeto?codUf=3" target="_blank" rel="noopener">Ver portal ↗</a>
     </div>
+
     <div class="card card-verificar">
       <div class="card-header">
-        <div><div class="card-fonte">Ministério do Microempreendedorismo</div><div class="card-programa">OGU — Orçamento Geral da União</div></div>
+        <div>
+          <div class="card-fonte">Ministério do Microempreendedorismo</div>
+          <div class="card-programa">OGU — Orçamento Geral da União</div>
+        </div>
         <span class="badge badge-verificar">Monitorar</span>
       </div>
       <div class="card-divider"></div>
+      <div class="card-detail"><span class="card-detail-label">Foco</span><span>Apoio a microempreendedores individuais e pequenos negócios</span></div>
       <div class="card-detail"><span class="card-detail-label">Conexão</span><span>Alex Nazaré (assessor no ministério — amapaense) pode facilitar acesso</span></div>
     </div>
-  </div>
+
+  </div><!-- /verificar grid -->
 
   <!-- MONITORAMENTO -->
   <div class="section-header">
@@ -479,7 +645,13 @@
   <div class="table-card">
     <table>
       <thead>
-        <tr><th>Fonte / Órgão</th><th>Programa</th><th>Status</th><th>Observações</th><th>Link</th></tr>
+        <tr>
+          <th>Fonte / Órgão</th>
+          <th>Programa</th>
+          <th>Status</th>
+          <th>Observações estratégicas</th>
+          <th>Link</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
@@ -487,121 +659,135 @@
           <td>Petrobras Socioambiental</td>
           <td><span class="badge badge-fechado">Sem edital</span></td>
           <td class="td-obs">Monitorar próximo ciclo — alta relevância socioambiental</td>
-          <td><a class="card-link" style="margin-top:0" href="https://bussola.blob.core.windows.net/bussola/conta/50/edital/394/2e29b4d8fe19dc647dc383d3a1105fe9.pdf" target="_blank">Ver ↗</a></td>
+          <td><a class="card-link" style="margin-top:0" href="https://bussola.blob.core.windows.net/bussola/conta/50/edital/394/2e29b4d8fe19dc647dc383d3a1105fe9.pdf" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Transpetro</div></td>
           <td>Patrocínios corporativos</td>
           <td><span class="badge badge-fechado">Sem edital</span></td>
           <td class="td-obs">Projetos culturais, esportivos e sociais</td>
-          <td><a class="card-link" style="margin-top:0" href="https://transpetro.com.br/data/files/5A/55/5C/D9/5EB3791033118249D8098204/CartilhaInformativa_PatrociniosTranspetro%20_2_.pdf" target="_blank">Ver ↗</a></td>
+          <td><a class="card-link" style="margin-top:0" href="https://transpetro.com.br/data/files/5A/55/5C/D9/5EB3791033118249D8098204/CartilhaInformativa_PatrociniosTranspetro%20_2_.pdf" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Axia Energia</div></td>
           <td>Patrocínios corporativos</td>
           <td><span class="badge badge-fechado">Sem edital</span></td>
           <td class="td-obs">Potencial para projetos de energia e sustentabilidade no AP</td>
-          <td><a class="card-link" style="margin-top:0" href="https://axia.com.br/sobre/patrocinios" target="_blank">Ver ↗</a></td>
+          <td><a class="card-link" style="margin-top:0" href="https://axia.com.br/sobre/patrocinios" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Banco do Brasil</div></td>
           <td>Fundação Banco do Brasil</td>
           <td><span class="badge badge-fechado">Sem edital</span></td>
           <td class="td-obs">Tecnologia social, economia solidária, desenvolvimento territorial</td>
-          <td><a class="card-link" style="margin-top:0" href="https://fbb.org.br/" target="_blank">Ver ↗</a></td>
+          <td><a class="card-link" style="margin-top:0" href="https://fbb.org.br/" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">BNDES</div></td>
           <td>Patrocínios e próximos ciclos</td>
           <td><span class="badge badge-fechado">Sem edital</span></td>
-          <td class="td-obs">Amazônia Viva encerrado. Monitorar próximos editais</td>
-          <td><a class="card-link" style="margin-top:0" href="https://www.bndes.gov.br" target="_blank">Ver ↗</a></td>
+          <td class="td-obs">Amazônia Viva encerrado. Monitorar próximos editais socioambientais</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.bndes.gov.br" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Banco da Amazônia (BASA)</div></td>
           <td>FNO + Patrocínios</td>
           <td><span class="badge badge-verificar">Outubro/2026</span></td>
-          <td class="td-obs">⚠️ Edital geralmente abre em outubro — preparar com antecedência</td>
-          <td><a class="card-link" style="margin-top:0" href="https://www.bancoamazonia.com.br/" target="_blank">Ver ↗</a></td>
+          <td class="td-obs">⚠️ Edital geralmente abre em outubro — preparar documentação com antecedência</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.bancoamazonia.com.br/" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Caixa Econômica Federal</div></td>
-          <td>Fundo Socioambiental (próxima chamada)</td>
+          <td>Fundo Socioambiental — próxima chamada</td>
           <td><span class="badge badge-verificar">Outubro/2026</span></td>
-          <td class="td-obs">⚠️ Chamadas 001 e 002 encerradas. Próxima rodada em outubro</td>
-          <td><a class="card-link" style="margin-top:0" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/chamadas-abertas/Paginas/default.aspx" target="_blank">Ver ↗</a></td>
+          <td class="td-obs">⚠️ Chamadas 001 e 002 encerradas. Próxima rodada esperada em outubro</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.caixa.gov.br/sustentabilidade/fundo-socioambiental-caixa/chamadas-abertas/Paginas/default.aspx" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Ministério do Esporte</div></td>
           <td>Lei de Incentivo ao Esporte</td>
           <td><span class="badge badge-fechado">Monitorar</span></td>
           <td class="td-obs">Projetos esportivos em comunidades, escolas e periferias do AP</td>
-          <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/esporte/pt-br/acoes-e-programas/lei-de-incentivo-ao-esporte" target="_blank">Ver ↗</a></td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/esporte/pt-br/acoes-e-programas/lei-de-incentivo-ao-esporte" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">MinC</div></td>
           <td>Lei Rouanet / Lei Paulo Gustavo</td>
           <td><span class="badge badge-fechado">Monitorar</span></td>
           <td class="td-obs">Incentivos fiscais — captação via patrocinadores privados</td>
-          <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/cultura/pt-br" target="_blank">Ver ↗</a></td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/cultura/pt-br" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Vale</div></td>
           <td>Instituto Cultural Vale + Lei Rouanet</td>
           <td><span class="badge badge-fechado">Chamada encerrada</span></td>
-          <td class="td-obs">Chamada ICV encerrada. Lei Rouanet continua via captação direta</td>
-          <td><a class="card-link" style="margin-top:0" href="https://institutoculturalvale.org" target="_blank">Ver ↗</a></td>
+          <td class="td-obs">Chamada ICV encerrada em mai/26. Lei Rouanet continua via captação direta</td>
+          <td><a class="card-link" style="margin-top:0" href="https://institutoculturalvale.org" target="_blank" rel="noopener">Ver ICV ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Itaú — Viver Mais</div></td>
           <td>Projetos para Pessoa Idosa (50+)</td>
           <td><span class="badge badge-fechado">Encerrado 12/06</span></td>
-          <td class="td-obs">Monitorar próxima edição do edital</td>
-          <td><a class="card-link" style="margin-top:0" href="https://www.itau.com.br/viver-mais" target="_blank">Ver ↗</a></td>
+          <td class="td-obs">Monitorar próxima edição — OSCs com projeto aprovado em Fundo de Direitos do Idoso</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.itau.com.br/viver-mais" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Itaú — FIA 2026</div></td>
           <td>Fundos da Infância e Adolescência</td>
           <td><span class="badge badge-fechado">Encerrado 13/07</span></td>
           <td class="td-obs">Via CMDCA. Municípios do Norte têm bônus. Monitorar próxima edição</td>
-          <td><a class="card-link" style="margin-top:0" href="https://www.itausocial.org.br" target="_blank">Ver ↗</a></td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.itausocial.org.br" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
         <tr>
           <td><div class="td-fonte">Juventude Solidária — MinC</div></td>
           <td>Cultura — Conexão Juventude</td>
           <td><span class="badge badge-fechado">Sem edital</span></td>
           <td class="td-obs">Aguardar chamada do MinC para conectar juventude a projetos culturais</td>
-          <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/cultura/pt-br" target="_blank">Ver ↗</a></td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.gov.br/cultura/pt-br" target="_blank" rel="noopener">Ver ↗</a></td>
+        </tr>
+        <tr>
+          <td><div class="td-fonte">Instituto Impactarte</div></td>
+          <td>Edital para OSCs</td>
+          <td><span class="badge badge-continuo">Contínuo</span></td>
+          <td class="td-obs">Edital contínuo, acessível a qualquer momento por OSCs</td>
+          <td><a class="card-link" style="margin-top:0" href="https://www.institutoimpartarte.org.br" target="_blank" rel="noopener">Ver ↗</a></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- HIGHLIGHT -->
+  <!-- HIGHLIGHT ESTRATÉGICO -->
   <div class="highlight-box">
     <div class="highlight-icon">🌿</div>
     <div>
       <div class="highlight-title">Estratégia de posicionamento — Amapá tem vantagem competitiva</div>
-      <div class="highlight-desc">Agosto é o mês do Futuro Bem Maior — OSCs e coletivos com atuação territorial enraizada nos municípios do interior do AP têm perfil ideal para esse edital. Em outubro, BASA e CEF devem abrir novas chamadas. A FINEP Economia Circular encerra em 31/08 com bônus explícito para projetos do Norte.</div>
+      <div class="highlight-desc">
+        Agosto é crítico: o Futuro Bem Maior encerra em 17/08 — OSCs do interior do Amapá têm perfil ideal (municípios
+        com menos de 200 mil habitantes e atuação territorial enraizada). A FINEP Economia Circular encerra em 31/08
+        com bônus explícito para o Norte. A Mapfre agora cobre <strong>duas frentes</strong>: Cultura (PRONAC) e
+        Esporte/FIA/Idoso (via leis de incentivo) — ambos com prazo 30/09 e execução em 2027.
+        Em outubro, BASA e CEF devem abrir novas chamadas.
+      </div>
       <div class="highlight-pills">
         <span class="highlight-pill green">OSCs de Base</span>
         <span class="highlight-pill green">Interior do Amapá</span>
         <span class="highlight-pill green">Povos Indígenas</span>
         <span class="highlight-pill green">Quilombolas</span>
-        <span class="highlight-pill green">Agricultura Familiar</span>
         <span class="highlight-pill green">Economia Circular</span>
-        <span class="highlight-pill">Patrocínio Cultural</span>
+        <span class="highlight-pill green">Cultura e Esporte</span>
+        <span class="highlight-pill">Patrocínio Cultural PRONAC</span>
+        <span class="highlight-pill">Lei Incentivo Esporte</span>
         <span class="highlight-pill">Turismo Sustentável</span>
         <span class="highlight-pill">Segurança Alimentar</span>
-        <span class="highlight-pill">Bioeconomia</span>
-        <span class="highlight-pill">Cooperação Internacional</span>
+        <span class="highlight-pill">Bioeconomia Amazônica</span>
         <span class="highlight-pill">BASA + CEF em outubro</span>
       </div>
     </div>
   </div>
 
-</div>
+</main>
 
+<!-- ===================== FOOTER ===================== -->
 <div class="footer-stripe"></div>
 <footer>
   <div class="footer-text">Assessoria de Projetos — Gabinete Senador Randolfe Rodrigues · Amapá · 2026</div>
